@@ -4,10 +4,7 @@ import module from "module"
 import commonjs from "@rollup/plugin-commonjs"
 import { terser } from "rollup-plugin-terser"
 import resolve from "@rollup/plugin-node-resolve"
-import typescript from "@rollup/plugin-typescript"
-import fg from "fast-glob"
-import { rimrafJS } from "./utils/rimrafJS.js"
-import { isEmptyJS } from "./utils/isEmptyJS.js"
+import typescript from "rollup-plugin-typescript2"
 
 const pkg = JSON.parse(
   fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"),
@@ -20,9 +17,10 @@ const production = !process.env.ROLLUP_WATCH
 
 const tsOptions = {
   tsconfig: "./tsconfig.json",
+  useTsconfigDeclarationDir: true,
 }
 
-const utils = [
+export const utils = [
   "isEmpty",
   "mkdir",
   "printObject",
@@ -35,31 +33,8 @@ const utils = [
   "wait",
 ]
 
-function nukeDistFiles() {
-  return {
-    async buildStart() {
-      try {
-        const utilFiles = utils.map(f => `${f}.js`)
-        const deleteFiles = [...utilFiles]
-        const map = await fg(["!node_modules", "**/*.map", "**/*.d.ts"])
-
-        deleteFiles.push(...map)
-
-        if (!isEmptyJS(deleteFiles)) {
-          for (const file of deleteFiles) {
-            rimrafJS(path.join(process.cwd(), file))
-          }
-        }
-      } catch (err) {
-        console.error(err)
-      }
-    },
-  }
-}
-
 const config = {
   plugins: [
-    nukeDistFiles(),
     resolve({
       extensions: [".js", ".ts"],
     }),
@@ -84,6 +59,7 @@ const config = {
     exclude: ["node_modules", "*.js", "**/*.map", "**/*.d.ts", "!utils/**/*"],
   },
 }
+
 export default [
   {
     input: `./utils/${utils[0]}.ts`,
