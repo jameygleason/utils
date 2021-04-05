@@ -1,0 +1,21 @@
+{
+  "name": "@signalchain/utils",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jameygleason/utils.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/jameygleason/utils/issues"
+  },
+  "homepage": "https://github.com/jameygleason/utils#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "push": "sh ./scripts/push.sh"
+  }
+}
