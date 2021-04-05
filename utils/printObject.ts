@@ -1,10 +1,11 @@
 import kleur from "kleur"
+import { isEmpty } from "isEmpty" // .ts
 
-export function pretty_print_object(object, pad = "", indention = "spaces") {
-  if (!object) {
-    throw new Error(
-      kleur.red("pretty_print_object requires an Object argument"),
-    )
+// type PrintObjectReturn = { [key: string]: any }
+
+export function printObject(object, pad = "", indention = "spaces"): string {
+  if (isEmpty(object)) {
+    throw new Error(kleur.red("printObject requires an Object argument"))
   }
 
   const indent = indention === "spaces" ? "  " : "\t"
@@ -16,7 +17,7 @@ export function pretty_print_object(object, pad = "", indention = "spaces") {
       out +=
         pad +
         indent +
-        pretty_print_object(
+        printObject(
           typeof object[i] === "string" ? `'${object[i]}'` : object[i],
           pad + indent,
         ) +
@@ -37,7 +38,7 @@ export function pretty_print_object(object, pad = "", indention = "spaces") {
         indent +
         key +
         ": " +
-        pretty_print_object(
+        printObject(
           typeof object[i] === "string" ? `'${object[i]}'` : object[i],
           pad + indent,
         ) +
