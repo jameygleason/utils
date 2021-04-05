@@ -1,25 +1,29 @@
 {
   "name": "@signalchain/utils",
-  "version": "0.0.1",
-  "description": "",
   "author": "",
-  "license": "ISC",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "",
   "main": "index.js",
+  "homepage": "https://github.com/jameygleason/utils#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jameygleason/utils.git"
   },
-  "keywords": [],
   "bugs": {
     "url": "https://github.com/jameygleason/utils/issues"
   },
-  "homepage": "https://github.com/jameygleason/utils#readme",
+  "keywords": [],
   "scripts": {
     "dev": "rollup -c -w",
     "build": "cross-env NODE_ENV=production && rollup -c",
     "clean": "node -r esm ./scripts/nukeDistFiles.js",
     "test": "mocha -r esm --config=.mocharc.json --watch src/**/*.test.ts || true",
+    "patch": "npm run build && npm version patch --force && npm publish",
     "push": "sh ./scripts/push.sh"
+  },
+  "engines": {
+    "node": ">=14.3.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "17.1.0",
