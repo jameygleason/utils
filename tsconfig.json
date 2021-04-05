@@ -21,8 +21,9 @@
     "skipLibCheck": true,
     "strictNullChecks": true,
     "stripInternal": true,
-    "target": "es2019"
+    "target": "es2019",
+    "types": ["mocha", "node"]
   },
   "include": ["utils"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "**/*.d.ts", "**/*.map",]
 }

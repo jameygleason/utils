@@ -1,5 +1,5 @@
 import kleur from "kleur"
-import { isEmpty } from "isEmpty" // .ts
+import { isEmpty } from "./isEmpty" // .ts
 
 // type PrintObjectReturn = { [key: string]: any }
 

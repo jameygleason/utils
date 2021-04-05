@@ -4,7 +4,10 @@ import module from "module"
 import commonjs from "@rollup/plugin-commonjs"
 import { terser } from "rollup-plugin-terser"
 import resolve from "@rollup/plugin-node-resolve"
-import typescript from "rollup-plugin-typescript2"
+import typescript from "@rollup/plugin-typescript"
+import fg from "fast-glob"
+import { rimrafJS } from "./utils/rimrafJS.js"
+import { isEmptyJS } from "./utils/isEmptyJS.js"
 
 const pkg = JSON.parse(
   fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"),
@@ -16,12 +19,47 @@ if (Object.keys(pkg).length === 0) {
 const production = !process.env.ROLLUP_WATCH
 
 const tsOptions = {
-  check: !!process.env.TS_CHECK_ENABLED,
-  tsconfig: "tsconfig.json",
-  useTsconfigDeclarationDir: true,
+  tsconfig: "./tsconfig.json",
 }
+
+const utils = [
+  "isEmpty",
+  "mkdir",
+  "printObject",
+  "rimraf",
+  "safeJSONParse",
+  "slugify",
+  "toUpperCase",
+  "mkdir",
+  "unsafeStripHTML",
+  "wait",
+]
+
+function nukeDistFiles() {
+  return {
+    async buildStart() {
+      try {
+        const utilFiles = utils.map(f => `${f}.js`)
+        const deleteFiles = [...utilFiles]
+        const map = await fg(["!node_modules", "**/*.map", "**/*.d.ts"])
+
+        deleteFiles.push(...map)
+
+        if (!isEmptyJS(deleteFiles)) {
+          for (const file of deleteFiles) {
+            rimrafJS(path.join(process.cwd(), file))
+          }
+        }
+      } catch (err) {
+        console.error(err)
+      }
+    },
+  }
+}
+
 const config = {
   plugins: [
+    nukeDistFiles(),
     resolve({
       extensions: [".js", ".ts"],
     }),
@@ -43,15 +81,14 @@ const config = {
     warning.code === "CIRCULAR_DEPENDENCY" && onwarn(warning),
   watch: {
     clearScreen: false,
-    exclude: ["node_modules", "*.js", "!utils/**/*", "**/*.map", "**/*.d.ts"],
+    exclude: ["node_modules", "*.js", "**/*.map", "**/*.d.ts", "!utils/**/*"],
   },
 }
-
 export default [
   {
-    input: "./utils/isEmpty.ts",
+    input: `./utils/${utils[0]}.ts`,
     output: {
-      file: "./isEmpty.js",
+      file: `./${utils[0]}.js`,
       format: "es",
       sourcemap: true,
       exports: "named",
@@ -60,9 +97,9 @@ export default [
     plugins: [...config.plugins],
   },
   {
-    input: "./utils/mkdir.ts",
+    input: `./utils/${utils[1]}.ts`,
     output: {
-      file: "./mkdir.js",
+      file: `./${utils[1]}.js`,
       format: "es",
       sourcemap: true,
       exports: "named",
@@ -71,9 +108,9 @@ export default [
     plugins: [...config.plugins],
   },
   {
-    input: "./utils/printObject.ts",
+    input: `./utils/${utils[2]}.ts`,
     output: {
-      file: "./printObject.js",
+      file: `./${utils[2]}.js`,
       format: "es",
       sourcemap: true,
       exports: "named",
@@ -82,9 +119,9 @@ export default [
     plugins: [...config.plugins],
   },
   {
-    input: "./utils/rimraf.ts",
+    input: `./utils/${utils[3]}.ts`,
     output: {
-      file: "./rimraf.js",
+      file: `./${utils[3]}.js`,
       format: "es",
       sourcemap: true,
       exports: "named",
@@ -93,9 +130,9 @@ export default [
     plugins: [...config.plugins],
   },
   {
-    input: "./utils/safeJSONParse.ts",
+    input: `./utils/${utils[4]}.ts`,
     output: {
-      file: "./safeJSONParse.js",
+      file: `./${utils[4]}.js`,
       format: "es",
       sourcemap: true,
       exports: "named",
@@ -104,9 +141,9 @@ export default [
     plugins: [...config.plugins],
   },
   {
-    input: "./utils/slugify.ts",
+    input: `./utils/${utils[5]}.ts`,
     output: {
-      file: "./slugify.js",
+      file: `./${utils[5]}.js`,
       format: "es",
       sourcemap: true,
       exports: "named",
@@ -115,9 +152,9 @@ export default [
     plugins: [...config.plugins],
   },
   {
-    input: "./utils/toUpperCase.ts",
+    input: `./utils/${utils[6]}.ts`,
     output: {
-      file: "./toUpperCase.js",
+      file: `./${utils[6]}.js`,
       format: "es",
       sourcemap: true,
       exports: "named",
@@ -126,9 +163,31 @@ export default [
     plugins: [...config.plugins],
   },
   {
-    input: "./utils/unsafeStripHTML.ts",
+    input: `./utils/${utils[7]}.ts`,
     output: {
-      file: "./unsafeStripHTML.js",
+      file: `./${utils[7]}.js`,
+      format: "es",
+      sourcemap: true,
+      exports: "named",
+    },
+    ...config,
+    plugins: [...config.plugins],
+  },
+  {
+    input: `./utils/${utils[8]}.ts`,
+    output: {
+      file: `./${utils[8]}.js`,
+      format: "es",
+      sourcemap: true,
+      exports: "named",
+    },
+    ...config,
+    plugins: [...config.plugins],
+  },
+  {
+    input: `./utils/${utils[9]}.ts`,
+    output: {
+      file: `./${utils[9]}.js`,
       format: "es",
       sourcemap: true,
       exports: "named",
