@@ -7,8 +7,6 @@ import resolve from "@rollup/plugin-node-resolve"
 import typescript from "rollup-plugin-typescript2"
 import multiInput from "rollup-plugin-multi-input"
 import dts from "rollup-plugin-dts"
-import filesize from "rollup-plugin-filesize"
-import { rimraf } from "./rimraf.js"
 
 const pkg = JSON.parse(
   fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"),
@@ -24,10 +22,6 @@ const tsOptions = {
   tsconfig: "tsconfig.json",
   useTsconfigDeclarationDir: true,
 }
-
-rimraf(path.join(process.cwd(), "dist"))
-rimraf(path.join(process.cwd(), "typings"))
-rimraf(path.join(process.cwd(), "utils"))
 
 function mvUtilsDTSFiles() {
   return {
@@ -55,7 +49,7 @@ function mvUtilsDTSFiles() {
 const config = {
   plugins: [
     resolve({
-      extensions: [".cjs", ".mjs", ".js", ".ts"],
+      extensions: [".js", ".ts"],
     }),
     commonjs(),
     typescript(tsOptions),
@@ -67,7 +61,7 @@ const config = {
       }),
   ],
   external: [].concat(
-    Object.keys(pkg.dependencies || {}),
+    Object.keys(pkg.devDependencies || {}),
     Object.keys(pkg.peerDependencies || {}),
     module.builtinModules,
   ),
@@ -77,9 +71,8 @@ const config = {
     clearScreen: false,
     exclude: [
       "node_modules",
-      "dist",
-      "typings",
-      "utils",
+      "*.js",
+      "!utils/**/*",
       "**/*.map",
       "**/*.d.ts",
     ],
@@ -88,13 +81,10 @@ const config = {
 
 export default [
   {
-    input: "./main.ts",
-    output: [
-      { file: pkg.main, format: "cjs", sourcemap: true, exports: "named" },
-      { file: pkg.module, format: "es", sourcemap: true, exports: "named" },
-    ],
+    input: "./utils/isEmpty.ts",
+    output: { file: "./isEmpty.js", format: "es", sourcemap: true, exports: "named" },
     ...config,
-    plugins: [...config.plugins, filesize()],
+    plugins: [...config.plugins],
   },
   {
     input: ["src/utils/**/*.ts"],
