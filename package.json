@@ -18,7 +18,7 @@
   "scripts": {
     "dev": "rollup -c -w",
     "build": "cross-env NODE_ENV=production && rollup -c",
-    "clean": "node -r esm ./scripts/nukeDistFiles.js",
+    "clean": "node ./scripts/nukeDistFiles.js",
     "test": "mocha -r esm --config=.mocharc.json --watch src/**/*.test.ts || true",
     "patch": "npm run build && npm version patch --force && npm publish",
     "push": "sh ./scripts/push.sh"

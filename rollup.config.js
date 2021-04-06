@@ -22,13 +22,15 @@ const tsOptions = {
 
 export const utils = [
   "isEmpty",
+  "mapToObject",
   "mkdir",
+  "mkdir",
+  "printElapsed",
   "printObject",
   "rimraf",
   "safeJSONParse",
   "slugify",
   "toUpperCase",
-  "mkdir",
   "unsafeStripHTML",
   "wait",
 ]
@@ -164,6 +166,28 @@ export default [
     input: `./utils/${utils[9]}.ts`,
     output: {
       file: `./${utils[9]}.js`,
+      format: "es",
+      sourcemap: true,
+      exports: "named",
+    },
+    ...config,
+    plugins: [...config.plugins],
+  },
+  {
+    input: `./utils/${utils[10]}.ts`,
+    output: {
+      file: `./${utils[10]}.js`,
+      format: "es",
+      sourcemap: true,
+      exports: "named",
+    },
+    ...config,
+    plugins: [...config.plugins],
+  },
+  {
+    input: `./utils/${utils[11]}.ts`,
+    output: {
+      file: `./${utils[11]}.js`,
       format: "es",
       sourcemap: true,
       exports: "named",
