@@ -1,10 +1,11 @@
 {
   "name": "@signalchain/utils",
   "author": "",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "homepage": "https://github.com/jameygleason/utils#readme",
   "repository": {
     "type": "git",
