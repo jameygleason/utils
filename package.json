@@ -1,7 +1,7 @@
 {
   "name": "@signalchain/utils",
   "author": "",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "description": "",
   "type": "module",
@@ -14,37 +14,48 @@
   "exports": {
     "./package.json": "./package.json",
     "./isEmpty": {
-      "import": "./dist/isEmpty.js"
+      "import": "./isEmpty.js",
+      "require": "./isEmpty.cjs.js"
     },
     "./mapToObject": {
-      "import": "./dist/mapToObject.js"
+      "import": "./mapToObject.js",
+      "require": "./mapToObject.cjs.js"
     },
     "./mkdir": {
-      "import": "./dist/mkdir.js"
+      "import": "./mkdir.js",
+      "require": "./mkdir.cjs.js"
     },
     "./printElapsed": {
-      "import": "./dist/printElapsed.js"
+      "import": "./printElapsed.js",
+      "require": "./printElapsed.cjs.js"
     },
     "./printObject": {
-      "import": "./dist/printObject.js"
+      "import": "./printObject.js",
+      "require": "./printObject.cjs.js"
     },
     "./rimraf": {
-      "import": "./dist/rimraf.js"
+      "import": "./rimraf.js",
+      "require": "./rimraf.cjs.js"
     },
     "./safeJSONParse": {
-      "import": "./dist/safeJSONParse.js"
+      "import": "./safeJSONParse.js",
+      "require": "./safeJSONParse.cjs.js"
     },
     "./slugify": {
-      "import": "./dist/slugify.js"
+      "import": "./slugify.js",
+      "require": "./slugify.cjs.js"
     },
     "./toUpperCase": {
-      "import": "./dist/toUpperCase.js"
+      "import": "./toUpperCase.js",
+      "require": "./toUpperCase.cjs.js"
     },
     "./unsafeStripHTML": {
-      "import": "./dist/unsafeStripHTML.js"
+      "import": "./unsafeStripHTML.js",
+      "require": "./unsafeStripHTML.cjs.js"
     },
     "./wait": {
-      "import": "./dist/wait.js"
+      "import": "./wait.js",
+      "require": "./wait.cjs.js"
     }
   },
   "homepage": "https://github.com/jameygleason/utils#readme",
