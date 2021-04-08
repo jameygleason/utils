@@ -1,11 +1,52 @@
 {
   "name": "@signalchain/utils",
   "author": "",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "description": "",
-  "main": "index.js",
   "type": "module",
+  "main": "index.js",
+  "files": [
+    "dist",
+    "typings",
+    "README.md"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    "./isEmpty": {
+      "import": "./dist/isEmpty.js"
+    },
+    "./mapToObject": {
+      "import": "./dist/mapToObject.js"
+    },
+    "./mkdir": {
+      "import": "./dist/mkdir.js"
+    },
+    "./printElapsed": {
+      "import": "./dist/printElapsed.js"
+    },
+    "./printObject": {
+      "import": "./dist/printObject.js"
+    },
+    "./rimraf": {
+      "import": "./dist/rimraf.js"
+    },
+    "./safeJSONParse": {
+      "import": "./dist/safeJSONParse.js"
+    },
+    "./slugify": {
+      "import": "./dist/slugify.js"
+    },
+    "./toUpperCase": {
+      "import": "./dist/toUpperCase.js"
+    },
+    "./unsafeStripHTML": {
+      "import": "./dist/unsafeStripHTML.js"
+    },
+    "./wait": {
+      "import": "./dist/wait.js"
+    }
+  },
   "homepage": "https://github.com/jameygleason/utils#readme",
   "repository": {
     "type": "git",
@@ -29,7 +70,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "17.1.0",
     "@rollup/plugin-node-resolve": "11.1.1",
-    "@types/mocha": "8.2.2",
+    "@types/mocha": "^8.2.2",
     "@types/node": "14.14.37",
     "@typescript-eslint/eslint-plugin": "4.20.0",
     "@typescript-eslint/parser": "4.20.0",
