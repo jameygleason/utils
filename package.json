@@ -1,11 +1,9 @@
 {
   "name": "@signalchain/utils",
   "author": "",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "license": "MIT",
   "description": "",
-  "type": "module",
-  "main": "index.js",
   "files": [
     "dist",
     "typings",
