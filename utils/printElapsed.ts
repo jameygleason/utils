@@ -4,7 +4,7 @@ import kleur from "kleur"
 /**
  * Usage:
  *
- * const start = performance.now() 
+ * const start = performance.now()
  * printElapsed(start, "Build complete")
  */
 

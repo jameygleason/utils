@@ -1,18 +1,21 @@
 export function isEmpty(
   value: undefined | null | string | number | Array<any> | Object,
-): boolean {
-  if (value && value.constructor === Boolean) {
-    console.warn(
-      "Function return handles boolean parameters as a pass through, returning it's original value.\nConsider refactoring the argument's type to be a non-nullable, explicit boolean value or another data structure that may be null.",
-    )
-    return value
-  }
-  return (
+): boolean | void {
+  if (
     value === undefined ||
     value === null ||
     (typeof value === "number" && isNaN(value)) ||
     (value.constructor === String && value.trim().length === 0) ||
     (value.constructor === Array && value.length === 0) ||
     (value.constructor === Object && Object.keys(value).length === 0)
-  )
+  ) {
+    return true
+  }
+  if (value.constructor === Boolean) {
+    console.warn(
+      "Boolean args return original value. This can lead to unexpected behavior. isEmpty checks for empty String, Object, Array, NaN, null, and undefined.",
+    )
+    return value
+  }
+  console.error(`Type of ${typeof value} is not a valid argument`)
 }

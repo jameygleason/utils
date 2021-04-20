@@ -2,7 +2,6 @@ import fs from "fs"
 import path from "path"
 import module from "module"
 import commonjs from "@rollup/plugin-commonjs"
-import { terser } from "rollup-plugin-terser"
 import resolve from "@rollup/plugin-node-resolve"
 import typescript from "rollup-plugin-typescript2"
 
@@ -12,8 +11,6 @@ const pkg = JSON.parse(
 if (Object.keys(pkg).length === 0) {
   console.error("Failed to parse package.json")
 }
-
-const production = !process.env.ROLLUP_WATCH
 
 const tsOptions = {
   tsconfig: "./tsconfig.json",
@@ -27,12 +24,6 @@ const config = {
     }),
     commonjs(),
     typescript(tsOptions),
-    production &&
-      terser({
-        output: {
-          comments: () => false,
-        },
-      }),
   ],
   external: [].concat(
     Object.keys(pkg.devDependencies || {}),
