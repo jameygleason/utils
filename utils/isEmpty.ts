@@ -1,6 +1,6 @@
 export function isEmpty(
   value: undefined | null | string | number | Array<any> | Object,
-): boolean | void {
+): boolean {
   if (
     value === undefined ||
     value === null ||
@@ -11,11 +11,22 @@ export function isEmpty(
   ) {
     return true
   }
+
   if (value.constructor === Boolean) {
     console.warn(
       "Boolean args return original value. This can lead to unexpected behavior. isEmpty checks for empty String, Object, Array, NaN, null, and undefined.",
     )
     return value
   }
-  console.error(`Type of ${typeof value} is not a valid argument`)
+
+  // @ts-ignore
+  if (
+    typeof value === "function" ||
+    typeof value === "symbol" ||
+    typeof value === "bigint"
+  ) {
+    throw new Error(`Type of ${typeof value} is not supported`)
+  }
+
+  return false
 }

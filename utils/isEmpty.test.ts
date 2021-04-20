@@ -1,22 +1,37 @@
-import { strictEqual } from "assert"
+import { assert, expect } from "chai"
 import { isEmpty } from "./isEmpty" // .ts
 
-const isTrue = [true, undefined, null, [], {}, "", NaN]
+const isTrue = [true, undefined, null, NaN, [], {}, ""]
 
-const isFalse = [false, ["thing"], { thing: true }, "thing", 0]
+const isFalse = [false, 0, ["thing"], { thing: true }, "thing"]
+
+const shouldThrow = [
+  {
+    input: BigInt(9007199254740991),
+    out: "Type of bigint is not supported",
+  },
+  { input: Symbol("foo"), out: "Type of symbol is not supported" },
+  { input: () => {}, out: "Type of function is not supported" },
+]
 
 describe("isEmpty", () => {
-  it("Returns true for empty values", () => {
+  it('Returns "true" for empty values', () => {
     for (const value of isTrue) {
       const bool = isEmpty(value)
-      strictEqual(bool, true)
+      assert.strictEqual(bool, true)
     }
   })
 
-  it("Returns false for values that are not empty", () => {
+  it('Returns "false" for values that are not empty', () => {
     for (const value of isFalse) {
       const bool = isEmpty(value)
-      strictEqual(bool, false)
+      assert.strictEqual(bool, false)
+    }
+  })
+
+  it("Throws for values that are not supported", () => {
+    for (const { input, out } of shouldThrow) {
+      expect(() => isEmpty(input)).to.throw(out)
     }
   })
 })
