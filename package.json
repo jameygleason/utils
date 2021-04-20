@@ -8,52 +8,63 @@
     "dist",
     "typings",
     "README.md",
-    "isEmpty.js,",
-    "mapToObject.js,",
-    "mkdir.js,",
-    "printElapsed.js,",
-    "printObject.js,",
-    "rimraf.js,",
-    "safeJSONParse.js,",
-    "slugify.js,",
-    "toUpperCase.js,",
-    "unsafeStripHTML.js,",
-    "wait.js,"
+    "isEmpty.js",
+    "mapToObject.js",
+    "mkdir.js",
+    "printElapsed.js",
+    "printObject.js",
+    "rimraf.js",
+    "safeJSONParse.js",
+    "slugify.js",
+    "toUpperCase.js",
+    "unsafeStripHTML.js",
+    "wait.js"
   ],
   "exports": {
     "./package.json": "./package.json",
     "./isEmpty": {
-      "import": "./isEmpty.js"
+      "import": "./isEmpty.js",
+      "require": "./isEmpty.js"
     },
     "./mapToObject": {
-      "import": "./mapToObject.js"
+      "import": "./mapToObject.js",
+      "require": "./mapToObject.js"
     },
     "./mkdir": {
-      "import": "./mkdir.js"
+      "import": "./mkdir.js",
+      "require": "./mkdir.js"
     },
     "./printElapsed": {
-      "import": "./printElapsed.js"
+      "import": "./printElapsed.js",
+      "require": "./printElapsed.js"
     },
     "./printObject": {
-      "import": "./printObject.js"
+      "import": "./printObject.js",
+      "require": "./printObject.js"
     },
     "./rimraf": {
-      "import": "./rimraf.js"
+      "import": "./rimraf.js",
+      "require": "./rimraf.js"
     },
     "./safeJSONParse": {
-      "import": "./safeJSONParse.js"
+      "import": "./safeJSONParse.js",
+      "require": "./safeJSONParse.js"
     },
     "./slugify": {
-      "import": "./slugify.js"
+      "import": "./slugify.js",
+      "require": "./slugify.js"
     },
     "./toUpperCase": {
-      "import": "./toUpperCase.js"
+      "import": "./toUpperCase.js",
+      "require": "./toUpperCase.js"
     },
     "./unsafeStripHTML": {
-      "import": "./unsafeStripHTML.js"
+      "import": "./unsafeStripHTML.js",
+      "require": "./unsafeStripHTML.js"
     },
     "./wait": {
-      "import": "./wait.js"
+      "import": "./wait.js",
+      "require": "./wait.js"
     }
   },
   "homepage": "https://github.com/jameygleason/utils#readme",
