@@ -1,70 +1,81 @@
 {
   "name": "@signalchain/utils",
   "author": "",
-  "version": "0.0.10",
+  "version": "0.1.1",
   "license": "MIT",
   "description": "",
   "files": [
     "dist",
     "typings",
     "README.md",
-    "isEmpty.js",
-    "mapToObject.js",
-    "mkdir.js",
-    "printElapsed.js",
-    "printObject.js",
-    "rimraf.js",
-    "safeJSONParse.js",
-    "slugify.js",
-    "toUpperCase.js",
-    "unsafeStripHTML.js",
-    "wait.js"
+    "isEmpty.js,",
+    "isEmpty.cjs.js",
+    "mapToObject.js,",
+    "mapToObject.cjs.js",
+    "mkdir.js,",
+    "mkdir.cjs.js",
+    "printElapsed.js,",
+    "printElapsed.cjs.js",
+    "printObject.js,",
+    "printObject.cjs.js",
+    "rimraf.js,",
+    "rimraf.cjs.js",
+    "safeJSONParse.js,",
+    "safeJSONParse.cjs.js",
+    "slugify.js,",
+    "slugify.cjs.js",
+    "toUpperCase.js,",
+    "toUpperCase.cjs.js",
+    "unsafeStripHTML.js,",
+    "unsafeStripHTML.cjs.js",
+    "wait.js,",
+    "wait.cjs.js"
   ],
   "exports": {
     "./package.json": "./package.json",
     "./isEmpty": {
       "import": "./isEmpty.js",
-      "require": "./isEmpty.js"
+      "require": "./isEmpty.cjs.js"
     },
     "./mapToObject": {
       "import": "./mapToObject.js",
-      "require": "./mapToObject.js"
+      "require": "./mapToObject.cjs.js"
     },
     "./mkdir": {
       "import": "./mkdir.js",
-      "require": "./mkdir.js"
+      "require": "./mkdir.cjs.js"
     },
     "./printElapsed": {
       "import": "./printElapsed.js",
-      "require": "./printElapsed.js"
+      "require": "./printElapsed.cjs.js"
     },
     "./printObject": {
       "import": "./printObject.js",
-      "require": "./printObject.js"
+      "require": "./printObject.cjs.js"
     },
     "./rimraf": {
       "import": "./rimraf.js",
-      "require": "./rimraf.js"
+      "require": "./rimraf.cjs.js"
     },
     "./safeJSONParse": {
       "import": "./safeJSONParse.js",
-      "require": "./safeJSONParse.js"
+      "require": "./safeJSONParse.cjs.js"
     },
     "./slugify": {
       "import": "./slugify.js",
-      "require": "./slugify.js"
+      "require": "./slugify.cjs.js"
     },
     "./toUpperCase": {
       "import": "./toUpperCase.js",
-      "require": "./toUpperCase.js"
+      "require": "./toUpperCase.cjs.js"
     },
     "./unsafeStripHTML": {
       "import": "./unsafeStripHTML.js",
-      "require": "./unsafeStripHTML.js"
+      "require": "./unsafeStripHTML.cjs.js"
     },
     "./wait": {
       "import": "./wait.js",
-      "require": "./wait.js"
+      "require": "./wait.cjs.js"
     }
   },
   "homepage": "https://github.com/jameygleason/utils#readme",
