@@ -1,6 +1,6 @@
 import { assert } from "chai"
 
-describe("formatAmount", () => {
+describe("printObject", () => {
   it("TODO", () => {
     assert.strictEqual("TODO", true)
   })
