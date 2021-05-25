@@ -1,36 +1,30 @@
+import fs from "fs"
 import path from "path"
 import fg from "fast-glob"
 import { rimrafJS } from "../buildUtils/rimrafJS.js"
 import { isEmptyJS } from "../buildUtils/isEmptyJS.js"
 
-const utils = [
-  "isEmpty",
-  "isEmpty.cjs",
-  "mapToObject",
-  "mapToObject.cjs",
-  "mkdir",
-  "mkdir.cjs",
-  "printElapsed",
-  "printElapsed.cjs",
-  "printObject",
-  "printObject.cjs",
-  "rimraf",
-  "rimraf.cjs",
-  "safeJSONParse",
-  "safeJSONParse.cjs",
-  "slugify",
-  "slugify.cjs",
-  "toUpperCase",
-  "toUpperCase.cjs",
-  "unsafeStripHTML",
-  "unsafeStripHTML.cjs",
-  "wait",
-  "wait.cjs",
-]
+const pkg = JSON.parse(
+  fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"),
+)
+if (Object.keys(pkg).length === 0) {
+  console.error("Failed to parse package.json")
+}
+
+const exportsKeys = Object.keys(pkg.exports)
 
 export async function nukeDistFiles() {
   try {
-    const utilFiles = utils.map(f => `${f}.js`)
+    const utilFiles = []
+
+    for (const file of Object.keys(pkg.exports)) {
+      const filename = file.slice(2, file.length)
+      utilFiles.push(`${filename}.js`)
+      utilFiles.push(`${filename}.mjs`)
+      utilFiles.push(`${filename}.cjs.js`)
+      utilFiles.push(`${filename}.cjs`)
+    }
+
     const deleteFiles = [...utilFiles, "typings"]
     const map = await fg(["!node_modules", "**/*.map", "**/*.d.ts"])
 

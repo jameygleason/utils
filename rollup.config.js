@@ -38,18 +38,31 @@ const config = {
   },
 }
 
-export default [
-  {
-    input: "./utils/isEmpty.ts",
+export default Object.keys(pkg.exports).map(k => {
+  const filename = k.slice(2, k.length)
+  return {
+    input: `./utils/${filename}.ts`,
     output: [
       {
-        file: "./isEmpty.js",
+        file: `./${filename}.js`,
         format: "es",
         sourcemap: true,
         exports: "named",
       },
       {
-        file: "./isEmpty.cjs.js",
+        file: `./${filename}.mjs`,
+        format: "es",
+        sourcemap: true,
+        exports: "named",
+      },
+      {
+        file: `./${filename}.cjs.js`,
+        format: "cjs",
+        sourcemap: true,
+        exports: "named",
+      },
+      {
+        file: `./${filename}.cjs`,
         format: "cjs",
         sourcemap: true,
         exports: "named",
@@ -57,195 +70,5 @@ export default [
     ],
     ...config,
     plugins: [...config.plugins],
-  },
-  {
-    input: "./utils/mapToObject.ts",
-    output: [
-      {
-        file: "./mapToObject.js",
-        format: "es",
-        sourcemap: true,
-        exports: "named",
-      },
-      {
-        file: "./mapToObject.cjs.js",
-        format: "cjs",
-        sourcemap: true,
-        exports: "named",
-      },
-    ],
-    ...config,
-    plugins: [...config.plugins],
-  },
-  {
-    input: "./utils/mkdir.ts",
-    output: [
-      {
-        file: "./mkdir.js",
-        format: "es",
-        sourcemap: true,
-        exports: "named",
-      },
-      {
-        file: "./mkdir.cjs.js",
-        format: "cjs",
-        sourcemap: true,
-        exports: "named",
-      },
-    ],
-    ...config,
-    plugins: [...config.plugins],
-  },
-  {
-    input: "./utils/printElapsed.ts",
-    output: [
-      {
-        file: "./printElapsed.js",
-        format: "es",
-        sourcemap: true,
-        exports: "named",
-      },
-      {
-        file: "./printElapsed.cjs.js",
-        format: "cjs",
-        sourcemap: true,
-        exports: "named",
-      },
-    ],
-    ...config,
-    plugins: [...config.plugins],
-  },
-  {
-    input: "./utils/printObject.ts",
-    output: [
-      {
-        file: "./printObject.js",
-        format: "es",
-        sourcemap: true,
-        exports: "named",
-      },
-      {
-        file: "./printObject.cjs.js",
-        format: "cjs",
-        sourcemap: true,
-        exports: "named",
-      },
-    ],
-    ...config,
-    plugins: [...config.plugins],
-  },
-  {
-    input: "./utils/rimraf.ts",
-    output: [
-      {
-        file: "./rimraf.js",
-        format: "es",
-        sourcemap: true,
-        exports: "named",
-      },
-      {
-        file: "./rimraf.cjs.js",
-        format: "cjs",
-        sourcemap: true,
-        exports: "named",
-      },
-    ],
-    ...config,
-    plugins: [...config.plugins],
-  },
-  {
-    input: "./utils/safeJSONParse.ts",
-    output: [
-      {
-        file: "./safeJSONParse.js",
-        format: "es",
-        sourcemap: true,
-        exports: "named",
-      },
-      {
-        file: "./safeJSONParse.cjs.js",
-        format: "cjs",
-        sourcemap: true,
-        exports: "named",
-      },
-    ],
-    ...config,
-    plugins: [...config.plugins],
-  },
-  {
-    input: "./utils/slugify.ts",
-    output: [
-      {
-        file: "./slugify.js",
-        format: "es",
-        sourcemap: true,
-        exports: "named",
-      },
-      {
-        file: "./slugify.cjs.js",
-        format: "cjs",
-        sourcemap: true,
-        exports: "named",
-      },
-    ],
-    ...config,
-    plugins: [...config.plugins],
-  },
-  {
-    input: "./utils/toUpperCase.ts",
-    output: [
-      {
-        file: "./toUpperCase.js",
-        format: "es",
-        sourcemap: true,
-        exports: "named",
-      },
-      {
-        file: "./toUpperCase.cjs.js",
-        format: "cjs",
-        sourcemap: true,
-        exports: "named",
-      },
-    ],
-    ...config,
-    plugins: [...config.plugins],
-  },
-  {
-    input: "./utils/unsafeStripHTML.ts",
-    output: [
-      {
-        file: "./unsafeStripHTML.js",
-        format: "es",
-        sourcemap: true,
-        exports: "named",
-      },
-      {
-        file: "./unsafeStripHTML.cjs.js",
-        format: "cjs",
-        sourcemap: true,
-        exports: "named",
-      },
-    ],
-    ...config,
-    plugins: [...config.plugins],
-  },
-  {
-    input: "./utils/wait.ts",
-    output: [
-      {
-        file: "./wait.js",
-        format: "es",
-        sourcemap: true,
-        exports: "named",
-      },
-      {
-        file: "./wait.cjs.js",
-        format: "cjs",
-        sourcemap: true,
-        exports: "named",
-      },
-    ],
-    ...config,
-    plugins: [...config.plugins],
-  },
-]
+  }
+})
