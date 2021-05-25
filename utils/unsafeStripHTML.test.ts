@@ -7,6 +7,16 @@ const pass = [
     output: "Hello World!",
   },
   {
+    input: "<div><ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul></div>",
+    output: "Item 1Item 2Item 3",
+  },
+  {
+    input: `<p>
+Hi
+</p>`,
+    output: "\nHi\n",
+  },
+  {
     input: '<img src="" />',
     output: "",
   },
