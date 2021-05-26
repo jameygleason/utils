@@ -1,17 +1,18 @@
 {
   "name": "@signalchain/utils",
   "author": "",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "license": "MIT",
   "description": "",
   "files": [
     "dist",
-    "typings",
     "README.md",
     "*.js",
+    "*.ts",
     "*.cjs",
     "*.mjs",
-    "*.map"
+    "*.map",
+    "!rollup.config.js"
   ],
   "exports": {
     "./formatAmount": {
