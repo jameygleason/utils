@@ -2,5 +2,13 @@
   "recursive": true,
   "extension": ["ts"],
   "spec": "utils/**/*.test.ts",
-  "require": "ts-node/register"
+  "require": "ts-node/register",
+  "ignore": [
+    "utils/formatAmount.test.ts",
+    "utils/mapToObject.test.ts",
+    "utils/mkdir.test.ts",
+    "utils/printElapsed.test.ts",
+    "utils/printObject.test.ts",
+    "utils/wait.test.ts"
+  ]
 }

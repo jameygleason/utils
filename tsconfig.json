@@ -25,5 +25,5 @@
     "types": ["mocha", "node"]
   },
   "include": ["utils"],
-  "exclude": ["node_modules", "**/*.d.ts", "**/*.map", "**/*.test.ts"]
+  "exclude": ["node_modules", "**/*.d.ts", "**/*.map"]
 }

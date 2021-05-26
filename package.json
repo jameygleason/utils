@@ -96,7 +96,7 @@
     "clean": "node -r esm ./scripts/nukeDistFiles.js",
     "install:all": "sh ./scripts/install.sh",
     "install:clean": "sh ./scripts/clean-install.sh",
-    "test": "mocha -r esm --config=.mocharc.json --watch src/**/*.test.ts || true",
+    "test": "mocha -r esm --config=.mocharc.json --watch utils/**/*.test.ts",
     "patch": "npm run build && npm version patch --force && npm publish",
     "push": "sh ./scripts/push.sh"
   },
