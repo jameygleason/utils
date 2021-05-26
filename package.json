@@ -1,7 +1,7 @@
 {
   "name": "@signalchain/utils",
   "author": "",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "license": "MIT",
   "description": "",
   "files": [
@@ -97,6 +97,7 @@
     "install:all": "sh ./scripts/install.sh",
     "install:clean": "sh ./scripts/clean-install.sh",
     "test": "mocha -r esm --config=.mocharc.json --watch utils/**/*.test.ts",
+    "minor": "npm run build && npm version minor --force && npm publish",
     "patch": "npm run build && npm version patch --force && npm publish",
     "push": "sh ./scripts/push.sh"
   },
