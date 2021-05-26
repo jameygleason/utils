@@ -2,25 +2,24 @@ import fs from "fs"
 import path from "path"
 
 export function mkdir(dest: string): void {
-  const splitPath: string[] = dest.split(path.sep)
-  const buildPath: string[] = []
+  const splitDest: string[] = dest.split(path.sep)
+  const buildPaths: string[] = []
 
-  // Walk tree to find missing directories in path
-  for (let i = 0; i < splitPath.length; i++) {
-    const walkTree: string = path.join(
-      splitPath.slice(0, splitPath.length - i).join("/"),
+  // Find directories that don't exist in dest path
+  for (let i = 0; i < splitDest.length; i++) {
+    const newPath: string = path.join(
+      splitDest.slice(0, splitDest.length - i).join("/"),
     )
 
-    if (fs.existsSync(walkTree)) {
+    if (fs.existsSync(newPath)) {
       break
     }
 
-    buildPath.push(walkTree)
+    buildPaths.push(newPath)
   }
 
-  // Build up directory path and make dest dir
-  for (let i = 0; i < buildPath.length; i++) {
-    const mkDir = buildPath[buildPath.length - i - 1]
-    fs.mkdirSync(mkDir)
+  // Create directories from deepest existing directory, to the dest directory
+  for (let i = 0; i < buildPaths.length; i++) {
+    fs.mkdirSync(buildPaths[buildPaths.length - i - 1])
   }
 }

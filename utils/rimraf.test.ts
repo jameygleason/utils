@@ -48,8 +48,8 @@ describe("rimraf", () => {
 
     for (let i = 0; i < depth; i++) {
       dir = path.join(dir, `nested${i + 1}`)
-      mkdir(dir)
     }
+    mkdir(dir)
 
     const file = path.join(dir, "DELETE.js")
     fs.writeFileSync(file, "// noop")

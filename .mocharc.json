@@ -4,9 +4,9 @@
   "spec": "utils/**/*.test.ts",
   "require": "ts-node/register",
   "ignore": [
+    "// TODO_TESTS",
     "utils/formatAmount.test.ts",
     "utils/mapToObject.test.ts",
-    "utils/mkdir.test.ts",
     "utils/printElapsed.test.ts",
     "utils/printObject.test.ts",
     "utils/wait.test.ts"
