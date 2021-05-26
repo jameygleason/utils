@@ -21,14 +21,7 @@ module.exports = {
     caches: true,
     fetch: true,
   },
-  plugins: [
-    "@typescript-eslint",
-    "prettier",
-    "node",
-    "import",
-    "json",
-    "mocha",
-  ],
+  plugins: ["@typescript-eslint", "prettier", "node", "import", "json", "mocha"],
   settings: {
     "import/resolver": {
       typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
@@ -123,17 +116,14 @@ module.exports = {
     "no-use-before-define": "error",
     "no-var": "error",
     "object-shorthand": ["error", "always"],
-    "prefer-const": [
-      "error",
-      { destructuring: "all", ignoreReadBeforeAssign: true },
-    ],
+    "prefer-const": ["error", { destructuring: "all", ignoreReadBeforeAssign: true }],
     "prettier/prettier": [
       "error",
       {
         arrowParens: "avoid",
         bracketSpacing: true,
         endOfLine: "lf",
-        printWidth: 80,
+        printWidth: 100,
         semi: false,
         singleQuote: false,
         tabWidth: 2,

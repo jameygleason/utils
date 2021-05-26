@@ -4,14 +4,10 @@ import fg from "fast-glob"
 import { rimrafJS } from "../buildUtils/rimrafJS.js"
 import { isEmptyJS } from "../buildUtils/isEmptyJS.js"
 
-const pkg = JSON.parse(
-  fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"),
-)
+const pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"))
 if (Object.keys(pkg).length === 0) {
   console.error("Failed to parse package.json")
 }
-
-const exportsKeys = Object.keys(pkg.exports)
 
 export async function nukeDistFiles() {
   try {

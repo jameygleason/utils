@@ -12,7 +12,9 @@
     "*.cjs",
     "*.mjs",
     "*.map",
-    "!rollup.config.js"
+    "!rollup.config.js",
+    "!eslint.js",
+    "!eslint.cjs"
   ],
   "exports": {
     "./formatAmount": {
