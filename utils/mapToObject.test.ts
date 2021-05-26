@@ -1,4 +1,5 @@
 import { assert } from "chai"
+// import { mapToObject } from "./mapToObject"
 
 describe("mapToObject", () => {
   it("TODO", () => {

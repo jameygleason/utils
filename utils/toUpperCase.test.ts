@@ -1,5 +1,5 @@
 import { strictEqual } from "assert"
-import { toUpperCase } from "./toUpperCase" // .ts
+import { toUpperCase } from "./toUpperCase"
 
 const testCases = [
   {

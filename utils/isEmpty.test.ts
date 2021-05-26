@@ -1,5 +1,5 @@
 import { assert, expect } from "chai"
-import { isEmpty } from "./isEmpty" // .ts
+import { isEmpty } from "./isEmpty"
 
 const isTrue = [true, undefined, null, NaN, [], {}, ""]
 

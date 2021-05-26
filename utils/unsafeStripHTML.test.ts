@@ -1,5 +1,5 @@
 import { strictEqual, notStrictEqual } from "assert"
-import { unsafeStripHTML } from "./unsafeStripHTML" // .ts
+import { unsafeStripHTML } from "./unsafeStripHTML"
 
 const pass = [
   {

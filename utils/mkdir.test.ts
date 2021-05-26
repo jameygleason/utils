@@ -1,7 +1,7 @@
 import { assert } from "chai"
-// import { printObject } from "./printObject"
+// import { mkdir } from "./mkdir"
 
-describe("printObject", () => {
+describe("mkdir", () => {
   it("TODO", () => {
     assert.strictEqual("TODO", true)
   })
