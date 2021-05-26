@@ -1,7 +1,7 @@
 {
   "name": "@signalchain/utils",
   "author": "",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "MIT",
   "description": "",
   "files": [
@@ -10,7 +10,8 @@
     "README.md",
     "*.js",
     "*.cjs",
-    "*.mjs"
+    "*.mjs",
+    "*.map"
   ],
   "exports": {
     "./formatAmount": {
