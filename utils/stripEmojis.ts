@@ -1,32 +1,26 @@
+// https://mathiasbynens.be/notes/javascript-unicode
+
 import emojiRegex from "emoji-regex"
+import { splitByRune } from "./splitByRune"
 
 type StripEmojiReturn = [string, Error | null]
 
-export function stripEmojis(input: string): StripEmojiReturn {
+export function stripEmojis(str: string): StripEmojiReturn {
   try {
-    // https://mathiasbynens.be/notes/javascript-unicode#accounting-for-astral-symbols
-    const regex = emojiRegex()
-    const extLatinCharsRegex = /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s\d]*)$/
-    const encoder = new TextEncoder()
-    const str = input.replace(regex, "")
+    const emoji = new RegExp(emojiRegex().toString())
+    const arr = splitByRune(str)
 
-    let cleanStr = ""
-    for (let i = 0; i < str.length; i++) {
-      if (!!UTF8toStr(encoder.encode(str[i])) !== false || extLatinCharsRegex.exec(str[i])) {
-        cleanStr = cleanStr + str[i]
+    let clean = []
+
+    for (const char of arr) {
+      if (emoji.test(char)) {
+        continue
       }
+      clean.push(char)
     }
 
-    return [cleanStr, null]
+    return [clean.join(""), null]
   } catch (err) {
     return ["", err]
   }
-}
-
-function UTF8toStr(ba) {
-  return decodeURIComponent(
-    ba.reduce((p, c) => {
-      return p + "%" + c.toString(16), ""
-    }),
-  )
 }

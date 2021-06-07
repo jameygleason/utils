@@ -116,7 +116,8 @@ module.exports = {
     "no-use-before-define": "error",
     "no-var": "error",
     "object-shorthand": ["error", "always"],
-    "prefer-const": ["error", { destructuring: "all", ignoreReadBeforeAssign: true }],
+    "prefer-const": 0,
+    "prefer-regex-literals": 0,
     "prettier/prettier": [
       "error",
       {

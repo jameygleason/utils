@@ -16,6 +16,11 @@ const nonAlphanumericChars = [
   { input: "👻 boo", output: "boo" },
   { input: "hi:)", output: "hi" },
   { input: "hi :)", output: "hi" },
+  { input: "hi $ ç 𝛀 :)", output: "hi-ç" },
+  {
+    input: "ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ",
+    output: "zàèìòùàèìòùáéíóúýáéíóúýâêîôûâêîôûãñõãñõäëïöüÿäëïöüÿççßøøååææœ",
+  },
 ]
 
 const toLowercase = [
@@ -26,21 +31,30 @@ const toLowercase = [
 describe("slugify", () => {
   it('Replaces any amount of whitespace with a "-"', () => {
     for (const { input, output } of whitespace) {
-      const data = slugify(input)
+      const [data, err] = slugify(input)
+      if (err !== null) {
+        expect(err).to.eql(true)
+      }
       expect(data).to.eql(output)
     }
   })
 
   it("Replaces non-alphanumeric chars", () => {
     for (const { input, output } of nonAlphanumericChars) {
-      const data = slugify(input)
+      const [data, err] = slugify(input)
+      if (err !== null) {
+        expect(err).to.eql(true)
+      }
       expect(data).to.eql(output)
     }
   })
 
   it("Converts capital letters to lowercase", () => {
     for (const { input, output } of toLowercase) {
-      const data = slugify(input)
+      const [data, err] = slugify(input)
+      if (err !== null) {
+        expect(err).to.eql(true)
+      }
       expect(data).to.eql(output)
     }
   })

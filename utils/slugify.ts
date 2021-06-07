@@ -1,17 +1,17 @@
-import { stripEmojis } from "./stripEmojis" // .ts
+// Unicode Categories -> http://www.regular-expressions.info/unicode.html
 
+// TODO: Handle encoding accented chars
 export function slugify(str: string): [string, Error | null] {
   try {
-    const [data, err] = stripEmojis(str)
-    if (err !== null) {
-      return ["", err]
-    }
+    const nonSymbolChar = /[^a-zA-Z\u00C0-\u017F\s\d]/gu
+
     return [
-      data
-        .replace(/[^\w-]+/g, " ") // Remove all non-letter chars
+      str
+        .replace(nonSymbolChar, " ") // Remove all non-letter chars
         .trim()
         .toLowerCase()
         .replace(/\s+/g, "-"), // Replace white spaces with -
+
       null,
     ]
   } catch (err) {

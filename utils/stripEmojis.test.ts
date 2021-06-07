@@ -46,10 +46,14 @@ const testCases = [
     input: "🧑 🧑‍🚀 ç a",
     output: "  ç a",
   },
-  // {
-  //   input: "👍 ç 𝛀 a",
-  //   output: " ç 𝛀 a",
-  // },
+  {
+    input: "👍 ç 𝛀 a",
+    output: " ç 𝛀 a",
+  },
+  {
+    input: "👍 ç $ a",
+    output: " ç $ a",
+  },
   {
     input: "🛑 break case",
     output: "🛑 break case",
