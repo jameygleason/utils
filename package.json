@@ -1,7 +1,7 @@
 {
   "name": "@signalchain/utils",
   "author": "",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "description": "",
   "files": [
@@ -36,7 +36,7 @@
     "minor": "npm run build && npm version minor --force && npm publish",
     "patch": "npm run build && npm version patch --force && npm publish",
     "push": "sh ./scripts/push.sh",
-    "postinstall": "rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\""
+    "husky": "rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\""
   },
   "exports": {
     "./decamel": {
