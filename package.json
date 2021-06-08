@@ -106,9 +106,11 @@
     "install:all": "sh ./scripts/install.sh",
     "install:clean": "sh ./scripts/clean-install.sh",
     "test": "mocha -r esm --config=.mocharc.json --watch utils/**/*.test.ts",
+    "lint": "lint-staged --config .config/lint-staged.config.cjs",
     "minor": "npm run build && npm version minor --force && npm publish",
     "patch": "npm run build && npm version patch --force && npm publish",
-    "push": "sh ./scripts/push.sh"
+    "push": "sh ./scripts/push.sh",
+    "postinstall": "rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\""
   },
   "engines": {
     "node": ">=14.3.0"
@@ -116,7 +118,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "17.1.0",
     "@rollup/plugin-node-resolve": "11.1.1",
-    "@types/mocha": "^8.2.2",
+    "@types/mocha": "8.2.2",
     "@types/node": "14.14.37",
     "@typescript-eslint/eslint-plugin": "4.20.0",
     "@typescript-eslint/parser": "4.20.0",
@@ -133,7 +135,9 @@
     "eslint-plugin-promise": "4.3.1",
     "esm": "3.2.25",
     "fast-glob": "3.2.5",
+    "husky": "6.0.0",
     "kleur": "4.1.4",
+    "lint-staged": "11.0.0",
     "mocha": "8.3.2",
     "prettier": "2.2.1",
     "rollup": "2.38.5",
@@ -143,7 +147,7 @@
     "typescript": "4.2.3"
   },
   "peerDependencies": {
-    "emoji-regex": "^9.2.2",
+    "emoji-regex": "^9.0.0",
     "kleur": "^4.0.0"
   }
 }
