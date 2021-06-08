@@ -33,6 +33,10 @@
       "import": "./formatAmount.js",
       "require": "./formatAmount.cjs.js"
     },
+    "./getFirstName": {
+      "import": "./getFirstName.js",
+      "require": "./getFirstName.cjs.js"
+    },
     "./isEmpty": {
       "import": "./isEmpty.js",
       "require": "./isEmpty.cjs.js"
