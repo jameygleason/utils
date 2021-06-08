@@ -17,6 +17,10 @@
     "!eslint.cjs"
   ],
   "exports": {
+    "./decamel": {
+      "import": "./decamel.js",
+      "require": "./decamel.cjs.js"
+    },
     "./decrypt": {
       "import": "./decrypt.js",
       "require": "./decrypt.cjs.js"
@@ -60,6 +64,10 @@
     "./slugify": {
       "import": "./slugify.js",
       "require": "./slugify.cjs.js"
+    },
+    "./splitRunes": {
+      "import": "./splitRunes.js",
+      "require": "./splitRunes.cjs.js"
     },
     "./stripEmojis": {
       "import": "./stripEmojis.js",
