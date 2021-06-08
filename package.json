@@ -16,6 +16,28 @@
     "!eslint.js",
     "!eslint.cjs"
   ],
+  "homepage": "https://github.com/jameygleason/utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jameygleason/utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jameygleason/utils/issues"
+  },
+  "keywords": [],
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "cross-env NODE_ENV=production && rollup -c",
+    "clean": "node -r esm ./scripts/nukeDistFiles.js",
+    "install:all": "sh ./scripts/install.sh",
+    "install:clean": "sh ./scripts/clean-install.sh",
+    "test": "mocha -r esm --config=.mocharc.json --watch utils/**/*.test.ts",
+    "lint": "lint-staged --config .config/lint-staged.config.cjs",
+    "minor": "npm run build && npm version minor --force && npm publish",
+    "patch": "npm run build && npm version patch --force && npm publish",
+    "push": "sh ./scripts/push.sh",
+    "postinstall": "rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\""
+  },
   "exports": {
     "./decamel": {
       "import": "./decamel.js",
@@ -89,31 +111,6 @@
       "import": "./wait.js",
       "require": "./wait.cjs.js"
     }
-  },
-  "homepage": "https://github.com/jameygleason/utils#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jameygleason/utils.git"
-  },
-  "bugs": {
-    "url": "https://github.com/jameygleason/utils/issues"
-  },
-  "keywords": [],
-  "scripts": {
-    "dev": "rollup -c -w",
-    "build": "cross-env NODE_ENV=production && rollup -c",
-    "clean": "node -r esm ./scripts/nukeDistFiles.js",
-    "install:all": "sh ./scripts/install.sh",
-    "install:clean": "sh ./scripts/clean-install.sh",
-    "test": "mocha -r esm --config=.mocharc.json --watch utils/**/*.test.ts",
-    "lint": "lint-staged --config .config/lint-staged.config.cjs",
-    "minor": "npm run build && npm version minor --force && npm publish",
-    "patch": "npm run build && npm version patch --force && npm publish",
-    "push": "sh ./scripts/push.sh",
-    "postinstall": "rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\""
-  },
-  "engines": {
-    "node": ">=14.3.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "17.1.0",
