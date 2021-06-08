@@ -2,7 +2,7 @@ import { assert } from "chai"
 // import { mapToObject } from "./mapToObject"
 
 describe("mapToObject", () => {
-  it("TODO", () => {
+  it.skip("TODO", () => {
     assert.strictEqual("TODO", true)
   })
 })

@@ -34,8 +34,7 @@ const testCases = [
       500,
       {
         name: "#89754824",
-        message:
-          "Number was passed instead of string. may result in unexpected behavior.",
+        message: "Number was passed instead of string. may result in unexpected behavior.",
       },
     ],
   },

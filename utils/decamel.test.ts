@@ -7,6 +7,14 @@ const tests = [
     output: "a B",
   },
   {
+    input: "aBC",
+    output: "a BC",
+  },
+  {
+    input: "aBc",
+    output: "a Bc",
+  },
+  {
     input: "encodeURI",
     output: "encode URI",
   },

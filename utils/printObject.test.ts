@@ -2,7 +2,7 @@ import { assert } from "chai"
 // import { printObject } from "./printObject"
 
 describe("printObject", () => {
-  it("TODO", () => {
+  it.skip("TODO", () => {
     assert.strictEqual("TODO", true)
   })
 })

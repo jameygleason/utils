@@ -1,7 +1,7 @@
 import { assert } from "chai"
-// import { printElapsed } from "./printElapsed"
+// import { encrypt } from "./encrypt"
 
-describe("printElapsed", () => {
+describe("encrypt", () => {
   it.skip("TODO", () => {
     assert.strictEqual("TODO", true)
   })
