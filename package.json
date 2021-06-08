@@ -78,6 +78,10 @@
       "import": "./printObject.js",
       "require": "./printObject.cjs.js"
     },
+    "./randomBytes": {
+      "import": "./randomBytes.js",
+      "require": "./randomBytes.cjs.js"
+    },
     "./rimraf": {
       "import": "./rimraf.js",
       "require": "./rimraf.cjs.js"
