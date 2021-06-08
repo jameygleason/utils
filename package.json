@@ -29,14 +29,13 @@
     "dev": "rollup -c -w",
     "build": "cross-env NODE_ENV=production && rollup -c",
     "clean": "node -r esm ./scripts/nukeDistFiles.js",
-    "install:all": "sh ./scripts/install.sh",
-    "install:clean": "sh ./scripts/clean-install.sh",
+    "install:all": "sh ./scripts/install.sh && rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\"",
+    "install:clean": "sh ./scripts/clean-install.sh && rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\"",
     "test": "mocha -r esm --config=.mocharc.json --watch utils/**/*.test.ts",
     "lint": "lint-staged --config .config/lint-staged.config.cjs",
     "minor": "npm run build && npm version minor --force && npm publish",
     "patch": "npm run build && npm version patch --force && npm publish",
-    "push": "sh ./scripts/push.sh",
-    "husky": "rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\""
+    "push": "sh ./scripts/push.sh"
   },
   "exports": {
     "./decamel": {
