@@ -1,4 +1,4 @@
-type ToUpperCaseReturn = [string | null, Error | null]
+type ToUpperCaseReturn = [string, Error | null]
 
 /**
  * toUpperCase capitalizes the first letter of all the words in a string
@@ -16,20 +16,9 @@ export function toUpperCase(input: string): ToUpperCaseReturn {
         return str
       })
       .join(" ")
-    if (upperCaseStr === null) {
-      return [
-        null,
-        { name: "#653487289", message: "upperCaseStr cannot be null" },
-      ]
-    }
+
     return [upperCaseStr, null]
   } catch (err) {
-    return [
-      null,
-      {
-        name: "#489357729",
-        message: err,
-      },
-    ]
+    return ["", err]
   }
 }
