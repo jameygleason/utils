@@ -102,6 +102,10 @@
       "import": "./stripEmojis.js",
       "require": "./stripEmojis.cjs.js"
     },
+    "./titleCase": {
+      "import": "./titleCase.js",
+      "require": "./titleCase.cjs.js"
+    },
     "./toUpperCase": {
       "import": "./toUpperCase.js",
       "require": "./toUpperCase.cjs.js"
