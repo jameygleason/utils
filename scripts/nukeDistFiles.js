@@ -2,7 +2,6 @@ import fs from "fs"
 import path from "path"
 import fg from "fast-glob"
 import { rimrafJS } from "../buildUtils/rimrafJS.js"
-import { isEmptyJS } from "../buildUtils/isEmptyJS.js"
 
 const pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"))
 if (Object.keys(pkg).length === 0) {
@@ -25,11 +24,8 @@ export async function nukeDistFiles() {
     const map = await fg(["!node_modules", "**/*.map", "**/*.d.ts"])
 
     deleteFiles.push(...map)
-
-    if (!isEmptyJS(deleteFiles)) {
-      for (const file of deleteFiles) {
-        rimrafJS(path.join(process.cwd(), file))
-      }
+    for (const file of deleteFiles) {
+      rimrafJS(path.join(process.cwd(), file))
     }
   } catch (err) {
     console.error(err)
