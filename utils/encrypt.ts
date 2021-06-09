@@ -1,5 +1,5 @@
 import crypto from "crypto"
-import { isEmpty } from "./isEmpty" // .ts
+import { isNil } from "./isNil" // .ts
 import { randomBytes } from "./randomBytes" // .ts
 
 interface Options {
@@ -45,7 +45,7 @@ export async function encrypt(
     let encryptedValue = await cipher.update(`CLEAR_PAD_START ${value}`, "utf8", "hex")
     encryptedValue += await cipher.final("hex")
 
-    if (isEmpty(encryptedValue)) {
+    if (isNil(encryptedValue)) {
       return [
         "",
         {

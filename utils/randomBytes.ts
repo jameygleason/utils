@@ -1,6 +1,6 @@
 import crypto from "crypto"
 import { promisify } from "util"
-import { isEmpty } from "./isEmpty" // .ts
+import { isNil } from "./isNil" // .ts
 
 type BytesReturn = [string, Error | null]
 
@@ -15,7 +15,7 @@ export async function randomBytes(length: number): Promise<BytesReturn> {
     // This feels hacky and probably needs some more research.
     const toHex = bytePromise.toString("hex")
     const bytes: string = toHex.slice(0, length)
-    if (isEmpty(bytes)) {
+    if (isNil(bytes)) {
       return [
         "",
         {

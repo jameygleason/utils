@@ -1,10 +1,10 @@
 import kleur from "kleur"
-import { isEmpty } from "./isEmpty" // .ts
+import { isNil } from "./isNil" // .ts
 
 // type PrintObjectReturn = { [key: string]: any }
 
 export function printObject(object, pad = "", indention = "spaces"): string {
-  if (isEmpty(object)) {
+  if (isNil(object)) {
     throw new Error(kleur.red("printObject requires an Object argument"))
   }
 
@@ -17,10 +17,7 @@ export function printObject(object, pad = "", indention = "spaces"): string {
       out +=
         pad +
         indent +
-        printObject(
-          typeof object[i] === "string" ? `'${object[i]}'` : object[i],
-          pad + indent,
-        ) +
+        printObject(typeof object[i] === "string" ? `'${object[i]}'` : object[i], pad + indent) +
         "," +
         "\n"
     }
@@ -38,10 +35,7 @@ export function printObject(object, pad = "", indention = "spaces"): string {
         indent +
         key +
         ": " +
-        printObject(
-          typeof object[i] === "string" ? `'${object[i]}'` : object[i],
-          pad + indent,
-        ) +
+        printObject(typeof object[i] === "string" ? `'${object[i]}'` : object[i], pad + indent) +
         "," +
         "\n"
     }

@@ -1,5 +1,5 @@
 import crypto from "crypto"
-import { isEmpty } from "./isEmpty" // .ts
+import { isNil } from "./isNil" // .ts
 import { randomBytes } from "./randomBytes" // .ts
 import { safeJSONParse } from "./safeJSONParse" // .ts
 
@@ -47,7 +47,7 @@ export async function decrypt(
     decryptedValue += await decipher.final("utf8")
 
     const match = /{[\s\S]+?}/.exec(decryptedValue)
-    if (match && isEmpty(match[0])) {
+    if (match && isNil(match[0])) {
       return [
         "",
         {
