@@ -2,7 +2,7 @@ export function isNil(arg: undefined | null | string | number | Array<any> | Obj
   if (
     arg === undefined ||
     arg === null ||
-    (arg.constructor === String && arg.trim().length === 0) ||
+    (arg.constructor === String && !!arg.trim()[0] === false) ||
     (arg.constructor === Number && isNaN(arg)) ||
     (arg.constructor === Array && !!arg[0] === false) ||
     (arg.constructor === Object && !!Object.keys(arg)[0] === false)
