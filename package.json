@@ -31,7 +31,7 @@
     "clean": "node -r esm ./scripts/nukeDistFiles.js",
     "install:all": "sh ./scripts/install.sh && rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\"",
     "install:clean": "sh ./scripts/clean-install.sh && rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\"",
-    "test": "mocha -r esm --config=.mocharc.json --watch utils/**/*.test.ts",
+    "test": "mocha -r esm --config=.config/.mocharc.json --watch src/**/*.test.ts",
     "lint": "lint-staged --config .config/lint-staged.config.cjs",
     "minor": "npm run build && npm version minor --force && npm publish",
     "patch": "npm run build && npm version patch --force && npm publish",
@@ -45,6 +45,10 @@
     "./decrypt": {
       "import": "./decrypt.js",
       "require": "./decrypt.cjs.js"
+    },
+    "./deepIsNil": {
+      "import": "./deepIsNil.js",
+      "require": "./deepIsNil.cjs.js"
     },
     "./encrypt": {
       "import": "./encrypt.js",
@@ -61,6 +65,10 @@
     "./isNil": {
       "import": "./isNil.js",
       "require": "./isNil.cjs.js"
+    },
+    "./instanceOfBuiltin": {
+      "import": "./instanceOfBuiltin.js",
+      "require": "./instanceOfBuiltin.cjs.js"
     },
     "./mapToObject": {
       "import": "./mapToObject.js",
