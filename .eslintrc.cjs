@@ -21,7 +21,7 @@ module.exports = {
     caches: true,
     fetch: true,
   },
-  plugins: ["@typescript-eslint", "prettier", "node", "import", "json", "mocha"],
+  plugins: ["@typescript-eslint", "node", "import", "json", "prettier", "mocha"],
   settings: {
     "import/resolver": {
       typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
@@ -38,7 +38,9 @@ module.exports = {
       },
     ],
     "mocha/handle-done-callback": "error",
+    "mocha/max-top-level-suites": 0,
     "mocha/no-mocha-arrows": 0,
+    "mocha/no-setup-in-describe": 0,
     // END
 
     camelcase: 0,
