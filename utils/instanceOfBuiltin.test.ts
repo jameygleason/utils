@@ -101,15 +101,7 @@ describe("Type Proofs", () => {
     // Symbol
 
     // Object
-    {
-      input: {},
-      output: "object",
-    },
-    {
-      // eslint-disable-next-line no-new-object
-      input: new Object({}),
-      output: "object",
-    },
+
     {
       input: new Array([]),
       output: "object",
@@ -174,637 +166,883 @@ describe("Type Proofs", () => {
     }
   })
 
-  const typeProofs = [
-    // Undefined
-    {
-      input: typeof undefined === "undefined",
-      output: true,
-    },
-    // {
-    //   input: undefined instanceof Undefined,
-    //   output: "ReferenceError: Undefined is not defined",
-    // },
-    // {
-    //   input: undefined.constructor,
-    //   output: "TypeError: Cannot read property 'constructor' of undefined",
-    // },
-    // {
-    //   /* eslint-disable no-new-wrappers, no-undef */
-    //   // @ts-ignore
-    //   input: new Undefined(undefined) instanceof Object,
-    //   output: "ReferenceError: Undefined is not defined",
-    // },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Boolean(undefined) instanceof Boolean,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Boolean(undefined) instanceof Object,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Boolean(undefined) instanceof Function,
-      output: false,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Number(undefined) instanceof Number,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Number(undefined) instanceof Object,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Number(undefined) instanceof Function,
-      output: false,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new String(undefined) instanceof String,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new String(undefined) instanceof Object,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new String(undefined) instanceof Function,
-      output: false,
-    },
-    // {
-    //   // @ts-ignore
-    //   input: new BigInt(undefined) instanceof BigInt,
-    //   output: "TypeError: BigInt is not a constructor",
-    // },
-    // {
-    //   // @ts-ignore
-    //   input: new Symbol(undefined) instanceof Symbol,
-    //   output: "TypeError: Symbol is not a constructor",
-    // },
-
-    // Boolean
-    {
-      input: typeof true === "boolean",
-      output: true,
-    },
-    {
-      input: typeof false === "boolean",
-      output: true,
-    },
-    {
-      input: typeof Boolean === "function",
-      output: true,
-    },
-    {
-      // @ts-ignore
-      input: true instanceof Boolean,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: true instanceof Function,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: true instanceof Object,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: false instanceof Boolean,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: false instanceof Function,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: false instanceof Object,
-      output: false,
-    },
-    {
-      input: Boolean instanceof Boolean,
-      output: false,
-    },
-    {
-      input: Boolean instanceof Function,
-      output: true,
-    },
-    {
-      input: Boolean.constructor === Boolean,
-      output: false,
-    },
-    {
-      input: Boolean.constructor === Function,
-      output: true,
-    },
-    {
-      input: Boolean.constructor === Object,
-      output: false,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Boolean(true) instanceof Boolean,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Boolean(true) instanceof Object,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Boolean(true) instanceof Function,
-      output: false,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Boolean(false) instanceof Boolean,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Boolean(false) instanceof Object,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Boolean(false) instanceof Function,
-      output: false,
-    },
-
-    // Number
-    {
-      input: typeof NaN === "number",
-      output: true,
-    },
-    {
-      input: typeof 0 === "number",
-      output: true,
-    },
-    {
-      input: typeof 1 === "number",
-      output: true,
-    },
-    {
-      input: typeof -1 === "number",
-      output: true,
-    },
-    {
-      // @ts-ignore
-      input: NaN instanceof Number,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: NaN instanceof Object,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: NaN instanceof Function,
-      output: false,
-    },
-    {
-      input: NaN.constructor === Number,
-      output: true,
-    },
-    {
-      input: NaN.constructor === Object,
-      output: false,
-    },
-    {
-      input: NaN.constructor === Function,
-      output: false,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Number(NaN) instanceof Number,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Number(NaN) instanceof Object,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Number(NaN) instanceof Function,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: 0 instanceof Number,
-      output: false,
-    },
-    {
-      input: (0).constructor === Number,
-      output: true,
-    },
-    {
-      // @ts-ignore
-      input: 1 instanceof Number,
-      output: false,
-    },
-    {
-      input: (1).constructor === Number,
-      output: true,
-    },
-    {
-      // @ts-ignore
-      input: -1 instanceof Number,
-      output: false,
-    },
-    {
-      input: (-1).constructor === Number,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Number(true) instanceof Number,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Number(true) instanceof Object,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Number(true) instanceof Function,
-      output: false,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Number(false) instanceof Number,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Number(false) instanceof Object,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new Number(false) instanceof Function,
-      output: false,
-    },
-
-    // String
-    {
-      input: typeof "" === "string",
-      output: true,
-    },
-    {
-      input: typeof "hi" === "string",
-      output: true,
-    },
-    {
-      input: typeof "1" === "string",
-      output: true,
-    },
-    {
-      // @ts-ignore
-      input: "" instanceof String,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: "" instanceof Object,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: "" instanceof Function,
-      output: false,
-    },
-    {
-      input: "".constructor === String,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new String("").constructor === String,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new String("") instanceof String,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new String("") instanceof Object,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-wrappers
-      input: new String("") instanceof Function,
-      output: false,
-    },
-
-    // BigInt
-    {
-      // @ts-ignore
-      input: typeof 1n === "bigint",
-      output: true,
-    },
-    {
-      input: typeof BigInt(9007199254740991) === "bigint",
-      output: true,
-    },
-    {
-      // @ts-ignore
-      input: 1n instanceof BigInt,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: 1n instanceof Object,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: 1n instanceof Function,
-      output: false,
-    },
-    {
-      // prettier-ignore
-      // @ts-ignore
-      input: 1n.constructor === BigInt,
-      output: true,
-    },
-    {
-      // prettier-ignore
-      // @ts-ignore
-      input: 1n.constructor === Object,
-      output: false,
-    },
-    {
-      // prettier-ignore
-      // @ts-ignore
-      input: 1n.constructor === Function,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: BigInt(9007199254740991) instanceof BigInt,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: BigInt(9007199254740991) instanceof Object,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: BigInt(9007199254740991) instanceof Function,
-      output: false,
-    },
-    {
-      input: BigInt(9007199254740991).constructor === BigInt,
-      output: true,
-    },
-    {
-      input: BigInt(9007199254740991).constructor === Object,
-      output: false,
-    },
-    {
-      input: BigInt(9007199254740991).constructor === Function,
-      output: false,
-    },
-
-    // Symbol
-    {
-      input: typeof Symbol("sym") === "symbol",
-      output: true,
-    },
-    {
-      // @ts-ignore
-      input: Symbol("sym") instanceof Symbol,
-      output: false,
-    },
-    {
-      // @ts-ignore
-      input: Symbol("sym") instanceof Object,
-      output: false,
-    },
-
-    // Object
-    {
-      input: {} instanceof Object,
-      output: true,
-    },
-    {
-      input: {}.constructor === Object,
-      output: true,
-    },
-    {
-      // eslint-disable-next-line no-new-object
-      input: new Object({}) instanceof Object,
-      output: true,
-    },
-    {
-      /* eslint-disable  no-new-wrappers */
-      input: new String("") instanceof String,
-      output: true,
-    },
-    {
-      input: new String("") instanceof Object,
-      output: true,
-    },
-    {
-      input: new Boolean(true) instanceof Boolean,
-      output: true,
-    },
-    {
-      input: new Boolean(true) instanceof Object,
-      output: true,
-    },
-    {
-      input: new Number(0) instanceof Number,
-      output: true,
-    },
-    {
-      input: new Number(0) instanceof Object,
-      output: true,
-    },
-    {
-      input: new Number(0) instanceof Number,
-      output: true,
-    },
-    {
-      input: new Number(0) instanceof Object,
-      output: true,
-    },
-    // {
-    //   // @ts-ignore
-    //   input: new BigInt(0) instanceof BigInt,
-    //   output: "TypeError: BigInt is not a constructor",
-    // },
-    // {
-    //   // @ts-ignore
-    //   input: new BigInt(0) instanceof Object,
-    //   output: "TypeError: BigInt is not a constructor",
-    // },
-    // {
-    //   /* eslint-disable no-new-symbol */
-    //   // @ts-ignore
-    //   input: new Symbol("sym") instanceof Symbol,
-    //   output: "TypeError: Symbol is not a constructor",
-    // },
-    // {
-    //   /* eslint-disable no-new-symbol */
-    //   // @ts-ignore
-    //   input: new Symbol("sym") instanceof Object,
-    //   output: "TypeError: Symbol is not a constructor",
-    // },
-    {
-      input: new Array([]) instanceof Array,
-      output: true,
-    },
-    {
-      input: new Array([]) instanceof Object,
-      output: true,
-    },
-    {
-      input: new Error("") instanceof Error,
-      output: true,
-    },
-    {
-      input: new Error("") instanceof Object,
-      output: true,
-    },
-    {
-      input: new Map() instanceof Map,
-      output: true,
-    },
-    {
-      input: new Map() instanceof Object,
-      output: true,
-    },
-    {
-      input: new WeakMap() instanceof WeakMap,
-      output: true,
-    },
-    {
-      input: new WeakMap() instanceof Object,
-      output: true,
-    },
-    {
-      input: new Set() instanceof Set,
-      output: true,
-    },
-    {
-      input: new Set() instanceof Object,
-      output: true,
-    },
-    {
-      input: new WeakSet() instanceof WeakSet,
-      output: true,
-    },
-    {
-      input: new WeakSet() instanceof Object,
-      output: true,
-    },
-    {
-      input: new Date() instanceof Date,
-      output: true,
-    },
-    {
-      input: new Date() instanceof Object,
-      output: true,
-    },
-    {
-      input: new RegExp(/"/) instanceof RegExp,
-      output: true,
-    },
-    {
-      input: new RegExp(/"/) instanceof Object,
-      output: true,
-    },
-    {
-      /* eslint-disable new-parens */
-      // prettier-ignore
-      input: new function () {} instanceof Function,
-      output: false,
-    },
-    {
-      /* eslint-disable new-parens */
-      // prettier-ignore
-      input: new function () {} instanceof Object,
-      output: true,
-    },
-    // {
-    //   input: new (() => {}) instanceof Function,
-    //   output: "TypeError: (intermediate value) is not a constructor",
-    // },
-
-    // Function
-    {
-      input: function () {} instanceof Function,
-      output: true,
-    },
-    {
-      input: function () {} instanceof Object,
-      output: true,
-    },
-    {
-      input: function () {}.constructor === Function,
-      output: true,
-    },
-    {
-      input: function () {}.constructor === Object,
-      output: false,
-    },
-    {
-      input: (() => {}) instanceof Function,
-      output: true,
-    },
-    {
-      input: (() => {}) instanceof Object,
-      output: true,
-    },
-    {
-      input: (() => {}).constructor === Function,
-      output: true,
-    },
-    {
-      input: (() => {}).constructor === Object,
-      output: false,
-    },
-
-    // NUll
-    {
-      // @ts-ignore
-      input: null instanceof Object,
-      output: false,
-    },
-    // Null ERRORS
-    // {
-    //   input: null.constructor,
-    //   output: "TypeError: Cannot read property 'constructor' of null",
-    // },
-    // {
-    //   input: null instanceof Null,
-    //   output: "ReferenceError: Null is not defined",
-    // },
-  ]
-
   it.only('Prove "instanceof" values', () => {
-    for (const { input, output } of typeProofs) {
-      assert.strictEqual(input, output)
+    try {
+      const typeProofs = [
+        // Undefined
+        {
+          input: typeof undefined === "undefined",
+          output: true,
+        },
+        // {
+        //   input: undefined instanceof Undefined,
+        //   output: "ReferenceError: Undefined is not defined",
+        // },
+        // {
+        //   input: undefined.constructor,
+        //   output: "TypeError: Cannot read property 'constructor' of undefined",
+        // },
+        // {
+        //   /* eslint-disable no-new-wrappers, no-undef */
+        //   // @ts-ignore
+        //   input: new Undefined(undefined) instanceof Object,
+        //   output: "ReferenceError: Undefined is not defined",
+        // },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(undefined) instanceof Boolean,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(undefined) instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(undefined) instanceof Function,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(undefined) instanceof Number,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(undefined) instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(undefined) instanceof Function,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new String(undefined) instanceof String,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new String(undefined) instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new String(undefined) instanceof Function,
+          output: false,
+        },
+        // {
+        //   // @ts-ignore
+        //   input: new BigInt(undefined) instanceof BigInt,
+        //   output: "TypeError: BigInt is not a constructor",
+        // },
+        // {
+        //   // @ts-ignore
+        //   input: new Symbol(undefined) instanceof Symbol,
+        //   output: "TypeError: Symbol is not a constructor",
+        // },
+
+        // Boolean
+        {
+          input: typeof true === "boolean",
+          output: true,
+        },
+        {
+          input: typeof false === "boolean",
+          output: true,
+        },
+        {
+          input: typeof Boolean === "function",
+          output: true,
+        },
+        {
+          // @ts-ignore
+          input: true instanceof Boolean,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: true instanceof Function,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: true instanceof Object,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: false instanceof Boolean,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: false instanceof Function,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: false instanceof Object,
+          output: false,
+        },
+        {
+          input: Boolean instanceof Boolean,
+          output: false,
+        },
+        {
+          input: Boolean instanceof Function,
+          output: true,
+        },
+        {
+          input: Boolean.constructor === Boolean,
+          output: false,
+        },
+        {
+          input: Boolean.constructor === Function,
+          output: true,
+        },
+        {
+          input: Boolean.constructor === Object,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(true) instanceof Boolean,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(true) instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(true) instanceof Function,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(false) instanceof Boolean,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(false) instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(false) instanceof Function,
+          output: false,
+        },
+
+        // Number
+        {
+          input: typeof NaN === "number",
+          output: true,
+        },
+        {
+          input: typeof 0 === "number",
+          output: true,
+        },
+        {
+          input: typeof 1 === "number",
+          output: true,
+        },
+        {
+          input: typeof -1 === "number",
+          output: true,
+        },
+        {
+          // @ts-ignore
+          input: NaN instanceof Number,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: NaN instanceof Object,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: NaN instanceof Function,
+          output: false,
+        },
+        {
+          input: NaN.constructor === Number,
+          output: true,
+        },
+        {
+          input: NaN.constructor === Object,
+          output: false,
+        },
+        {
+          input: NaN.constructor === Function,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(NaN) instanceof Number,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(NaN) instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(NaN) instanceof Function,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: 0 instanceof Number,
+          output: false,
+        },
+        {
+          input: (0).constructor === Number,
+          output: true,
+        },
+        {
+          // @ts-ignore
+          input: 1 instanceof Number,
+          output: false,
+        },
+        {
+          input: (1).constructor === Number,
+          output: true,
+        },
+        {
+          // @ts-ignore
+          input: -1 instanceof Number,
+          output: false,
+        },
+        {
+          input: (-1).constructor === Number,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(true) instanceof Number,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(true) instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(true) instanceof Function,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(false) instanceof Number,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(false) instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(false) instanceof Function,
+          output: false,
+        },
+
+        // String
+        {
+          input: typeof "" === "string",
+          output: true,
+        },
+        {
+          input: typeof "hi" === "string",
+          output: true,
+        },
+        {
+          input: typeof "1" === "string",
+          output: true,
+        },
+        {
+          // @ts-ignore
+          input: "" instanceof String,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: "" instanceof Object,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: "" instanceof Function,
+          output: false,
+        },
+        {
+          input: "".constructor === String,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new String("").constructor === String,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new String("") instanceof String,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new String("") instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new String("") instanceof Function,
+          output: false,
+        },
+
+        // BigInt
+        {
+          // @ts-ignore
+          input: typeof 1n === "bigint",
+          output: true,
+        },
+        {
+          input: typeof BigInt(9007199254740991) === "bigint",
+          output: true,
+        },
+        {
+          // @ts-ignore
+          input: 1n instanceof BigInt,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: 1n instanceof Object,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: 1n instanceof Function,
+          output: false,
+        },
+        {
+          // prettier-ignore
+          // @ts-ignore
+          input: 1n.constructor === BigInt,
+          output: true,
+        },
+        {
+          // prettier-ignore
+          // @ts-ignore
+          input: 1n.constructor === Object,
+          output: false,
+        },
+        {
+          // prettier-ignore
+          // @ts-ignore
+          input: 1n.constructor === Function,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: BigInt(9007199254740991) instanceof BigInt,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: BigInt(9007199254740991) instanceof Object,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: BigInt(9007199254740991) instanceof Function,
+          output: false,
+        },
+        {
+          input: BigInt(9007199254740991).constructor === BigInt,
+          output: true,
+        },
+        {
+          input: BigInt(9007199254740991).constructor === Object,
+          output: false,
+        },
+        {
+          input: BigInt(9007199254740991).constructor === Function,
+          output: false,
+        },
+
+        // Symbol
+        {
+          input: typeof Symbol("sym") === "symbol",
+          output: true,
+        },
+        {
+          input: typeof Symbol("sym") === "object",
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: Symbol("sym") instanceof Symbol,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: Symbol("sym") instanceof Object,
+          output: false,
+        },
+
+        // Object
+        {
+          input: typeof {} === "object",
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-object
+          input: typeof new Object({}) === "object",
+          output: true,
+        },
+        {
+          input: {} instanceof Object,
+          output: true,
+        },
+        {
+          input: {}.constructor === Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-object
+          input: new Object({}) instanceof Object,
+          output: true,
+        },
+
+        // Structurally Typed / Constructed Boolean
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Boolean(true) === "boolean",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Boolean(true) === "object",
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Boolean(true) === "function",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Boolean(false) === "boolean",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Boolean(false) === "object",
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Boolean(false) === "function",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Boolean(Boolean) === "boolean",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Boolean(Boolean) === "object",
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Boolean(Boolean) === "function",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(true) instanceof Boolean,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(true) instanceof Object,
+          output: true,
+        },
+
+        // Structurally Typed / Constructed Number
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(0) === "number",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(0) === "object",
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(0) === "boolean",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(0) === "function",
+          output: false,
+        },
+
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(1) === "number",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(1) === "object",
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(1) === "boolean",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(1) === "function",
+          output: false,
+        },
+
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(-1) === "number",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(-1) === "object",
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(-1) === "boolean",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(-1) === "function",
+          output: false,
+        },
+
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(true) === "number",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(true) === "object",
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(true) === "boolean",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(true) === "function",
+          output: false,
+        },
+
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(false) === "number",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(false) === "object",
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(false) === "boolean",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: typeof new Number(false) === "function",
+          output: false,
+        },
+
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(0) instanceof Number,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(0) instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(0) instanceof Function,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(0) instanceof Boolean,
+          output: false,
+        },
+
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(1) instanceof Number,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(1) instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(1) instanceof Function,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(1) instanceof Boolean,
+          output: false,
+        },
+
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(-1) instanceof Number,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(-1) instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(-1) instanceof Function,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(-1) instanceof Boolean,
+          output: false,
+        },
+
+        // Structurally Typed / Constructed String
+        {
+          // eslint-disable-next-line  no-new-wrappers
+          input: typeof new String("") === "string",
+          output: false,
+        },
+        {
+          // eslint-disable-next-line  no-new-wrappers
+          input: typeof new String("") === "object",
+          output: true,
+        },
+        {
+          // eslint-disable-next-line  no-new-wrappers
+          input: new String("") instanceof String,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line  no-new-wrappers
+          input: new String("") instanceof Object,
+          output: true,
+        },
+
+        // Structurally Typed / Constructed BigInt
+        // {
+        //   // @ts-ignore
+        //   input: typeof new BigInt("") === "bigint",
+        //   output: "TypeError: BigInt is not a constructor",
+        // },
+        // {
+        //   // @ts-ignore
+        //   input: typeof new BigInt("") === "object",
+        //   output: "TypeError: BigInt is not a constructor",
+        // },
+        // {
+        //   // @ts-ignore
+        //   input: new BigInt(0) instanceof BigInt,
+        //   output: "TypeError: BigInt is not a constructor",
+        // },
+        // {
+        //   // @ts-ignore
+        //   input: new BigInt(0) instanceof Object,
+        //   output: "TypeError: BigInt is not a constructor",
+        // },
+        // {
+        //   /* eslint-disable no-new-symbol */
+        //   // @ts-ignore
+        //   input: new Symbol("sym") instanceof Symbol,
+        //   output: "TypeError: Symbol is not a constructor",
+        // },
+        // {
+        //   /* eslint-disable no-new-symbol */
+        //   // @ts-ignore
+        //   input: new Symbol("sym") instanceof Object,
+        //   output: "TypeError: Symbol is not a constructor",
+        // },
+
+        //! Structurally Typed / Constructed Array
+        {
+          input: new Array([]) instanceof Array,
+          output: true,
+        },
+        {
+          input: new Array([]) instanceof Object,
+          output: true,
+        },
+        {
+          input: new Error("") instanceof Error,
+          output: true,
+        },
+        {
+          input: new Error("") instanceof Object,
+          output: true,
+        },
+        {
+          input: new Map() instanceof Map,
+          output: true,
+        },
+        {
+          input: new Map() instanceof Object,
+          output: true,
+        },
+        {
+          input: new WeakMap() instanceof WeakMap,
+          output: true,
+        },
+        {
+          input: new WeakMap() instanceof Object,
+          output: true,
+        },
+        {
+          input: new Set() instanceof Set,
+          output: true,
+        },
+        {
+          input: new Set() instanceof Object,
+          output: true,
+        },
+        {
+          input: new WeakSet() instanceof WeakSet,
+          output: true,
+        },
+        {
+          input: new WeakSet() instanceof Object,
+          output: true,
+        },
+        {
+          input: new Date() instanceof Date,
+          output: true,
+        },
+        {
+          input: new Date() instanceof Object,
+          output: true,
+        },
+        {
+          input: new RegExp(/"/) instanceof RegExp,
+          output: true,
+        },
+        {
+          input: new RegExp(/"/) instanceof Object,
+          output: true,
+        },
+        {
+          /* eslint-disable new-parens */
+          // prettier-ignore
+          input: new function () {} instanceof Function,
+          output: false,
+        },
+        {
+          /* eslint-disable new-parens */
+          // prettier-ignore
+          input: new function () {} instanceof Object,
+          output: true,
+        },
+        // {
+        //   input: new (() => {}) instanceof Function,
+        //   output: "TypeError: (intermediate value) is not a constructor",
+        // },
+
+        // Function
+        {
+          input: function () {} instanceof Function,
+          output: true,
+        },
+        {
+          input: function () {} instanceof Object,
+          output: true,
+        },
+        {
+          input: function () {}.constructor === Function,
+          output: true,
+        },
+        {
+          input: function () {}.constructor === Object,
+          output: false,
+        },
+        {
+          input: (() => {}) instanceof Function,
+          output: true,
+        },
+        {
+          input: (() => {}) instanceof Object,
+          output: true,
+        },
+        {
+          input: (() => {}).constructor === Function,
+          output: true,
+        },
+        {
+          input: (() => {}).constructor === Object,
+          output: false,
+        },
+
+        // NUll
+        {
+          // @ts-ignore
+          input: null instanceof Object,
+          output: false,
+        },
+        // Null ERRORS
+        // {
+        //   input: null.constructor,
+        //   output: "TypeError: Cannot read property 'constructor' of null",
+        // },
+        // {
+        //   input: null instanceof Null,
+        //   output: "ReferenceError: Null is not defined",
+        // },
+      ]
+
+      for (const { input, output } of typeProofs) {
+        assert.strictEqual(input, output)
+      }
+    } catch (err) {
+      console.error(err)
     }
   })
 })
