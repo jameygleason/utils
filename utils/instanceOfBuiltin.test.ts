@@ -135,28 +135,15 @@ describe("Type Proofs", () => {
       output: "object",
     },
     {
-      /* eslint-disable new-parens */
       // prettier-ignore
+      // eslint-disable-next-line new-parens
       input: new function () {},
       output: "object",
     },
 
     // Function
-    {
-      // eslint-disable-next-line object-shorthand
-      input: function () {},
-      output: "function",
-    },
-    {
-      input: () => {},
-      output: "function",
-    },
 
     // NUll
-    {
-      input: null,
-      output: "object",
-    },
   ]
 
   it.only('Prove "typeof" values', () => {
@@ -166,7 +153,7 @@ describe("Type Proofs", () => {
     }
   })
 
-  it.only('Prove "instanceof" values', () => {
+  it.only('Prove types with "instanceof", "typeof", and "constructor" comparisons', () => {
     try {
       const typeProofs = [
         // Undefined
@@ -183,8 +170,8 @@ describe("Type Proofs", () => {
         //   output: "TypeError: Cannot read property 'constructor' of undefined",
         // },
         // {
-        //   /* eslint-disable no-new-wrappers, no-undef */
         //   // @ts-ignore
+        //   // eslint-disable-next-line no-new-wrappers, no-undef
         //   input: new Undefined(undefined) instanceof Object,
         //   output: "ReferenceError: Undefined is not defined",
         // },
@@ -893,14 +880,14 @@ describe("Type Proofs", () => {
         //   output: "TypeError: BigInt is not a constructor",
         // },
         // {
-        //   /* eslint-disable no-new-symbol */
         //   // @ts-ignore
+        //   // eslint-disable-next-line no-new-symbol
         //   input: new Symbol("sym") instanceof Symbol,
         //   output: "TypeError: Symbol is not a constructor",
         // },
         // {
-        //   /* eslint-disable no-new-symbol */
         //   // @ts-ignore
+        //   // eslint-disable-next-line no-new-symbol
         //   input: new Symbol("sym") instanceof Object,
         //   output: "TypeError: Symbol is not a constructor",
         // },
@@ -914,6 +901,8 @@ describe("Type Proofs", () => {
           input: new Array([]) instanceof Object,
           output: true,
         },
+
+        //! Structurally Typed / Constructed Error
         {
           input: new Error("") instanceof Error,
           output: true,
@@ -922,6 +911,8 @@ describe("Type Proofs", () => {
           input: new Error("") instanceof Object,
           output: true,
         },
+
+        //! Structurally Typed / Constructed Map
         {
           input: new Map() instanceof Map,
           output: true,
@@ -930,6 +921,8 @@ describe("Type Proofs", () => {
           input: new Map() instanceof Object,
           output: true,
         },
+
+        //! Structurally Typed / Constructed WeakMap
         {
           input: new WeakMap() instanceof WeakMap,
           output: true,
@@ -938,6 +931,8 @@ describe("Type Proofs", () => {
           input: new WeakMap() instanceof Object,
           output: true,
         },
+
+        //! Structurally Typed / Constructed Set
         {
           input: new Set() instanceof Set,
           output: true,
@@ -946,6 +941,8 @@ describe("Type Proofs", () => {
           input: new Set() instanceof Object,
           output: true,
         },
+
+        //! Structurally Typed / Constructed WeakSet
         {
           input: new WeakSet() instanceof WeakSet,
           output: true,
@@ -954,6 +951,8 @@ describe("Type Proofs", () => {
           input: new WeakSet() instanceof Object,
           output: true,
         },
+
+        //! Structurally Typed / Constructed Date
         {
           input: new Date() instanceof Date,
           output: true,
@@ -962,6 +961,8 @@ describe("Type Proofs", () => {
           input: new Date() instanceof Object,
           output: true,
         },
+
+        //! Structurally Typed / Constructed RegExp
         {
           input: new RegExp(/"/) instanceof RegExp,
           output: true,
@@ -970,15 +971,17 @@ describe("Type Proofs", () => {
           input: new RegExp(/"/) instanceof Object,
           output: true,
         },
+
+        //! Structurally Typed / Constructed Function
         {
-          /* eslint-disable new-parens */
           // prettier-ignore
+          // eslint-disable-next-line new-parens
           input: new function () {} instanceof Function,
           output: false,
         },
         {
-          /* eslint-disable new-parens */
           // prettier-ignore
+          // eslint-disable-next-line new-parens
           input: new function () {} instanceof Object,
           output: true,
         },
@@ -988,6 +991,14 @@ describe("Type Proofs", () => {
         // },
 
         // Function
+        {
+          input: typeof function () {} === "function",
+          output: true,
+        },
+        {
+          input: typeof function () {} === "object",
+          output: false,
+        },
         {
           input: function () {} instanceof Function,
           output: true,
@@ -1002,6 +1013,15 @@ describe("Type Proofs", () => {
         },
         {
           input: function () {}.constructor === Object,
+          output: false,
+        },
+
+        {
+          input: typeof (() => {}) === "function",
+          output: true,
+        },
+        {
+          input: typeof (() => {}) === "object",
           output: false,
         },
         {
@@ -1022,6 +1042,16 @@ describe("Type Proofs", () => {
         },
 
         // NUll
+        {
+          // @ts-ignore
+          // eslint-disable-next-line valid-typeof
+          input: typeof null === "null",
+          output: false,
+        },
+        {
+          input: typeof null === "object",
+          output: true,
+        },
         {
           // @ts-ignore
           input: null instanceof Object,
