@@ -103,14 +103,6 @@ describe("Type Proofs", () => {
     // Object
 
     {
-      input: new Array([]),
-      output: "object",
-    },
-    {
-      input: new Error(""),
-      output: "object",
-    },
-    {
       input: new Map(),
       output: "object",
     },
@@ -156,7 +148,7 @@ describe("Type Proofs", () => {
   it.only('Prove types with "instanceof", "typeof", and "constructor" comparisons', () => {
     try {
       const typeProofs = [
-        // Undefined
+        //* Data Types - Undefined
         {
           input: typeof undefined === "undefined",
           output: true,
@@ -231,14 +223,38 @@ describe("Type Proofs", () => {
         //   output: "TypeError: Symbol is not a constructor",
         // },
 
-        // Boolean
+        //* Data Types - Boolean
         {
           input: typeof true === "boolean",
           output: true,
         },
         {
+          input: typeof true === "object",
+          output: false,
+        },
+        {
+          input: typeof true === "function",
+          output: false,
+        },
+        {
           input: typeof false === "boolean",
           output: true,
+        },
+        {
+          input: typeof false === "object",
+          output: false,
+        },
+        {
+          input: typeof false === "function",
+          output: false,
+        },
+        {
+          input: typeof Boolean === "boolean",
+          output: false,
+        },
+        {
+          input: typeof Boolean === "object",
+          output: false,
         },
         {
           input: typeof Boolean === "function",
@@ -325,7 +341,7 @@ describe("Type Proofs", () => {
           output: false,
         },
 
-        // Number
+        //* Data Types - Number
         {
           input: typeof NaN === "number",
           output: true,
@@ -442,7 +458,7 @@ describe("Type Proofs", () => {
           output: false,
         },
 
-        // String
+        //* Data Types - String
         {
           input: typeof "" === "string",
           output: true,
@@ -495,7 +511,7 @@ describe("Type Proofs", () => {
           output: false,
         },
 
-        // BigInt
+        //* Data Types - BigInt
         {
           // @ts-ignore
           input: typeof 1n === "bigint",
@@ -566,7 +582,7 @@ describe("Type Proofs", () => {
           output: false,
         },
 
-        // Symbol
+        //* Data Types - Symbol
         {
           input: typeof Symbol("sym") === "symbol",
           output: true,
@@ -586,7 +602,7 @@ describe("Type Proofs", () => {
           output: false,
         },
 
-        // Object
+        //* Structural Types - Object
         {
           input: typeof {} === "object",
           output: true,
@@ -609,8 +625,13 @@ describe("Type Proofs", () => {
           input: new Object({}) instanceof Object,
           output: true,
         },
+        {
+          // eslint-disable-next-line no-new-object
+          input: new Object({}).constructor === Object,
+          output: true,
+        },
 
-        // Structurally Typed / Constructed Boolean
+        //* Structural Types - constructed - Boolean
         {
           // eslint-disable-next-line no-new-wrappers
           input: typeof new Boolean(true) === "boolean",
@@ -666,8 +687,68 @@ describe("Type Proofs", () => {
           input: new Boolean(true) instanceof Object,
           output: true,
         },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(false) instanceof Boolean,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(false) instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(Boolean) instanceof Boolean,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(Boolean) instanceof Object,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(Boolean) instanceof Function,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(true).constructor === Boolean,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(true).constructor === Object,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(false).constructor === Boolean,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(false).constructor === Object,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(Boolean).constructor === Boolean,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(Boolean).constructor === Object,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Boolean(Boolean).constructor === Function,
+          output: false,
+        },
 
-        // Structurally Typed / Constructed Number
+        //* Structural Types - constructed - Number
         {
           // eslint-disable-next-line no-new-wrappers
           input: typeof new Number(0) === "number",
@@ -835,8 +916,38 @@ describe("Type Proofs", () => {
           input: new Number(-1) instanceof Boolean,
           output: false,
         },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(0).constructor === Number,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(0).constructor === Object,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(0).constructor === Function,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(Number).constructor === Number,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(Number).constructor === Object,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new Number(Number).constructor === Function,
+          output: false,
+        },
 
-        // Structurally Typed / Constructed String
+        //* Structural Types - constructed - String
         {
           // eslint-disable-next-line  no-new-wrappers
           input: typeof new String("") === "string",
@@ -857,8 +968,38 @@ describe("Type Proofs", () => {
           input: new String("") instanceof Object,
           output: true,
         },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new String("").constructor === String,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new String("").constructor === Object,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new String("").constructor === Function,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new String(String).constructor === String,
+          output: true,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new String(String).constructor === Object,
+          output: false,
+        },
+        {
+          // eslint-disable-next-line no-new-wrappers
+          input: new String(String).constructor === Function,
+          output: false,
+        },
 
-        // Structurally Typed / Constructed BigInt
+        //* Structural Types - constructed - BigInt
         // {
         //   // @ts-ignore
         //   input: typeof new BigInt("") === "bigint",
@@ -892,7 +1033,29 @@ describe("Type Proofs", () => {
         //   output: "TypeError: Symbol is not a constructor",
         // },
 
-        //! Structurally Typed / Constructed Array
+        //* Structural Types - constructed - Array
+        {
+          // @ts-ignore
+          // eslint-disable-next-line  valid-typeof
+          input: typeof [] === "array",
+          output: false,
+        },
+        {
+          // @ts-ignore
+          // eslint-disable-next-line  valid-typeof
+          input: typeof [] === "object",
+          output: true,
+        },
+        {
+          // @ts-ignore
+          // eslint-disable-next-line  valid-typeof
+          input: typeof new Array([]) === "array",
+          output: false,
+        },
+        {
+          input: typeof new Array([]) === "object",
+          output: true,
+        },
         {
           input: new Array([]) instanceof Array,
           output: true,
@@ -901,8 +1064,44 @@ describe("Type Proofs", () => {
           input: new Array([]) instanceof Object,
           output: true,
         },
+        {
+          input: new Array([]).constructor === Array,
+          output: true,
+        },
+        {
+          input: new Array([]).constructor === Object,
+          output: false,
+        },
+        {
+          input: new Array([]).constructor === Function,
+          output: false,
+        },
+        {
+          input: new Array(Array).constructor === Array,
+          output: true,
+        },
+        {
+          input: new Array(Array).constructor === Object,
+          output: false,
+        },
+        {
+          input: new Array(Array).constructor === Function,
+          output: false,
+        },
 
-        //! Structurally Typed / Constructed Error
+        //* Structural Types - constructed - Error
+        {
+          // @ts-ignore
+          // eslint-disable-next-line valid-typeof
+          input: typeof new Error("") === Error,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          // eslint-disable-next-line valid-typeof
+          input: typeof new Error("") === Object,
+          output: false,
+        },
         {
           input: new Error("") instanceof Error,
           output: true,
@@ -911,8 +1110,35 @@ describe("Type Proofs", () => {
           input: new Error("") instanceof Object,
           output: true,
         },
+        {
+          input: new Error("").constructor === Error,
+          output: true,
+        },
+        {
+          input: new Error("").constructor === Object,
+          output: false,
+        },
+        {
+          input: new Error("").constructor === Function,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: new Error(Error).constructor === Error,
+          output: true,
+        },
+        {
+          // @ts-ignore
+          input: new Error(Error).constructor === Object,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: new Error(Error).constructor === Function,
+          output: false,
+        },
 
-        //! Structurally Typed / Constructed Map
+        //! Structural Types - constructed - Map
         {
           input: new Map() instanceof Map,
           output: true,
@@ -922,7 +1148,7 @@ describe("Type Proofs", () => {
           output: true,
         },
 
-        //! Structurally Typed / Constructed WeakMap
+        //! Structural Types - constructed - WeakMap
         {
           input: new WeakMap() instanceof WeakMap,
           output: true,
@@ -932,7 +1158,7 @@ describe("Type Proofs", () => {
           output: true,
         },
 
-        //! Structurally Typed / Constructed Set
+        //! Structural Types - constructed - Set
         {
           input: new Set() instanceof Set,
           output: true,
@@ -942,7 +1168,7 @@ describe("Type Proofs", () => {
           output: true,
         },
 
-        //! Structurally Typed / Constructed WeakSet
+        //! Structural Types - constructed - WeakSet
         {
           input: new WeakSet() instanceof WeakSet,
           output: true,
@@ -952,7 +1178,7 @@ describe("Type Proofs", () => {
           output: true,
         },
 
-        //! Structurally Typed / Constructed Date
+        //! Structural Types - constructed - Date
         {
           input: new Date() instanceof Date,
           output: true,
@@ -962,7 +1188,7 @@ describe("Type Proofs", () => {
           output: true,
         },
 
-        //! Structurally Typed / Constructed RegExp
+        //! Structural Types - constructed - RegExp
         {
           input: new RegExp(/"/) instanceof RegExp,
           output: true,
@@ -972,7 +1198,7 @@ describe("Type Proofs", () => {
           output: true,
         },
 
-        //! Structurally Typed / Constructed Function
+        //! Structural Types - constructed - Function
         {
           // prettier-ignore
           // eslint-disable-next-line new-parens
@@ -990,7 +1216,7 @@ describe("Type Proofs", () => {
         //   output: "TypeError: (intermediate value) is not a constructor",
         // },
 
-        // Function
+        //! Function
         {
           input: typeof function () {} === "function",
           output: true,
@@ -1041,7 +1267,7 @@ describe("Type Proofs", () => {
           output: false,
         },
 
-        // NUll
+        //! NUll
         {
           // @ts-ignore
           // eslint-disable-next-line valid-typeof
