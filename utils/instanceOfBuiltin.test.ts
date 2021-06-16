@@ -103,30 +103,6 @@ describe("Type Proofs", () => {
     // Object
 
     {
-      input: new Map(),
-      output: "object",
-    },
-    {
-      input: new WeakMap(),
-      output: "object",
-    },
-    {
-      input: new Set(),
-      output: "object",
-    },
-    {
-      input: new WeakSet(),
-      output: "object",
-    },
-    {
-      input: new Date(),
-      output: "object",
-    },
-    {
-      input: new RegExp(/"/),
-      output: "object",
-    },
-    {
       // prettier-ignore
       // eslint-disable-next-line new-parens
       input: new function () {},
@@ -1138,7 +1114,17 @@ describe("Type Proofs", () => {
           output: false,
         },
 
-        //! Structural Types - constructed - Map
+        //* Structural Types - constructed - Map
+        {
+          // @ts-ignore
+          // eslint-disable-next-line valid-typeof
+          input: typeof new Map() === "map",
+          output: false,
+        },
+        {
+          input: typeof new Map() === "object",
+          output: true,
+        },
         {
           input: new Map() instanceof Map,
           output: true,
@@ -1147,8 +1133,45 @@ describe("Type Proofs", () => {
           input: new Map() instanceof Object,
           output: true,
         },
+        {
+          input: new Map().constructor === Map,
+          output: true,
+        },
+        {
+          input: new Map().constructor === Object,
+          output: false,
+        },
+        {
+          input: new Map().constructor === Function,
+          output: false,
+        },
+        // {
+        //   input: new Map(Map).constructor === Map,
+        //   output:
+        //     "TypeError: function is not iterable (cannot read property Symbol(Symbol.iterator))",
+        // },
+        // {
+        //   input: new Map(Map).constructor === Object,
+        //   output:
+        //     "TypeError: function is not iterable (cannot read property Symbol(Symbol.iterator))",
+        // },
+        // {
+        //   input: new Map(Map).constructor === Function,
+        //   output:
+        //     "TypeError: function is not iterable (cannot read property Symbol(Symbol.iterator))",
+        // },
 
-        //! Structural Types - constructed - WeakMap
+        //* Structural Types - constructed - WeakMap
+        {
+          // @ts-ignore
+          // eslint-disable-next-line valid-typeof
+          input: typeof new WeakMap() === "weakmap",
+          output: false,
+        },
+        {
+          input: typeof new WeakMap() === "object",
+          output: true,
+        },
         {
           input: new WeakMap() instanceof WeakMap,
           output: true,
@@ -1157,8 +1180,48 @@ describe("Type Proofs", () => {
           input: new WeakMap() instanceof Object,
           output: true,
         },
+        {
+          input: new WeakMap().constructor === WeakMap,
+          output: true,
+        },
+        {
+          input: new WeakMap().constructor === Object,
+          output: false,
+        },
+        {
+          input: new WeakMap().constructor === Function,
+          output: false,
+        },
+        // {
+        //   // @ts-ignore
+        //   input: new WeakMap(WeakMap).constructor === WeakMap,
+        //   output:
+        //     "TypeError: function is not iterable (cannot read property Symbol(Symbol.iterator))",
+        // },
+        // {
+        //   // @ts-ignore
+        //   input: new WeakMap(WeakMap).constructor === Object,
+        //   output:
+        //     "TypeError: function is not iterable (cannot read property Symbol(Symbol.iterator))",
+        // },
+        // {
+        //   // @ts-ignore
+        //   input: new WeakMap(WeakMap).constructor === Function,
+        //   output:
+        //     "TypeError: function is not iterable (cannot read property Symbol(Symbol.iterator))",
+        // },
 
-        //! Structural Types - constructed - Set
+        //* Structural Types - constructed - Set
+        {
+          // @ts-ignore
+          // eslint-disable-next-line valid-typeof
+          input: typeof new Set() === "set",
+          output: false,
+        },
+        {
+          input: typeof new Set() === "object",
+          output: true,
+        },
         {
           input: new Set() instanceof Set,
           output: true,
@@ -1167,8 +1230,48 @@ describe("Type Proofs", () => {
           input: new Set() instanceof Object,
           output: true,
         },
+        {
+          input: new Set().constructor === Set,
+          output: true,
+        },
+        {
+          input: new Set().constructor === Object,
+          output: false,
+        },
+        {
+          input: new Set().constructor === Function,
+          output: false,
+        },
+        // {
+        //   // @ts-ignore
+        //   input: new Set(Set).constructor === Set,
+        //   output:
+        //     "TypeError: function is not iterable (cannot read property Symbol(Symbol.iterator))",
+        // },
+        // {
+        //   // @ts-ignore
+        //   input: new Set(Set).constructor === Object,
+        //   output:
+        //     "TypeError: function is not iterable (cannot read property Symbol(Symbol.iterator))",
+        // },
+        // {
+        //   // @ts-ignore
+        //   input: new Set(Set).constructor === Function,
+        //   output:
+        //     "TypeError: function is not iterable (cannot read property Symbol(Symbol.iterator))",
+        // },
 
-        //! Structural Types - constructed - WeakSet
+        //* Structural Types - constructed - WeakSet
+        {
+          // @ts-ignore
+          // eslint-disable-next-line valid-typeof
+          input: typeof new WeakSet() === "weakset",
+          output: false,
+        },
+        {
+          input: typeof new WeakSet() === "object",
+          output: true,
+        },
         {
           input: new WeakSet() instanceof WeakSet,
           output: true,
@@ -1177,8 +1280,48 @@ describe("Type Proofs", () => {
           input: new WeakSet() instanceof Object,
           output: true,
         },
+        {
+          input: new WeakSet().constructor === WeakSet,
+          output: true,
+        },
+        {
+          input: new WeakSet().constructor === Object,
+          output: false,
+        },
+        {
+          input: new WeakSet().constructor === Function,
+          output: false,
+        },
+        // {
+        //   // @ts-ignore
+        //   input: new WeakSet(WeakSet).constructor === WeakSet,
+        //   output:
+        //     "TypeError: function is not iterable (cannot read property Symbol(Symbol.iterator))",
+        // },
+        // {
+        //   // @ts-ignore
+        //   input: new WeakSet(WeakSet).constructor === Object,
+        //   output:
+        //     "TypeError: function is not iterable (cannot read property Symbol(Symbol.iterator))",
+        // },
+        // {
+        //   // @ts-ignore
+        //   input: new WeakSet(WeakSet).constructor === Function,
+        //   output:
+        //     "TypeError: function is not iterable (cannot read property Symbol(Symbol.iterator))",
+        // },
 
-        //! Structural Types - constructed - Date
+        //* Structural Types - constructed - Date
+        {
+          // @ts-ignore
+          // eslint-disable-next-line valid-typeof
+          input: typeof new Date() === "date",
+          output: false,
+        },
+        {
+          input: typeof new Date() === "object",
+          output: true,
+        },
         {
           input: new Date() instanceof Date,
           output: true,
@@ -1187,8 +1330,45 @@ describe("Type Proofs", () => {
           input: new Date() instanceof Object,
           output: true,
         },
+        {
+          input: new Date().constructor === Date,
+          output: true,
+        },
+        {
+          input: new Date().constructor === Object,
+          output: false,
+        },
+        {
+          input: new Date().constructor === Function,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: new Date(Date).constructor === Date,
+          output: true,
+        },
+        {
+          // @ts-ignore
+          input: new Date(Date).constructor === Object,
+          output: false,
+        },
+        {
+          // @ts-ignore
+          input: new Date(Date).constructor === Function,
+          output: false,
+        },
 
-        //! Structural Types - constructed - RegExp
+        //* Structural Types - constructed - RegExp
+        {
+          // @ts-ignore
+          // eslint-disable-next-line valid-typeof
+          input: typeof new RegExp(/"/) === "regexp",
+          output: false,
+        },
+        {
+          input: typeof new RegExp(/"/) === "object",
+          output: true,
+        },
         {
           input: new RegExp(/"/) instanceof RegExp,
           output: true,
@@ -1196,6 +1376,18 @@ describe("Type Proofs", () => {
         {
           input: new RegExp(/"/) instanceof Object,
           output: true,
+        },
+        {
+          input: new RegExp(/"/).constructor === RegExp,
+          output: true,
+        },
+        {
+          input: new RegExp(/"/).constructor === Object,
+          output: false,
+        },
+        {
+          input: new RegExp(/"/).constructor === Function,
+          output: false,
         },
 
         //! Structural Types - constructed - Function
@@ -1267,7 +1459,7 @@ describe("Type Proofs", () => {
           output: false,
         },
 
-        //! NUll
+        //* Structural Root Primitive - Null
         {
           // @ts-ignore
           // eslint-disable-next-line valid-typeof
