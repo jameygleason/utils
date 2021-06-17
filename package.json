@@ -78,13 +78,13 @@
       "import": "./mkdir.js",
       "require": "./mkdir.cjs.js"
     },
+    "./objectToString": {
+      "import": "./objectToString.js",
+      "require": "./objectToString.cjs.js"
+    },
     "./printElapsed": {
       "import": "./printElapsed.js",
       "require": "./printElapsed.cjs.js"
-    },
-    "./printObject": {
-      "import": "./printObject.js",
-      "require": "./printObject.cjs.js"
     },
     "./randomBytes": {
       "import": "./randomBytes.js",

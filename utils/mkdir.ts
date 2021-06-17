@@ -7,9 +7,7 @@ export function mkdir(dest: string): void {
 
   // Find directories that don't exist in dest path
   for (let i = 0; i < splitDest.length; i++) {
-    const newPath: string = path.join(
-      splitDest.slice(0, splitDest.length - i).join("/"),
-    )
+    const newPath: string = path.join(splitDest.slice(0, splitDest.length - i).join("/"))
 
     if (fs.existsSync(newPath)) {
       break

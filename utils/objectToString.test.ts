@@ -1,7 +1,7 @@
 import { assert } from "chai"
-// import { printObject } from "./printObject"
+// import { objectToString } from "./objectToString"
 
-describe("printObject", () => {
+describe("objectToString", () => {
   it.skip("TODO", () => {
     assert.strictEqual("TODO", true)
   })

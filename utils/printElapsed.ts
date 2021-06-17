@@ -17,8 +17,6 @@ export function printElapsed(start: number, msg: string) {
     unit = "s"
   }
   console.log(
-    `${kleur.blue(msg)} ${kleur.green("in")} ${kleur.blue(
-      elapsed.toFixed(1),
-    )}${kleur.blue(unit)}`,
+    `${kleur.blue(msg)} ${kleur.green("in")} ${kleur.blue(elapsed.toFixed(1))}${kleur.blue(unit)}`,
   )
 }

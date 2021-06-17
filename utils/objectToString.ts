@@ -1,13 +1,4 @@
-import kleur from "kleur"
-import { isNil } from "./isNil" // .ts
-
-// type PrintObjectReturn = { [key: string]: any }
-
-export function printObject(object, pad = "", indention = "spaces"): string {
-  if (isNil(object)) {
-    throw new Error(kleur.red("printObject requires an Object argument"))
-  }
-
+export function objectToString(object, pad = "", indention = "spaces"): string {
   const indent = indention === "spaces" ? "  " : "\t"
   let out = ""
 
@@ -17,7 +8,7 @@ export function printObject(object, pad = "", indention = "spaces"): string {
       out +=
         pad +
         indent +
-        printObject(typeof object[i] === "string" ? `'${object[i]}'` : object[i], pad + indent) +
+        objectToString(typeof object[i] === "string" ? `'${object[i]}'` : object[i], pad + indent) +
         "," +
         "\n"
     }
@@ -35,7 +26,7 @@ export function printObject(object, pad = "", indention = "spaces"): string {
         indent +
         key +
         ": " +
-        printObject(typeof object[i] === "string" ? `'${object[i]}'` : object[i], pad + indent) +
+        objectToString(typeof object[i] === "string" ? `'${object[i]}'` : object[i], pad + indent) +
         "," +
         "\n"
     }
