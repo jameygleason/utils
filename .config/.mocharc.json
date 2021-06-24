@@ -1,6 +1,6 @@
 {
   "recursive": true,
-  "extension": ["ts"],
-  "spec": "utils/**/*.test.ts",
-  "require": "ts-node/register"
+  "extension": ["js", "ts"],
+  "spec": "utils/**/*.test.{js,ts}",
+  "loader": ["ts-node/esm"]
 }

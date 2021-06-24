@@ -22,7 +22,7 @@
     "strictNullChecks": true,
     "stripInternal": true,
     "target": "es2019",
-    "types": ["mocha", "node"]
+    "types": ["node", "mocha"]
   },
   "include": ["utils"],
   "exclude": ["node_modules", "**/*.d.ts", "**/*.map"]
