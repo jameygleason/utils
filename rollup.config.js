@@ -10,20 +10,18 @@ if (Object.keys(pkg).length === 0) {
   console.error("Failed to parse package.json")
 }
 
-const tsOptions = {
-  tsconfig: "./tsconfig.json",
-  useTsconfigDeclarationDir: true,
-}
-
-const config = {
+const options = {
   plugins: [
     resolve({
       extensions: [".js", ".ts"],
     }),
     commonjs(),
-    typescript(tsOptions),
+    typescript({
+      tsconfig: "./tsconfig.json",
+    }),
   ],
   external: [].concat(
+    Object.keys(pkg.dependencies || {}),
     Object.keys(pkg.devDependencies || {}),
     Object.keys(pkg.peerDependencies || {}),
     module.builtinModules,
@@ -31,13 +29,25 @@ const config = {
   onwarn: (warning, onwarn) => warning.code === "CIRCULAR_DEPENDENCY" && onwarn(warning),
   watch: {
     clearScreen: false,
-    exclude: ["node_modules", "*.js", "**/*.map", "**/*.d.ts", "!utils/**/*"],
+    exclude: [
+      "node_modules",
+      "./**/*.js",
+      "./**/*.cjs",
+      "./**/*.mjs",
+      "./**/*.map",
+      "./**/*.d.ts",
+      "./**/*.test.*",
+      "./**/*",
+    ],
   },
 }
 
-export default Object.keys(pkg.exports).map(k => {
+const config = []
+
+for (const k of Object.keys(pkg.exports)) {
   const filename = k.slice(2, k.length)
-  return {
+
+  config.push({
     input: `./utils/${filename}.ts`,
     output: [
       {
@@ -65,7 +75,9 @@ export default Object.keys(pkg.exports).map(k => {
         exports: "named",
       },
     ],
-    ...config,
-    plugins: [...config.plugins],
-  }
-})
+    ...options,
+    plugins: [...options.plugins],
+  })
+}
+
+export default config

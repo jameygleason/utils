@@ -6,12 +6,11 @@
     "baseUrl": ".",
     "declaration": true,
     "declarationDir": "./",
-    "declarationMap": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
-    "lib": ["es2019", "es2020", "dom", "dom.iterable"],
-    "module": "ESNext",
+    "lib": ["es2020", "dom", "dom.iterable"],
+    "module": "es2020",
     "moduleResolution": "node",
     "noEmit": true,
     "noEmitOnError": true,
@@ -19,11 +18,11 @@
     "noImplicitThis": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strictNullChecks": true,
+    "strict": true,
     "stripInternal": true,
     "target": "es2019",
     "types": ["node", "mocha"]
   },
   "include": ["utils"],
-  "exclude": ["node_modules", "**/*.d.ts", "**/*.map"]
+  "exclude": ["node_modules", "**/*.js", "**/*.cjs", "**/*.mjs", "**/*.map", "**/*.d.ts"]
 }
