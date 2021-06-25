@@ -1,5 +1,5 @@
 import { assert } from "chai"
-import { getFirstName } from "./getFirstName" // .ts
+import { getFirstName } from "../getFirstName.js"
 
 const testCases = [
   {
@@ -58,7 +58,7 @@ describe("getFirstName", () => {
       const [data, error] = getFirstName(input)
 
       if (error !== null) {
-        assert.strictEqual("This case should not happen", true)
+        assert.strictEqual("This case should not happen", "true")
         return
       }
 

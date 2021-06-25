@@ -1,5 +1,5 @@
 import { expect } from "chai"
-import { safeJSONParse } from "./safeJSONParse"
+import { safeJSONParse } from "../safeJSONParse.js"
 
 const testCases = [
   {

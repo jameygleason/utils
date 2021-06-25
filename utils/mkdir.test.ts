@@ -1,8 +1,8 @@
 import fs from "fs"
 import path from "path"
 import { assert } from "chai"
-import { rimraf } from "./rimraf"
-import { mkdir } from "./mkdir"
+import { rimraf } from "../rimraf.js"
+import { mkdir } from "../mkdir.js"
 
 describe("mkdir", () => {
   it("Creates a root level directory", () => {

@@ -1,5 +1,5 @@
 import { expect } from "chai"
-import { titleCase } from "./titleCase"
+import { titleCase } from "../titleCase.js"
 
 const apStyle = [{ input: "", output: "" }]
 

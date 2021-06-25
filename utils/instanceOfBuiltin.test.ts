@@ -1,5 +1,5 @@
 import { assert } from "chai"
-import { instanceOfBuiltin } from "./instanceOfBuiltin"
+import { instanceOfBuiltin } from "../instanceOfBuiltin.js"
 
 describe("instanceOfBuiltin", () => {
   it("Detects Date instance", () => {
@@ -37,8 +37,6 @@ describe("instanceOfBuiltin", () => {
     assert.strictEqual(type, "Null")
     assert.strictEqual(mm, "NO_MUTABLE_METHODS")
   })
-
-  function test() {}
 
   it("Detects Function instance", () => {
     const [type, mm] = instanceOfBuiltin(test)

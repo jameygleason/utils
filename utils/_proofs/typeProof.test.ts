@@ -1328,26 +1328,30 @@ describe("Type Proofs", () => {
 
         //* Structural Types - constructed - Function
         {
+          // @ts-ignore
           // prettier-ignore
-          // eslint-disable-next-line new-parens
+          // eslint-disable-next-line new-parens, @typescript-eslint/no-empty-function
           input: typeof new function () {} === "function",
           output: false,
         },
         {
+          // @ts-ignore
           // prettier-ignore
-          // eslint-disable-next-line new-parens
+          // eslint-disable-next-line new-parens, @typescript-eslint/no-empty-function
           input: typeof new function () {} === "object",
           output: true,
         },
         {
+          // @ts-ignore
           // prettier-ignore
-          // eslint-disable-next-line new-parens
+          // eslint-disable-next-line new-parens, @typescript-eslint/no-empty-function
           input: new function () {} instanceof Function,
           output: false,
         },
         {
+          // @ts-ignore
           // prettier-ignore
-          // eslint-disable-next-line new-parens
+          // eslint-disable-next-line new-parens, @typescript-eslint/no-empty-function
           input: new function () {} instanceof Object,
           output: true,
         },
@@ -1358,51 +1362,63 @@ describe("Type Proofs", () => {
 
         //* Structural Types - Function
         {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           input: typeof function () {} === "function",
           output: true,
         },
         {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           input: typeof function () {} === "object",
           output: false,
         },
         {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           input: function () {} instanceof Function,
           output: true,
         },
         {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           input: function () {} instanceof Object,
           output: true,
         },
         {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           input: function () {}.constructor === Function,
           output: true,
         },
         {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           input: function () {}.constructor === Object,
           output: false,
         },
 
         {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           input: typeof (() => {}) === "function",
           output: true,
         },
         {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           input: typeof (() => {}) === "object",
           output: false,
         },
         {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           input: (() => {}) instanceof Function,
           output: true,
         },
         {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           input: (() => {}) instanceof Object,
           output: true,
         },
         {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           input: (() => {}).constructor === Function,
           output: true,
         },
         {
+          // eslint-disable-next-line @typescript-eslint/no-empty-function
           input: (() => {}).constructor === Object,
           output: false,
         },

@@ -55,6 +55,7 @@ describe("Nullish Coalescing Proof", () => {
   it("Nullish coalescing proof", () => {
     for (const { input, output } of proveNullish) {
       let defaultVal = "is nullish"
+      // @ts-ignore
       let value = input ?? defaultVal
 
       // console.log("-------------------------------------")
@@ -72,6 +73,7 @@ describe("Nullish Coalescing Proof", () => {
       if (value.constructor === Array && input !== output) {
         // The Reference to input object is not the same as the reference to output object. Effectively making the input different from and therefore not equal to the output.
         // So we need a separate test to properly asset
+        // @ts-ignore
         value = input ?? defaultVal
         assert.strictEqual(value, input)
         continue
@@ -80,6 +82,7 @@ describe("Nullish Coalescing Proof", () => {
       if (value.constructor === Object && input !== output) {
         // The Reference to input object is not the same as the reference to output object. Effectively making the input different from and therefore not equal to the output.
         // So we need a separate test to properly asset
+        // @ts-ignore
         value = input ?? defaultVal
         assert.strictEqual(value, input)
         continue

@@ -1,11 +1,11 @@
 import { assert } from "chai"
-// import { randomBytes } from "./randomBytes" // .ts
+// import { randomBytes } from "../randomBytes.js"
 
 // const nums = [10, 25, 50, 73, 512]
 
 describe("randomBytes", () => {
   it.skip("TODO", () => {
-    assert.strictEqual("TODO", true)
+    assert.strictEqual("TODO", "true")
   })
 
   // it("Generates a string of random bytes", async () => {

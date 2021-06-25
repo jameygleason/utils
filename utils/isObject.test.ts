@@ -1,7 +1,7 @@
 import { assert } from "chai"
-// import { deepIsNil } from "../deepIsNil.js"
+// import { isObject } from "../isObject.js"
 
-describe("deepIsNil", () => {
+describe("isObject", () => {
   it.skip("TODO", () => {
     assert.strictEqual("TODO", "true")
   })

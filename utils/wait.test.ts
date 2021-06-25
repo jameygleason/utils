@@ -1,10 +1,10 @@
 // import { performance } from "perf_hooks"
 import { assert } from "chai"
-// import { wait } from "./wait"
+// import { wait } from "../wait.js"
 
 describe("wait", () => {
   it.skip("TODO", () => {
-    assert.strictEqual("TODO", true)
+    assert.strictEqual("TODO", "true")
   })
 
   // it("It waits the right amount of time (then syntax)", async () => {

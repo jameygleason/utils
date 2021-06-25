@@ -1,24 +1,30 @@
-export function objectToString(object, pad = "", indention = "spaces"): string {
+export function objectToString<T>(arg: T, pad = "", indention = "spaces"): string {
   const indent = indention === "spaces" ? "  " : "\t"
   let out = ""
 
-  if (object.constructor === Array) {
+  if (Array.isArray(arg)) {
     out += "[\n"
-    for (let i = 0; i < object.length; i++) {
+    for (let i = 0; i < arg.length; i++) {
       out +=
         pad +
         indent +
-        objectToString(typeof object[i] === "string" ? `'${object[i]}'` : object[i], pad + indent) +
+        // @ts-ignore
+        objectToString(typeof arg[i] === "string" ? `"${arg[i]}"` : arg[i], pad + indent, indention) +
         "," +
         "\n"
     }
     out += pad + "]"
-  } else if (object.constructor === Object) {
+    // @ts-ignore
+  } else if (arg.toString() === "[object Object]") {
     out += "{\n"
-    for (const i in object) {
-      let key = i
-      if (i.match(/-/g)) {
-        key = `'${i}'`
+    for (const k in arg) {
+      let key = k
+      for (const c of k) {
+        if (c === "-") {
+          // @ts-ignore
+          key = `"${k}"`
+          break
+        }
       }
 
       out +=
@@ -26,13 +32,18 @@ export function objectToString(object, pad = "", indention = "spaces"): string {
         indent +
         key +
         ": " +
-        objectToString(typeof object[i] === "string" ? `'${object[i]}'` : object[i], pad + indent) +
+        objectToString(
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (arg as any)[k].constructor === String ? `"${(arg as any)[k]}"` : (arg as any)[k],
+          pad + indent,
+          indention,
+        ) +
         "," +
         "\n"
     }
     out += pad + "}"
   } else {
-    out += object
+    out += arg
   }
 
   return out

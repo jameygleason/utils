@@ -46,6 +46,7 @@ module.exports = {
     "mocha/max-top-level-suites": 0,
     "mocha/no-mocha-arrows": 0,
     "mocha/no-setup-in-describe": 0,
+    "mocha/no-skipped-tests": 0,
     // END
 
     camelcase: 0,

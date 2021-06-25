@@ -1,3 +1,4 @@
+// @ts-nocheck
 // https://github.com/dotcypress/runes
 
 const HIGH_SURROGATE_START = 0xd800
@@ -37,10 +38,8 @@ const GRAPHEMES = [
   0x11a8, // ( ᆨ ) HANGUL JONGSEONG KIYEOK
 ]
 
-export function splitRunes(string) {
-  if (typeof string !== "string") {
-    throw new Error("string cannot be undefined or null")
-  }
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export function splitRunes(string: string) {
   const result = []
   let i = 0
   let increment = 0
@@ -77,7 +76,7 @@ export function splitRunes(string) {
 // Emoji with skin-tone modifiers: 4 code units (2 code points)
 // Country flags: 4 code units (2 code points)
 // Variations: 2 code units
-function nextUnits(i, string) {
+function nextUnits(i, string: string) {
   const current = string[i]
   // If we don't have a value that is part of a surrogate pair, or we're at
   // the end, only take the value at i
@@ -109,47 +108,36 @@ function nextUnits(i, string) {
   return 2
 }
 
-function isFirstOfSurrogatePair(string) {
-  return (
-    string && betweenInclusive(string[0].charCodeAt(0), HIGH_SURROGATE_START, HIGH_SURROGATE_END)
-  )
+function isFirstOfSurrogatePair(string: string) {
+  return string && betweenInclusive(string[0].charCodeAt(0), HIGH_SURROGATE_START, HIGH_SURROGATE_END)
 }
 
-function isRegionalIndicator(string) {
-  return betweenInclusive(
-    codePointFromSurrogatePair(string),
-    REGIONAL_INDICATOR_START,
-    REGIONAL_INDICATOR_END,
-  )
+function isRegionalIndicator(string: string) {
+  return betweenInclusive(codePointFromSurrogatePair(string), REGIONAL_INDICATOR_START, REGIONAL_INDICATOR_END)
 }
 
-function isFitzpatrickModifier(string) {
-  return betweenInclusive(
-    codePointFromSurrogatePair(string),
-    FITZPATRICK_MODIFIER_START,
-    FITZPATRICK_MODIFIER_END,
-  )
+function isFitzpatrickModifier(string: string) {
+  return betweenInclusive(codePointFromSurrogatePair(string), FITZPATRICK_MODIFIER_START, FITZPATRICK_MODIFIER_END)
 }
 
-function isVariationSelector(string) {
+function isVariationSelector(string: string) {
   return (
     typeof string === "string" &&
     betweenInclusive(string.charCodeAt(0), VARIATION_MODIFIER_START, VARIATION_MODIFIER_END)
   )
 }
 
-function isDiacriticalMark(string) {
+function isDiacriticalMark(string: string) {
   return (
-    typeof string === "string" &&
-    betweenInclusive(string.charCodeAt(0), DIACRITICAL_MARKS_START, DIACRITICAL_MARKS_END)
+    typeof string === "string" && betweenInclusive(string.charCodeAt(0), DIACRITICAL_MARKS_START, DIACRITICAL_MARKS_END)
   )
 }
 
-function isGrapheme(string) {
+function isGrapheme(string: string) {
   return typeof string === "string" && GRAPHEMES.indexOf(string.charCodeAt(0)) !== -1
 }
 
-function isZeroWidthJoiner(string) {
+function isZeroWidthJoiner(string: string) {
   return typeof string === "string" && string.charCodeAt(0) === ZWJ
 }
 

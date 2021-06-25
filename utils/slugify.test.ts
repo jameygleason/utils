@@ -1,5 +1,5 @@
 import { expect } from "chai"
-import { slugify } from "./slugify"
+import { slugify } from "../slugify.js"
 
 const whitespace = [
   { input: "   ", output: "" },

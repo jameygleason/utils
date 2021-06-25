@@ -1,7 +1,7 @@
 import chai, { assert, expect } from "chai"
 import sinonChai from "sinon-chai"
 import { spy } from "sinon"
-import { isNil } from "./isNil"
+import { isNil } from "../isNil.js"
 
 chai.use(sinonChai)
 
@@ -59,6 +59,7 @@ describe("isNil", () => {
       out: "symbol type not supported",
     },
     {
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       input: () => {},
       out: "Function type not supported",
     },
@@ -67,6 +68,7 @@ describe("isNil", () => {
   it("Warns for value types that are not supported", () => {
     for (const { input, out } of shouldWarn) {
       isNil(input)
+      // @ts-ignore
       expect(console.warn).to.have.been.calledWith(out)
     }
   })

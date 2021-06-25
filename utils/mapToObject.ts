@@ -1,3 +1,5 @@
+// @ts-nocheck
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function mapToObject(m) {
   const c = {}
   for (const [_, v] of Object.entries(Object.fromEntries(m))) {

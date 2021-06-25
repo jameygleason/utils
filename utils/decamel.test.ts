@@ -1,5 +1,5 @@
 import { assert } from "chai"
-import { decamel } from "./decamel" // .ts
+import { decamel } from "../decamel.js"
 
 const tests = [
   {

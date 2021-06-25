@@ -1,5 +1,5 @@
 import { assert } from "chai"
-import { stripEmojis } from "./stripEmojis" // .ts
+import { stripEmojis } from "../stripEmojis.js"
 
 const testCases = [
   {
