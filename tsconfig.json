@@ -3,18 +3,13 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": true,
-    "baseUrl": ".",
     "declaration": true,
-    "declarationDir": "./",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "lib": ["es2020", "dom", "dom.iterable"],
-    "module": "es2020",
+    "module": "ESNext",
     "moduleResolution": "node",
-    "noEmit": true,
-    "noEmitOnError": true,
-    "noFallthroughCasesInSwitch": true,
     "noImplicitThis": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
@@ -24,5 +19,13 @@
     "types": ["node", "mocha"]
   },
   "include": ["utils"],
-  "exclude": ["node_modules", "**/*.js", "**/*.cjs", "**/*.mjs", "**/*.map", "**/*.d.ts"]
+  "exclude": [
+    "node_modules",
+    "**/*.js",
+    "**/*.cjs",
+    "**/*.mjs",
+    "**/*.map",
+    "**/*.d.ts",
+    "**/*.test.*"
+  ]
 }

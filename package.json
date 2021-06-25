@@ -66,6 +66,10 @@
       "import": "./isNil.js",
       "require": "./isNil.cjs.js"
     },
+    "./isObject": {
+      "import": "./isObject.js",
+      "require": "./isObject.cjs.js"
+    },
     "./instanceOfBuiltin": {
       "import": "./instanceOfBuiltin.js",
       "require": "./instanceOfBuiltin.cjs.js"

@@ -13,11 +13,12 @@ if (Object.keys(pkg).length === 0) {
 const options = {
   plugins: [
     resolve({
-      extensions: [".js", ".ts"],
+      extensions: [".ts"],
     }),
     commonjs(),
     typescript({
       tsconfig: "./tsconfig.json",
+      // useTsconfigDeclarationDir: true,
     }),
   ],
   external: [].concat(
@@ -29,15 +30,16 @@ const options = {
   onwarn: (warning, onwarn) => warning.code === "CIRCULAR_DEPENDENCY" && onwarn(warning),
   watch: {
     clearScreen: false,
+    include: "utils",
     exclude: [
       "node_modules",
-      "./**/*.js",
-      "./**/*.cjs",
-      "./**/*.mjs",
-      "./**/*.map",
-      "./**/*.d.ts",
-      "./**/*.test.*",
-      "./**/*",
+      "*.js",
+      "*.cjs",
+      "*.mjs",
+      "*.map",
+      "*.d.ts",
+      "**/*.test.*",
+      "!utils/**/*",
     ],
   },
 }

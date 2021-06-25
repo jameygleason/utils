@@ -1,5 +1,9 @@
+/* eslint-disable import/no-commonjs, @typescript-eslint/no-var-requires */
+const fs = require("fs")
+
+const prettierConfig = JSON.parse(fs.readFileSync("./.prettierrc", "utf8"))
+
 /** @type {import('eslint').Linter.Config} */
-/* eslint-disable import/no-commonjs */
 module.exports = {
   root: true,
   env: {
@@ -13,7 +17,7 @@ module.exports = {
     sourceType: "module",
     allowImportExportEverywhere: true, // dynamic import
   },
-  extends: ["standard", "eslint:recommended", "plugin:mocha/recommended"],
+  extends: ["standard", "eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:mocha/recommended"],
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
@@ -29,6 +33,7 @@ module.exports = {
   },
   rules: {
     // ENV Specific
+    "@typescript-eslint/ban-ts-comment": 0,
     "@typescript-eslint/no-extra-semi": 0,
     "@typescript-eslint/no-unused-vars": [
       "error",
@@ -120,20 +125,7 @@ module.exports = {
     "object-shorthand": ["error", "always"],
     "prefer-const": 0,
     "prefer-regex-literals": 0,
-    "prettier/prettier": [
-      "error",
-      {
-        arrowParens: "avoid",
-        bracketSpacing: true,
-        endOfLine: "lf",
-        printWidth: 100,
-        semi: false,
-        singleQuote: false,
-        tabWidth: 2,
-        trailingComma: "all",
-        useTabs: false,
-      },
-    ],
+    "prettier/prettier": ["error", prettierConfig],
     semi: "error",
     "space-before-function-paren": [
       "error",
