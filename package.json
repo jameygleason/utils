@@ -82,6 +82,10 @@
       "import": "./mkdir.js",
       "require": "./mkdir.cjs.js"
     },
+    "./normalizeString": {
+      "import": "./normalizeString.js",
+      "require": "./normalizeString.cjs.js"
+    },
     "./objectToString": {
       "import": "./objectToString.js",
       "require": "./objectToString.cjs.js"
