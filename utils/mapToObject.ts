@@ -1,10 +1,7 @@
-// @ts-nocheck
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function mapToObject(m) {
-  const c = {}
-  for (const [_, v] of Object.entries(Object.fromEntries(m))) {
-    const k = Object.keys(v)[0]
-    c[k] = v[k]
+export function mapToObject(m: Map<any, unknown>): Record<string, unknown> {
+  const c: Record<string, unknown> = {}
+  for (const [k, v] of m) {
+    c[k] = v
   }
   return c
 }

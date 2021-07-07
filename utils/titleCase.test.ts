@@ -6,6 +6,10 @@ const apStyle = [{ input: "", output: "" }]
 const chicagoManuelOfStyle = [{ input: "", output: "" }]
 
 describe("titleCase", () => {
+  it.skip("TODO", () => {
+    // noop
+  })
+
   it.skip("Title cases string in the AP style", () => {
     for (const { input, output } of apStyle) {
       const [data, err] = titleCase(input)

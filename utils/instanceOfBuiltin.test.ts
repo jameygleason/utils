@@ -38,6 +38,10 @@ describe("instanceOfBuiltin", () => {
     assert.strictEqual(mm, "NO_MUTABLE_METHODS")
   })
 
+  function test() {
+    // noop
+  }
+
   it("Detects Function instance", () => {
     const [type, mm] = instanceOfBuiltin(test)
     assert.strictEqual(type, "Function")
