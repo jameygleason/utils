@@ -17,11 +17,7 @@ type DecryptionReturn = [string, Error | null]
  * @param {string!} key - 32 character public key
  * @param {string!} value - string you wish to decrypt
  */
-export async function decrypt(
-  key: string,
-  value: string,
-  options: Options,
-): Promise<DecryptionReturn> {
+export async function decrypt(key: string, value: string, options: Options): Promise<DecryptionReturn> {
   try {
     const algorithm = options?.algorithm || "aes-256-cbc"
     const byteLength = options?.byteLength || 16

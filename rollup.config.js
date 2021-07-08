@@ -31,16 +31,7 @@ const options = {
   watch: {
     clearScreen: false,
     include: "utils",
-    exclude: [
-      "node_modules",
-      "*.js",
-      "*.cjs",
-      "*.mjs",
-      "*.map",
-      "*.d.ts",
-      "**/*.test.*",
-      "!utils/**/*",
-    ],
+    exclude: ["node_modules", "*.js", "*.cjs", "*.mjs", "*.map", "*.d.ts", "**/*.test.*", "!utils/**/*"],
   },
 }
 
