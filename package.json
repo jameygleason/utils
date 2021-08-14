@@ -5,16 +5,22 @@
   "license": "",
   "description": "",
   "files": [
-    "dist",
     "README.md",
     "*.js",
     "*.ts",
     "*.cjs",
     "*.mjs",
     "*.map",
+    "!.config",
+    "!buildUtils",
+    "!scripts",
     "!rollup.config.js",
-    "!eslint.js",
-    "!eslint.cjs"
+    "!.eslintignore",
+    "!.eslint.js",
+    "!.eslint.cjs",
+    "!.gitignore",
+    "!.prettierignore",
+    "!.prettierrc"
   ],
   "homepage": "https://github.com/jameygleason/utils#readme",
   "repository": {
