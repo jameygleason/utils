@@ -40,6 +40,7 @@
     "push": "sh ./scripts/push.sh"
   },
   "exports": {
+    "./package.json": "./package.json",
     "./decamel": {
       "import": "./decamel.js",
       "require": "./decamel.cjs.js"
