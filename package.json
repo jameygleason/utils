@@ -15,12 +15,8 @@
     "!buildUtils",
     "!scripts",
     "!rollup.config.js",
-    "!.eslintignore",
     "!.eslint.js",
-    "!.eslint.cjs",
-    "!.gitignore",
-    "!.prettierignore",
-    "!.prettierrc"
+    "!.eslint.cjs"
   ],
   "homepage": "https://github.com/jameygleason/utils#readme",
   "repository": {
