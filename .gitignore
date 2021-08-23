@@ -2,8 +2,13 @@ node_modules
 *.js
 *.cjs
 *.mjs
+**/*.map
+**/*.d.ts
+!.config/**/*
 !utils/**/*
 !scripts/**/*
 !buildUtils/**/*
-**/*.map
-**/*.d.ts
+!.eslintrc.js
+!.eslintrc.cjs
+!.eslintrc.cjs
+!rollup.config.js
