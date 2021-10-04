@@ -44,25 +44,25 @@ for (const k of Object.keys(pkg.exports)) {
     input: `./utils/${filename}.ts`,
     output: [
       {
-        file: `./${filename}.js`,
+        file: `./dist/${filename}.js`,
         format: "es",
         sourcemap: true,
         exports: "named",
       },
       {
-        file: `./${filename}.mjs`,
+        file: `./dist/${filename}.mjs`,
         format: "es",
         sourcemap: true,
         exports: "named",
       },
       {
-        file: `./${filename}.cjs.js`,
+        file: `./dist/${filename}.cjs.js`,
         format: "cjs",
         sourcemap: true,
         exports: "named",
       },
       {
-        file: `./${filename}.cjs`,
+        file: `./dist/${filename}.cjs`,
         format: "cjs",
         sourcemap: true,
         exports: "named",

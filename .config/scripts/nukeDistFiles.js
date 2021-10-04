@@ -1,7 +1,7 @@
 import fs from "fs"
 import path from "path"
 import fg from "fast-glob"
-import { rimrafJS } from "../buildUtils/rimrafJS.js"
+import { rimrafJS } from "../../buildUtils/rimrafJS.js"
 
 const pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"))
 if (Object.keys(pkg).length === 0) {

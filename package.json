@@ -30,112 +30,115 @@
   "scripts": {
     "dev": "rollup -c -w",
     "build": "cross-env NODE_ENV=production && rollup -c",
-    "clean": "node -r esm ./scripts/nukeDistFiles.js",
-    "install:all": "sh ./scripts/install.sh && rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\"",
-    "install:clean": "sh ./scripts/clean-install.sh && rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\"",
+    "clean": "node -r esm ./.config/scripts/nukeDistFiles.js",
+    "install:all": "sh ./.config/scripts/install.sh && rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\"",
+    "install:clean": "sh ./.config/scripts/clean-install.sh && rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\"",
     "test": "mocha -r esm --config=.config/.mocharc.json --watch utils/**/*.test.ts",
     "lint": "lint-staged --config .config/lint-staged.config.cjs",
     "minor": "npm run build && npm version minor --force && npm publish",
     "patch": "npm run build && npm version patch --force && npm publish",
-    "push": "sh ./scripts/push.sh"
+    "push": "sh ./.config/scripts/push.sh"
   },
   "exports": {
-    "./package.json": "./package.json",
     "./decamel": {
-      "import": "./decamel.js",
-      "require": "./decamel.cjs.js"
+      "import": "./dist/decamel.js",
+      "require": "./dist/decamel.cjs.js"
     },
     "./decrypt": {
-      "import": "./decrypt.js",
-      "require": "./decrypt.cjs.js"
+      "import": "./dist/decrypt.js",
+      "require": "./dist/decrypt.cjs.js"
     },
     "./deepIsNil": {
-      "import": "./deepIsNil.js",
-      "require": "./deepIsNil.cjs.js"
+      "import": "./dist/deepIsNil.js",
+      "require": "./dist/deepIsNil.cjs.js"
     },
     "./encrypt": {
-      "import": "./encrypt.js",
-      "require": "./encrypt.cjs.js"
+      "import": "./dist/encrypt.js",
+      "require": "./dist/encrypt.cjs.js"
     },
     "./formatCurrency": {
-      "import": "./formatCurrency.js",
-      "require": "./formatCurrency.cjs.js"
+      "import": "./dist/formatCurrency.js",
+      "require": "./dist/formatCurrency.cjs.js"
     },
     "./getFirstName": {
-      "import": "./getFirstName.js",
-      "require": "./getFirstName.cjs.js"
+      "import": "./dist/getFirstName.js",
+      "require": "./dist/getFirstName.cjs.js"
     },
     "./isNil": {
-      "import": "./isNil.js",
-      "require": "./isNil.cjs.js"
+      "import": "./dist/isNil.js",
+      "require": "./dist/isNil.cjs.js"
     },
     "./isObject": {
-      "import": "./isObject.js",
-      "require": "./isObject.cjs.js"
+      "import": "./dist/isObject.js",
+      "require": "./dist/isObject.cjs.js"
     },
     "./instanceOfBuiltin": {
-      "import": "./instanceOfBuiltin.js",
-      "require": "./instanceOfBuiltin.cjs.js"
+      "import": "./dist/instanceOfBuiltin.js",
+      "require": "./dist/instanceOfBuiltin.cjs.js"
     },
     "./mapToObject": {
-      "import": "./mapToObject.js",
-      "require": "./mapToObject.cjs.js"
+      "import": "./dist/mapToObject.js",
+      "require": "./dist/mapToObject.cjs.js"
     },
     "./mkdir": {
-      "import": "./mkdir.js",
-      "require": "./mkdir.cjs.js"
+      "import": "./dist/mkdir.js",
+      "require": "./dist/mkdir.cjs.js"
     },
     "./normalizeString": {
-      "import": "./normalizeString.js",
-      "require": "./normalizeString.cjs.js"
+      "import": "./dist/normalizeString.js",
+      "require": "./dist/normalizeString.cjs.js"
     },
     "./objectToString": {
-      "import": "./objectToString.js",
-      "require": "./objectToString.cjs.js"
+      "import": "./dist/objectToString.js",
+      "require": "./dist/objectToString.cjs.js"
     },
     "./printElapsed": {
-      "import": "./printElapsed.js",
-      "require": "./printElapsed.cjs.js"
+      "import": "./dist/printElapsed.js",
+      "require": "./dist/printElapsed.cjs.js"
     },
     "./randomBytes": {
-      "import": "./randomBytes.js",
-      "require": "./randomBytes.cjs.js"
+      "import": "./dist/randomBytes.js",
+      "require": "./dist/randomBytes.cjs.js"
     },
     "./rimraf": {
-      "import": "./rimraf.js",
-      "require": "./rimraf.cjs.js"
+      "import": "./dist/rimraf.js",
+      "require": "./dist/rimraf.cjs.js"
     },
     "./safeJSONParse": {
-      "import": "./safeJSONParse.js",
-      "require": "./safeJSONParse.cjs.js"
+      "import": "./dist/safeJSONParse.js",
+      "require": "./dist/safeJSONParse.cjs.js"
     },
     "./slugify": {
-      "import": "./slugify.js",
-      "require": "./slugify.cjs.js"
+      "import": "./dist/slugify.js",
+      "require": "./dist/slugify.cjs.js"
     },
     "./splitRunes": {
-      "import": "./splitRunes.js",
-      "require": "./splitRunes.cjs.js"
+      "import": "./dist/splitRunes.js",
+      "require": "./dist/splitRunes.cjs.js"
     },
     "./stripEmojis": {
-      "import": "./stripEmojis.js",
-      "require": "./stripEmojis.cjs.js"
+      "import": "./dist/stripEmojis.js",
+      "require": "./dist/stripEmojis.cjs.js"
+    },
+    "./struct": {
+      "import": "./dist/struct.js",
+      "require": "./dist/struct.cjs.js"
     },
     "./titleCase": {
-      "import": "./titleCase.js",
-      "require": "./titleCase.cjs.js"
+      "import": "./dist/titleCase.js",
+      "require": "./dist/titleCase.cjs.js"
     },
     "./toUpperCase": {
-      "import": "./toUpperCase.js",
-      "require": "./toUpperCase.cjs.js"
+      "import": "./dist/toUpperCase.js",
+      "require": "./dist/toUpperCase.cjs.js"
     },
     "./unsafeStripHTML": {
-      "import": "./unsafeStripHTML.js",
-      "require": "./unsafeStripHTML.cjs.js"
+      "import": "./dist/unsafeStripHTML.js",
+      "require": "./dist/unsafeStripHTML.cjs.js"
     },
     "./wait": {
-      "import": "./wait.js",
-      "require": "./wait.cjs.js"
+      "import": "./dist/wait.js",
+      "require": "./dist/wait.cjs.js"
     }
   },
   "devDependencies": {
@@ -152,9 +155,9 @@
     "cross-env": "7.0.3",
     "eslint": "7.23.0",
     "eslint-config-standard": "16.0.2",
-    "eslint-import-resolver-typescript": "2.4.0",
-    "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-json": "2.1.2",
+    "eslint-import-resolverdist/-typescript": "2.4.0",
+    "eslint-plugin-importdistdist//": "2.22.1",
+    "eslint-plugin-jsondist/": "2.1.2",
     "eslint-plugin-mocha": "8.1.0",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "3.3.1",
