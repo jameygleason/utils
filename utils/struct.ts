@@ -1,4 +1,5 @@
 // @ts-nocheck
+
 export function struct(obj) {
   return Object.seal(obj)
 }
