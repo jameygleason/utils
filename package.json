@@ -1,7 +1,7 @@
 {
   "name": "@signalchain/utils",
   "author": "",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "license": "",
   "description": "",
   "files": [
@@ -41,104 +41,104 @@
   },
   "exports": {
     "./decamel": {
-      "import": "./decamel.js",
-      "require": "./decamel.cjs.js"
+      "import": "./decamel.mjs",
+      "require": "./decamel.cjs"
     },
     "./decrypt": {
-      "import": "./decrypt.js",
-      "require": "./decrypt.cjs.js"
+      "import": "./decrypt.mjs",
+      "require": "./decrypt.cjs"
     },
     "./deepIsNil": {
-      "import": "./deepIsNil.js",
-      "require": "./deepIsNil.cjs.js"
+      "import": "./deepIsNil.mjs",
+      "require": "./deepIsNil.cjs"
     },
     "./encrypt": {
-      "import": "./encrypt.js",
-      "require": "./encrypt.cjs.js"
+      "import": "./encrypt.mjs",
+      "require": "./encrypt.cjs"
     },
     "./formatCurrency": {
-      "import": "./formatCurrency.js",
-      "require": "./formatCurrency.cjs.js"
+      "import": "./formatCurrency.mjs",
+      "require": "./formatCurrency.cjs"
     },
     "./getFirstName": {
-      "import": "./getFirstName.js",
-      "require": "./getFirstName.cjs.js"
+      "import": "./getFirstName.mjs",
+      "require": "./getFirstName.cjs"
     },
     "./isNil": {
-      "import": "./isNil.js",
-      "require": "./isNil.cjs.js"
+      "import": "./isNil.mjs",
+      "require": "./isNil.cjs"
     },
     "./isObject": {
-      "import": "./isObject.js",
-      "require": "./isObject.cjs.js"
+      "import": "./isObject.mjs",
+      "require": "./isObject.cjs"
     },
     "./instanceOfBuiltin": {
-      "import": "./instanceOfBuiltin.js",
-      "require": "./instanceOfBuiltin.cjs.js"
+      "import": "./instanceOfBuiltin.mjs",
+      "require": "./instanceOfBuiltin.cjs"
     },
     "./mapToObject": {
-      "import": "./mapToObject.js",
-      "require": "./mapToObject.cjs.js"
+      "import": "./mapToObject.mjs",
+      "require": "./mapToObject.cjs"
     },
     "./mkdir": {
-      "import": "./mkdir.js",
-      "require": "./mkdir.cjs.js"
+      "import": "./mkdir.mjs",
+      "require": "./mkdir.cjs"
     },
     "./normalizeString": {
-      "import": "./normalizeString.js",
-      "require": "./normalizeString.cjs.js"
+      "import": "./normalizeString.mjs",
+      "require": "./normalizeString.cjs"
     },
     "./objectToString": {
-      "import": "./objectToString.js",
-      "require": "./objectToString.cjs.js"
+      "import": "./objectToString.mjs",
+      "require": "./objectToString.cjs"
     },
     "./printElapsed": {
-      "import": "./printElapsed.js",
-      "require": "./printElapsed.cjs.js"
+      "import": "./printElapsed.mjs",
+      "require": "./printElapsed.cjs"
     },
     "./randomBytes": {
-      "import": "./randomBytes.js",
-      "require": "./randomBytes.cjs.js"
+      "import": "./randomBytes.mjs",
+      "require": "./randomBytes.cjs"
     },
     "./rimraf": {
-      "import": "./rimraf.js",
-      "require": "./rimraf.cjs.js"
+      "import": "./rimraf.mjs",
+      "require": "./rimraf.cjs"
     },
     "./safeJSONParse": {
-      "import": "./safeJSONParse.js",
-      "require": "./safeJSONParse.cjs.js"
+      "import": "./safeJSONParse.mjs",
+      "require": "./safeJSONParse.cjs"
     },
     "./slugify": {
-      "import": "./slugify.js",
-      "require": "./slugify.cjs.js"
+      "import": "./slugify.mjs",
+      "require": "./slugify.cjs"
     },
     "./splitRunes": {
-      "import": "./splitRunes.js",
-      "require": "./splitRunes.cjs.js"
+      "import": "./splitRunes.mjs",
+      "require": "./splitRunes.cjs"
     },
     "./stripEmojis": {
-      "import": "./stripEmojis.js",
-      "require": "./stripEmojis.cjs.js"
+      "import": "./stripEmojis.mjs",
+      "require": "./stripEmojis.cjs"
     },
     "./struct": {
-      "import": "./struct.js",
-      "require": "./struct.cjs.js"
+      "import": "./struct.mjs",
+      "require": "./struct.cjs"
     },
     "./titleCase": {
-      "import": "./titleCase.js",
-      "require": "./titleCase.cjs.js"
+      "import": "./titleCase.mjs",
+      "require": "./titleCase.cjs"
     },
     "./toUpperCase": {
-      "import": "./toUpperCase.js",
-      "require": "./toUpperCase.cjs.js"
+      "import": "./toUpperCase.mjs",
+      "require": "./toUpperCase.cjs"
     },
     "./unsafeStripHTML": {
-      "import": "./unsafeStripHTML.js",
-      "require": "./unsafeStripHTML.cjs.js"
+      "import": "./unsafeStripHTML.mjs",
+      "require": "./unsafeStripHTML.cjs"
     },
     "./wait": {
-      "import": "./wait.js",
-      "require": "./wait.cjs.js"
+      "import": "./wait.mjs",
+      "require": "./wait.cjs"
     }
   },
   "devDependencies": {
