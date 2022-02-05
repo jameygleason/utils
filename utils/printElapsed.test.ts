@@ -1,8 +1,8 @@
 import { assert } from "chai"
-// import { printElapsed } from "../printElapsed.js"
+// import { printElapsed } from "../dist/printElapsed.js"
 
 describe("printElapsed", () => {
-  it.skip("TODO", () => {
-    assert.strictEqual("TODO", "true")
-  })
+	it.skip("TODO", () => {
+		assert.strictEqual("TODO", "true")
+	})
 })

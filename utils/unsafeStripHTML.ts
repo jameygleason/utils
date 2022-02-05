@@ -3,6 +3,5 @@
 // Note: It preserves whitespace.
 // Current use case: Remove HTML tags from email templates to produce plain text version of email.
 export function unsafeStripHTML(markup: string): string {
-  const StrippedString = markup.replace(/(<([^>]+)>)/gi, "")
-  return StrippedString
+	return markup.replace(/(<([^>]+)>)/gi, "")
 }

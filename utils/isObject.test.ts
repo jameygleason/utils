@@ -1,8 +1,8 @@
 import { assert } from "chai"
-// import { isObject } from "../isObject.js"
+// import { isObject } from "../dist/isObject.js"
 
 describe("isObject", () => {
-  it.skip("TODO", () => {
-    assert.strictEqual("TODO", "true")
-  })
+	it.skip("TODO", () => {
+		assert.strictEqual("TODO", "true")
+	})
 })
