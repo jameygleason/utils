@@ -1,31 +1,24 @@
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": true,
-    "declaration": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "lib": ["es2020", "dom", "dom.iterable"],
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "noImplicitThis": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "stripInternal": true,
-    "target": "es2019",
-    "types": ["node", "mocha"]
-  },
-  "include": ["utils"],
-  "exclude": [
-    "node_modules",
-    "**/*.js",
-    "**/*.cjs",
-    "**/*.mjs",
-    "**/*.map",
-    "**/*.d.ts",
-    "**/*.test.*"
-  ]
+	"compilerOptions": {
+		"noEmit": true,
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"allowUnreachableCode": true,
+		"declaration": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"importHelpers": true,
+		"lib": ["es2020", "dom", "dom.iterable"],
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"noImplicitThis": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"stripInternal": true,
+		"target": "es2019",
+		"types": ["node"]
+	},
+	"include": ["utils"],
+	"exclude": ["node_modules", "dist"]
 }

@@ -1,6 +1,6 @@
 import fs from "fs"
 import path from "path"
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 import { rimraf } from "../dist/rimraf.js"
 import { mkdir } from "../dist/mkdir.js"
 

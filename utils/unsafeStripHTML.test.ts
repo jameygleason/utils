@@ -1,4 +1,4 @@
-import { strictEqual, notStrictEqual } from "assert"
+import { describe, it, assert } from "vitest"
 import { unsafeStripHTML } from "../dist/unsafeStripHTML.js"
 
 const pass = [
@@ -45,14 +45,14 @@ describe("unsafeStripHTML", () => {
 	it("Strips HTML tags from a string", () => {
 		for (const { input, output } of pass) {
 			const str = unsafeStripHTML(input)
-			strictEqual(str, output)
+			assert.strictEqual(str, output)
 		}
 	})
 
 	it("Fails to strips HTML tags from a string", () => {
 		for (const { input, output } of fail) {
 			const str = unsafeStripHTML(input)
-			notStrictEqual(str, output)
+			assert.notStrictEqual(str, output)
 		}
 	})
 })

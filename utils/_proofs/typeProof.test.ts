@@ -1,4 +1,4 @@
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 
 // Six Data Types that are primitives, checked by typeof operator:
 // undefined

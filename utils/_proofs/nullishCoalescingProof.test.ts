@@ -1,4 +1,4 @@
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 
 describe("Nullish Coalescing Proof", () => {
 	const proveNullish = [

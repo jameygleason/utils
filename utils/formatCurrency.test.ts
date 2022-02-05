@@ -1,4 +1,4 @@
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 import { formatCurrency } from "../dist/formatCurrency.js"
 
 const defaults = [

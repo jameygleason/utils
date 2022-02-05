@@ -1,4 +1,4 @@
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 import { normalizeString } from "../dist/normalizeString.js"
 
 const pass = [

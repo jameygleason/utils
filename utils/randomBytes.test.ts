@@ -1,4 +1,4 @@
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 // import { randomBytes } from "../dist/randomBytes.js"
 
 // const nums = [10, 25, 50, 73, 512]

@@ -1,4 +1,4 @@
-import { strictEqual } from "assert"
+import { describe, it, assert } from "vitest"
 import { toUpperCase } from "../dist/toUpperCase.js"
 
 const testCases = [
@@ -42,12 +42,12 @@ describe("toUpperCase", () => {
 			const [data, error] = toUpperCase(input)
 
 			if (error !== null) {
-				strictEqual(true, false)
+				assert.strictEqual(true, false)
 				return
 			}
 
 			if (data === null) {
-				strictEqual(true, false)
+				assert.strictEqual(true, false)
 				return
 			}
 
@@ -55,11 +55,11 @@ describe("toUpperCase", () => {
 			const reTest = re.test(data)
 
 			if (input === "break case") {
-				strictEqual(reTest, false)
+				assert.strictEqual(reTest, false)
 				return
 			}
 
-			strictEqual(reTest, true)
+			assert.strictEqual(reTest, true)
 		}
 	})
 })

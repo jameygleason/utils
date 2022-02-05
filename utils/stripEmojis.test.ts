@@ -1,4 +1,4 @@
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 import { stripEmojis } from "../dist/stripEmojis.js"
 
 const testCases = [

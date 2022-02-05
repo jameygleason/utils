@@ -1,4 +1,4 @@
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 
 describe("Type Coercion Proof", () => {
 	const proveCoercion = [

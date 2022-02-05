@@ -1,4 +1,4 @@
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 // import { isObject } from "../dist/isObject.js"
 
 describe("isObject", () => {

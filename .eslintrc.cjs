@@ -9,7 +9,6 @@ module.exports = {
 	env: {
 		es6: true,
 		node: true,
-		mocha: true,
 	},
 	parser: "@typescript-eslint/parser",
 	parserOptions: {
@@ -17,7 +16,7 @@ module.exports = {
 		sourceType: "module",
 		allowImportExportEverywhere: true, // dynamic import
 	},
-	extends: ["standard", "eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:mocha/recommended"],
+	extends: ["standard", "eslint:recommended", "plugin:@typescript-eslint/recommended"],
 	globals: {
 		Atomics: "readonly",
 		SharedArrayBuffer: "readonly",
@@ -25,7 +24,7 @@ module.exports = {
 		caches: true,
 		fetch: true,
 	},
-	plugins: ["@typescript-eslint", "node", "import", "json", "prettier", "mocha"],
+	plugins: ["@typescript-eslint", "node", "import", "json", "prettier"],
 	settings: {
 		"import/resolver": {
 			typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
@@ -44,11 +43,6 @@ module.exports = {
 				varsIgnorePattern: "^_|req|res|next|args|ctx|__",
 			},
 		],
-		"mocha/handle-done-callback": "error",
-		"mocha/max-top-level-suites": 0,
-		"mocha/no-mocha-arrows": 0,
-		"mocha/no-setup-in-describe": 0,
-		"mocha/no-skipped-tests": 0,
 		// END
 
 		camelcase: 0,

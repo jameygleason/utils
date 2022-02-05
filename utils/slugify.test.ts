@@ -1,4 +1,4 @@
-import { expect } from "chai"
+import { describe, it, expect } from "vitest"
 import { slugify } from "../dist/slugify.js"
 
 const whitespace = [

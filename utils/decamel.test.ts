@@ -1,4 +1,4 @@
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 import { decamel } from "../dist/decamel.js"
 
 const tests = [

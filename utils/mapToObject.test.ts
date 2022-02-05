@@ -1,4 +1,4 @@
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 import { mapToObject } from "../dist/mapToObject.js"
 import type { MapKey } from "./mapToObject"
 

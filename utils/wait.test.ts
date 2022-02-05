@@ -1,5 +1,5 @@
 // import { performance } from "perf_hooks"
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 // import { wait } from "../dist/wait.js"
 
 describe("wait", () => {

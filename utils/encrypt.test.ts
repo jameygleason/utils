@@ -1,4 +1,4 @@
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 // import { encrypt } from "../dist/encrypt.js"
 
 describe("encrypt", () => {

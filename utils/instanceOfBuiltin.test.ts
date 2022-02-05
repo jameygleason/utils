@@ -1,4 +1,4 @@
-import { assert } from "chai"
+import { describe, it, assert } from "vitest"
 import { instanceOfBuiltin } from "../dist/instanceOfBuiltin.js"
 
 describe("instanceOfBuiltin", () => {
