@@ -37,9 +37,9 @@
 		"test": "vitest --config=.config/vite.config.ts",
 		"lint": "lint-staged --config .config/lint-staged.config.cjs",
 		"minor": "npm run minor:pre && cd dist && npm publish",
-		"minor:pre": "npm run build && npm version minor --force && cp -r package.json .npmrc .npmignore dist",
+		"minor:pre": "npm run build && npm version minor && cp -r package.json .npmrc .npmignore dist",
 		"patch": "npm run patch:pre && cd dist && npm publish",
-		"patch:pre": "npm run build && npm version patch --force && cp -r package.json .npmrc .npmignore dist",
+		"patch:pre": "npm run build && npm version patch && cp -r package.json .npmrc .npmignore dist",
 		"push": "sh ./.config/scripts/push.sh"
 	},
 	"exports": {
