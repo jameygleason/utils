@@ -36,9 +36,10 @@
 		"install:clean": "sh ./.config/scripts/clean-install.sh && rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\"",
 		"test": "vitest --config=.config/vite.config.ts",
 		"lint": "lint-staged --config .config/lint-staged.config.cjs",
-		"pre-deploy": "npm run build && cp -r package.json .npmrc .npmignore dist && cd dist",
-		"minor": "npm run pre-deploy && npm version minor --force && npm publish",
-		"patch": "npm run pre-deploy && npm version patch --force && npm publish",
+		"minor": "npm run minor:pre && cd dist && npm publish",
+		"minor:pre": "npm run build && npm version minor --force && cp -r package.json .npmrc .npmignore dist",
+		"patch": "npm run patch:pre && cd dist && npm publish",
+		"patch:pre": "npm run build && npm version patch --force && cp -r package.json .npmrc .npmignore dist",
 		"push": "sh ./.config/scripts/push.sh"
 	},
 	"exports": {
