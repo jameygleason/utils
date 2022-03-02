@@ -34,7 +34,7 @@ const testCases = [
 			500,
 			{
 				name: "#89754824",
-				message: "Number was passed instead of string. may result in unexpected behavior.",
+				message: 'Input type "number" is not valid JSON',
 			},
 		],
 	},
@@ -43,7 +43,6 @@ const testCases = [
 describe("safeJSONParse", () => {
 	it("Safely parse JSON strings", () => {
 		for (const { input, output } of testCases) {
-			// @ts-expect-error
 			const [data, error] = safeJSONParse(input)
 
 			expect(data).to.eql(output[0])
