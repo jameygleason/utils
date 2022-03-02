@@ -1,12 +1,12 @@
 .config
 .DS_Store
+buildUtils
+node_modules/
+src
 .eslintignore
 .eslintrc.cjs
 .gitignore
-.prettierc
 .prettierignore
-buildUtils
-node_modules/
+.prettierc
 rollup.config.js
-src
 tsconfig.json
