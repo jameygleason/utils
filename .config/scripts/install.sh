@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo "" && \
-echo Installing Root Deps && \
-echo "" && \
-npm i && \
+echo ""
+echo Installing Root Deps
+echo ""
+npm i
 
-exit
+npm run init:husky
