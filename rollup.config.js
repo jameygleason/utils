@@ -6,6 +6,7 @@ import resolve from "@rollup/plugin-node-resolve"
 import typescript from "@rollup/plugin-typescript"
 import dts from "rollup-plugin-dts"
 import { writeBarrelFile } from "./buildUtils/writeBarrelFile.js"
+import { rewriteExports } from "./buildUtils/rewriteExports.js"
 import { cleanBuildArtifacts } from "./buildUtils/cleanBuildArtifacts.js"
 
 cleanBuildArtifacts()
@@ -113,5 +114,36 @@ for (const k of Object.keys(pkg.exports)) {
 		plugins: typesPlugins,
 	})
 }
+
+config.push({
+	input: "src/index.js",
+	output: [
+		{
+			file: "dist/noop.js",
+			format: "es",
+			sourcemap: true,
+			exports: "named",
+		},
+		// {
+		// 	file: `dist/index.js`,
+		// 	format: "es",
+		// 	sourcemap: true,
+		// 	exports: "named",
+		// },
+		// {
+		// 	file: `dist/index.mjs`,
+		// 	format: "es",
+		// 	sourcemap: true,
+		// 	exports: "named",
+		// },
+		// {
+		// 	file: `dist/index.cjs`,
+		// 	format: "cjs",
+		// 	sourcemap: true,
+		// 	exports: "named",
+		// },
+	],
+	plugins: [rewriteExports()],
+})
 
 export default config

@@ -1,8 +1,8 @@
 {
 	"name": "@signalchain/utils",
-	"author": "",
-	"version": "0.5.5",
 	"type": "module",
+	"version": "0.5.5",
+	"author": "",
 	"license": "",
 	"description": "",
 	"files": [
@@ -14,12 +14,16 @@
 	"homepage": "https://github.com/jameygleason/utils#readme",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/jameygleason/utils.git"
+		"url": "https://github.com/jameygleason/utils.git"
 	},
 	"bugs": {
 		"url": "https://github.com/jameygleason/utils/issues"
 	},
-	"keywords": [],
+	"keywords": [
+		"JavaScript Utilities",
+		"Utils",
+		"Utility Library"
+	],
 	"scripts": {
 		"dev": "rollup -c -w",
 		"build": "cross-env NODE_ENV=production && rollup -c",
@@ -35,8 +39,8 @@
 		"push": "sh ./.config/scripts/push.sh",
 		"postinstall": "rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\""
 	},
-	"module": "dist/index.js",
 	"main": "dist/index.cjs",
+	"module": "dist/index.js",
 	"types": "types/index.d.ts",
 	"exports": {
 		".": {
@@ -46,103 +50,103 @@
 		},
 		"./decamel": {
 			"import": "./dist/decamel.js",
-			"require": "./decamel.cjs"
+			"require": "./dist/decamel.cjs"
 		},
 		"./decrypt": {
 			"import": "./dist/decrypt.js",
-			"require": "./decrypt.cjs"
+			"require": "./dist/decrypt.cjs"
 		},
 		"./deepIsNil": {
 			"import": "./dist/deepIsNil.js",
-			"require": "./deepIsNil.cjs"
+			"require": "./dist/deepIsNil.cjs"
 		},
 		"./encrypt": {
 			"import": "./dist/encrypt.js",
-			"require": "./encrypt.cjs"
+			"require": "./dist/encrypt.cjs"
 		},
 		"./formatCurrency": {
 			"import": "./dist/formatCurrency.js",
-			"require": "./formatCurrency.cjs"
+			"require": "./dist/formatCurrency.cjs"
 		},
 		"./getFirstName": {
 			"import": "./dist/getFirstName.js",
-			"require": "./getFirstName.cjs"
+			"require": "./dist/getFirstName.cjs"
 		},
 		"./isNil": {
 			"import": "./dist/isNil.js",
-			"require": "./isNil.cjs"
+			"require": "./dist/isNil.cjs"
 		},
 		"./isObject": {
 			"import": "./dist/isObject.js",
-			"require": "./isObject.cjs"
+			"require": "./dist/isObject.cjs"
 		},
 		"./instanceOfBuiltin": {
 			"import": "./dist/instanceOfBuiltin.js",
-			"require": "./instanceOfBuiltin.cjs"
+			"require": "./dist/instanceOfBuiltin.cjs"
 		},
 		"./mapToObject": {
 			"import": "./dist/mapToObject.js",
-			"require": "./mapToObject.cjs"
+			"require": "./dist/mapToObject.cjs"
 		},
 		"./mkdir": {
 			"import": "./dist/mkdir.js",
-			"require": "./mkdir.cjs"
+			"require": "./dist/mkdir.cjs"
 		},
 		"./normalizeString": {
 			"import": "./dist/normalizeString.js",
-			"require": "./normalizeString.cjs"
+			"require": "./dist/normalizeString.cjs"
 		},
 		"./objectToString": {
 			"import": "./dist/objectToString.js",
-			"require": "./objectToString.cjs"
+			"require": "./dist/objectToString.cjs"
 		},
 		"./printElapsed": {
 			"import": "./dist/printElapsed.js",
-			"require": "./printElapsed.cjs"
+			"require": "./dist/printElapsed.cjs"
 		},
 		"./randomBytes": {
 			"import": "./dist/randomBytes.js",
-			"require": "./randomBytes.cjs"
+			"require": "./dist/randomBytes.cjs"
 		},
 		"./rimraf": {
 			"import": "./dist/rimraf.js",
-			"require": "./rimraf.cjs"
+			"require": "./dist/rimraf.cjs"
 		},
 		"./safeJSONParse": {
 			"import": "./dist/safeJSONParse.js",
-			"require": "./safeJSONParse.cjs"
+			"require": "./dist/safeJSONParse.cjs"
 		},
 		"./slugify": {
 			"import": "./dist/slugify.js",
-			"require": "./slugify.cjs"
+			"require": "./dist/slugify.cjs"
 		},
 		"./splitRunes": {
 			"import": "./dist/splitRunes.js",
-			"require": "./splitRunes.cjs"
+			"require": "./dist/splitRunes.cjs"
 		},
 		"./stripEmojis": {
 			"import": "./dist/stripEmojis.js",
-			"require": "./stripEmojis.cjs"
+			"require": "./dist/stripEmojis.cjs"
 		},
 		"./struct": {
 			"import": "./dist/struct.js",
-			"require": "./struct.cjs"
+			"require": "./dist/struct.cjs"
 		},
 		"./titleCase": {
 			"import": "./dist/titleCase.js",
-			"require": "./titleCase.cjs"
+			"require": "./dist/titleCase.cjs"
 		},
 		"./toUpperCase": {
 			"import": "./dist/toUpperCase.js",
-			"require": "./toUpperCase.cjs"
+			"require": "./dist/toUpperCase.cjs"
 		},
 		"./unsafeStripHTML": {
 			"import": "./dist/unsafeStripHTML.js",
-			"require": "./unsafeStripHTML.cjs"
+			"require": "./dist/unsafeStripHTML.cjs"
 		},
 		"./wait": {
 			"import": "./dist/wait.js",
-			"require": "./wait.cjs"
+			"require": "./dist/wait.cjs"
 		}
 	},
 	"devDependencies": {
@@ -170,7 +174,7 @@
 		"husky": "^7.0.4",
 		"kleur": "^4.1.4",
 		"lint-staged": "^12.3.3",
-		"prettier": "2.5.1",
+		"prettier": "^2.5.1",
 		"rollup": "^2.69.0",
 		"rollup-plugin-dts": "^4.1.0",
 		"sinon": "^11.1.1",

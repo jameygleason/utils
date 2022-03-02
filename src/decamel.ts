@@ -41,5 +41,6 @@ export function decamel(str: string): string {
 
 		newStr = newStr + str[i]
 	}
+
 	return newStr
 }

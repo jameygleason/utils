@@ -21,9 +21,10 @@ export function writeBarrelFile() {
 				if (file === ".") {
 					continue
 				}
+
 				esm = esm + `${i > 0 ? "\n" : ""}` + `export * from "${file}.js"`
 				mjs = mjs + `${i > 0 ? "\n" : ""}` + `export * from "${file}.mjs"`
-				cjs = cjs + `${i > 0 ? "\n" : ""}` + `export * from "${file}.cjs"`
+				cjs = cjs + `${i > 0 ? "\n" : ""}` + `module.exports.${file.slice(2, file.length)} = require("${file}.cjs")`
 				types = types + `${i > 0 ? "\n" : ""}` + `export * from "${file}.d"`
 				i++
 			}
