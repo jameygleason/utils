@@ -15,7 +15,7 @@
  */
 
 export function catch_errors(fn) {
-  return function (...args) {
-    return fn(...args).catch(err => console.error(err))
-  }
+	return function (...args) {
+		return fn(...args).catch(err => console.error(err))
+	}
 }

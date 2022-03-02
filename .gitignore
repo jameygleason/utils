@@ -1,15 +1,3 @@
 node_modules
 dist
-*.js
-*.cjs
-*.mjs
-**/*.map
-**/*.d.ts
-!.config/**/*
-!utils/**/*
-!scripts/**/*
-!buildUtils/**/*
-!.eslintrc.js
-!.eslintrc.cjs
-!.eslintrc.cjs
-!rollup.config.js
+types

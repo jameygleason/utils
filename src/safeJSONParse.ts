@@ -1,4 +1,4 @@
-type SafeJSONParseReturn = [Object | any[], Error | null]
+type SafeJSONParseReturn = [Record<any, any> | any[] | string, Error | null]
 
 /**
  * Safe JSON parse
@@ -7,15 +7,6 @@ type SafeJSONParseReturn = [Object | any[], Error | null]
  */
 export function safeJSONParse(str: string): SafeJSONParseReturn {
 	try {
-		if (str.constructor === Number) {
-			return [
-				500,
-				{
-					name: "#89754824",
-					message: "Number was passed instead of string. may result in unexpected behavior.",
-				},
-			]
-		}
 		return [JSON.parse(str), null]
 	} catch (err) {
 		return [

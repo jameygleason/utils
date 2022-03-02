@@ -1,8 +1,8 @@
 import { instanceOfBuiltin } from "./instanceOfBuiltin"
 
-type Types = undefined | null | string | number | Array<any> | Object
+type ArgTypes = undefined | null | string | number | Array<any> | Record<any, any>
 
-export function isNil(arg: Types): boolean {
+export function isNil(arg: ArgTypes): boolean {
 	if (
 		arg === undefined ||
 		arg === null ||

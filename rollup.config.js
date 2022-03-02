@@ -3,67 +3,114 @@ import path from "path"
 import module from "module"
 import commonjs from "@rollup/plugin-commonjs"
 import resolve from "@rollup/plugin-node-resolve"
-import typescript from "rollup-plugin-typescript2"
+import typescript from "@rollup/plugin-typescript"
+import dts from "rollup-plugin-dts"
+import { writeBarrelFile } from "./buildUtils/writeBarrelFile.js"
+import { cleanBuildArtifacts } from "./buildUtils/cleanBuildArtifacts.js"
+
+cleanBuildArtifacts()
 
 const pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"))
 if (Object.keys(pkg).length === 0) {
 	console.error("Failed to parse package.json")
 }
 
-const options = {
-	plugins: [
-		resolve({
-			extensions: [".ts"],
-		}),
-		commonjs(),
-		typescript({
-			tsconfig: "./tsconfig.json",
-			// useTsconfigDeclarationDir: true,
-		}),
-	],
-	external: [].concat(
-		Object.keys(pkg.dependencies || {}),
-		Object.keys(pkg.devDependencies || {}),
-		Object.keys(pkg.peerDependencies || {}),
-		module.builtinModules,
-	),
-	onwarn: (warning, onwarn) => warning.code === "CIRCULAR_DEPENDENCY" && onwarn(warning),
-	watch: {
-		clearScreen: false,
-		include: "utils",
-		exclude: ["node_modules", "*.js", "*.cjs", "*.mjs", "*.map", "*.d.ts", "**/*.test.*", "!utils/**/*"],
-	},
-}
+const filePlugins = [
+	typescript(),
+	resolve({
+		extensions: ["js", ".ts"],
+	}),
+	commonjs(),
+]
 
-const config = []
+const typesPlugins = [typescript(), dts()]
+
+const config = [
+	{
+		input: "src/index.js",
+		output: [
+			{
+				file: "dist/noop.js",
+				format: "es",
+				sourcemap: true,
+				exports: "named",
+			},
+			// {
+			// 	file: `dist/index.js`,
+			// 	format: "es",
+			// 	sourcemap: true,
+			// 	exports: "named",
+			// },
+			// {
+			// 	file: `dist/index.mjs`,
+			// 	format: "es",
+			// 	sourcemap: true,
+			// 	exports: "named",
+			// },
+			// {
+			// 	file: `dist/index.cjs`,
+			// 	format: "cjs",
+			// 	sourcemap: true,
+			// 	exports: "named",
+			// },
+		],
+		plugins: [writeBarrelFile()],
+	},
+]
 
 for (const k of Object.keys(pkg.exports)) {
+	if (k === ".") {
+		continue
+	}
+
 	const filename = k.slice(2, k.length)
 
 	config.push({
-		input: `./utils/${filename}.ts`,
+		input: `src/${filename}.ts`,
 		output: [
 			{
-				file: `./dist/${filename}.js`,
+				file: `dist/${filename}.js`,
 				format: "es",
 				sourcemap: true,
 				exports: "named",
 			},
 			{
-				file: `./dist/${filename}.mjs`,
+				file: `dist/${filename}.mjs`,
 				format: "es",
 				sourcemap: true,
 				exports: "named",
 			},
 			{
-				file: `./dist/${filename}.cjs`,
+				file: `dist/${filename}.cjs`,
 				format: "cjs",
 				sourcemap: true,
 				exports: "named",
 			},
 		],
-		...options,
-		plugins: [...options.plugins],
+		plugins: filePlugins,
+		external: [].concat(
+			Object.keys(pkg.dependencies || {}),
+			Object.keys(pkg.devDependencies || {}),
+			Object.keys(pkg.peerDependencies || {}),
+			module.builtinModules,
+		),
+		onwarn: (warning, onwarn) => onwarn(warning),
+		watch: {
+			clearScreen: false,
+			include: "src/**/*",
+			exclude: ["node_modules", "dist", "**/*.test.*"],
+		},
+	})
+
+	config.push({
+		input: `src/${filename}.ts`,
+		output: {
+			file: `types/${filename}.d.ts`,
+			format: "es",
+			sourcemap: true,
+			exports: "named",
+		},
+		plugins: typesPlugins,
 	})
 }
 

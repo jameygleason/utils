@@ -1,18 +1,17 @@
 /* eslint-disable import/no-commonjs, @typescript-eslint/no-var-requires */
 const fs = require("fs")
-
-const prettierConfig = JSON.parse(fs.readFileSync("./.prettierrc", "utf8"))
+const path = require("path")
 
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
 	root: true,
 	env: {
-		es6: true,
+		es2021: true,
 		node: true,
 	},
 	parser: "@typescript-eslint/parser",
 	parserOptions: {
-		ecmaVersion: 2020,
+		ecmaVersion: 2021,
 		sourceType: "module",
 		allowImportExportEverywhere: true, // dynamic import
 	},
@@ -27,15 +26,15 @@ module.exports = {
 	plugins: ["@typescript-eslint", "node", "import", "json", "prettier"],
 	settings: {
 		"import/resolver": {
-			typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
+			typescript: {}, // this loads <root_dir>/tsconfig.json to eslint
 		},
 	},
 	rules: {
 		// ENV Specific
 		"@typescript-eslint/ban-ts-comment": 0,
-		"@typescript-eslint/ban-types": 0,
-		"@typescript-eslint/no-explicit-any": 0,
+		"@typescript-eslint/explicit-module-boundary-types": 0,
 		"@typescript-eslint/no-extra-semi": 0,
+		"@typescript-eslint/no-explicit-any": 0,
 		"@typescript-eslint/no-unused-vars": [
 			"error",
 			{
@@ -79,7 +78,7 @@ module.exports = {
 		"import/no-named-as-default": "error",
 		"import/no-named-default": "error",
 		"import/no-self-import": "error",
-		"import/no-unresolved": "error",
+		"import/no-unresolved": 2,
 		"import/no-unused-modules": "error",
 		"import/no-useless-path-segments": "error",
 		"import/order": "error",
@@ -122,8 +121,7 @@ module.exports = {
 		"no-var": "error",
 		"object-shorthand": ["error", "always"],
 		"prefer-const": 0,
-		"prefer-regex-literals": 0,
-		"prettier/prettier": ["error", prettierConfig],
+		"prettier/prettier": ["error", JSON.parse(fs.readFileSync(path.join(process.cwd(), ".prettierrc"), "utf8"))],
 		semi: "error",
 		"space-before-function-paren": [
 			"error",
