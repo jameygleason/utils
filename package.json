@@ -6,18 +6,10 @@
 	"license": "",
 	"description": "",
 	"files": [
-		"README.md",
-		"*.js",
-		"*.ts",
-		"*.cjs",
-		"*.mjs",
-		"*.map",
-		"!.config",
-		"!buildUtils",
-		"!scripts",
-		"!rollup.config.js",
-		"!.eslint.js",
-		"!.eslint.cjs"
+		"dist",
+		"types",
+		"package.json",
+		"README.md"
 	],
 	"homepage": "https://github.com/jameygleason/utils#readme",
 	"repository": {
@@ -40,143 +32,151 @@
 		"minor:pre": "npm run build && npm version minor && cp -r package.json .npmrc .npmignore dist",
 		"patch": "npm run patch:pre && cd dist && npm publish",
 		"patch:pre": "npm run build && npm version patch && cp -r package.json .npmrc .npmignore dist",
-		"push": "sh ./.config/scripts/push.sh"
+		"push": "sh ./.config/scripts/push.sh",
+		"postinstall": "rm -rf .config/husky && husky install .config/husky && husky add .config/husky/pre-commit \"npm run lint\""
 	},
+	"module": "dist/index.js",
+	"main": "dist/index.cjs",
+	"types": "types/index.d.ts",
 	"exports": {
+		".": {
+			"types": "./types/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		},
 		"./decamel": {
-			"import": "./decamel.mjs",
+			"import": "./dist/decamel.js",
 			"require": "./decamel.cjs"
 		},
 		"./decrypt": {
-			"import": "./decrypt.mjs",
+			"import": "./dist/decrypt.js",
 			"require": "./decrypt.cjs"
 		},
 		"./deepIsNil": {
-			"import": "./deepIsNil.mjs",
+			"import": "./dist/deepIsNil.js",
 			"require": "./deepIsNil.cjs"
 		},
 		"./encrypt": {
-			"import": "./encrypt.mjs",
+			"import": "./dist/encrypt.js",
 			"require": "./encrypt.cjs"
 		},
 		"./formatCurrency": {
-			"import": "./formatCurrency.mjs",
+			"import": "./dist/formatCurrency.js",
 			"require": "./formatCurrency.cjs"
 		},
 		"./getFirstName": {
-			"import": "./getFirstName.mjs",
+			"import": "./dist/getFirstName.js",
 			"require": "./getFirstName.cjs"
 		},
 		"./isNil": {
-			"import": "./isNil.mjs",
+			"import": "./dist/isNil.js",
 			"require": "./isNil.cjs"
 		},
 		"./isObject": {
-			"import": "./isObject.mjs",
+			"import": "./dist/isObject.js",
 			"require": "./isObject.cjs"
 		},
 		"./instanceOfBuiltin": {
-			"import": "./instanceOfBuiltin.mjs",
+			"import": "./dist/instanceOfBuiltin.js",
 			"require": "./instanceOfBuiltin.cjs"
 		},
 		"./mapToObject": {
-			"import": "./mapToObject.mjs",
+			"import": "./dist/mapToObject.js",
 			"require": "./mapToObject.cjs"
 		},
 		"./mkdir": {
-			"import": "./mkdir.mjs",
+			"import": "./dist/mkdir.js",
 			"require": "./mkdir.cjs"
 		},
 		"./normalizeString": {
-			"import": "./normalizeString.mjs",
+			"import": "./dist/normalizeString.js",
 			"require": "./normalizeString.cjs"
 		},
 		"./objectToString": {
-			"import": "./objectToString.mjs",
+			"import": "./dist/objectToString.js",
 			"require": "./objectToString.cjs"
 		},
 		"./printElapsed": {
-			"import": "./printElapsed.mjs",
+			"import": "./dist/printElapsed.js",
 			"require": "./printElapsed.cjs"
 		},
 		"./randomBytes": {
-			"import": "./randomBytes.mjs",
+			"import": "./dist/randomBytes.js",
 			"require": "./randomBytes.cjs"
 		},
 		"./rimraf": {
-			"import": "./rimraf.mjs",
+			"import": "./dist/rimraf.js",
 			"require": "./rimraf.cjs"
 		},
 		"./safeJSONParse": {
-			"import": "./safeJSONParse.mjs",
+			"import": "./dist/safeJSONParse.js",
 			"require": "./safeJSONParse.cjs"
 		},
 		"./slugify": {
-			"import": "./slugify.mjs",
+			"import": "./dist/slugify.js",
 			"require": "./slugify.cjs"
 		},
 		"./splitRunes": {
-			"import": "./splitRunes.mjs",
+			"import": "./dist/splitRunes.js",
 			"require": "./splitRunes.cjs"
 		},
 		"./stripEmojis": {
-			"import": "./stripEmojis.mjs",
+			"import": "./dist/stripEmojis.js",
 			"require": "./stripEmojis.cjs"
 		},
 		"./struct": {
-			"import": "./struct.mjs",
+			"import": "./dist/struct.js",
 			"require": "./struct.cjs"
 		},
 		"./titleCase": {
-			"import": "./titleCase.mjs",
+			"import": "./dist/titleCase.js",
 			"require": "./titleCase.cjs"
 		},
 		"./toUpperCase": {
-			"import": "./toUpperCase.mjs",
+			"import": "./dist/toUpperCase.js",
 			"require": "./toUpperCase.cjs"
 		},
 		"./unsafeStripHTML": {
-			"import": "./unsafeStripHTML.mjs",
+			"import": "./dist/unsafeStripHTML.js",
 			"require": "./unsafeStripHTML.cjs"
 		},
 		"./wait": {
-			"import": "./wait.mjs",
+			"import": "./dist/wait.js",
 			"require": "./wait.cjs"
 		}
 	},
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^21.0.1",
 		"@rollup/plugin-node-resolve": "^13.1.3",
-		"@types/chai": "4.2.19",
+		"@rollup/plugin-typescript": "^8.3.1",
+		"@types/chai": "^4.2.19",
 		"@types/node": "^17.0.15",
-		"@types/sinon": "10.0.2",
-		"@types/sinon-chai": "3.2.5",
-		"@typescript-eslint/eslint-plugin": "^5.10.2",
-		"@typescript-eslint/parser": "^5.10.2",
+		"@types/sinon": "^10.0.2",
+		"@types/sinon-chai": "^3.2.5",
+		"@typescript-eslint/eslint-plugin": "^5.12.1",
+		"@typescript-eslint/parser": "^5.12.1",
 		"chai": "^4.3.6",
 		"cross-env": "7.0.3",
 		"emoji-regex": "^10.0.0",
 		"eslint": "^7.32.0",
-		"eslint-config-standard": "^16.0.3",
+		"eslint-config-standard": "^15.0.1",
 		"eslint-import-resolver-typescript": "^2.5.0",
 		"eslint-plugin-import": "^2.25.4",
 		"eslint-plugin-json": "^3.1.0",
-		"eslint-plugin-node": "11.1.0",
+		"eslint-plugin-node": "^11.1.0",
 		"eslint-plugin-prettier": "^4.0.0",
-		"eslint-plugin-promise": "^6.0.0",
-		"esm": "3.2.25",
+		"esm": "^3.2.25",
 		"fast-glob": "^3.2.11",
 		"husky": "^7.0.4",
-		"kleur": "4.1.4",
+		"kleur": "^4.1.4",
 		"lint-staged": "^12.3.3",
-		"prettier": "^2.5.1",
-		"rollup": "^2.67.0",
-		"rollup-plugin-typescript2": "^0.31.2",
-		"sinon": "11.1.1",
-		"sinon-chai": "3.7.0",
-		"ts-node": "^10.4.0",
+		"prettier": "2.5.1",
+		"rollup": "^2.69.0",
+		"rollup-plugin-dts": "^4.1.0",
+		"sinon": "^11.1.1",
+		"sinon-chai": "^3.7.0",
 		"tslib": "^2.3.1",
-		"typescript": "^4.5.5",
+		"typescript": "^4.6.2",
 		"vitest": "^0.2.7"
 	},
 	"peerDependencies": {

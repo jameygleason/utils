@@ -4,7 +4,6 @@
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
 		"allowUnreachableCode": true,
-		"declaration": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"importHelpers": true,
@@ -19,6 +18,6 @@
 		"target": "es2019",
 		"types": ["node"]
 	},
-	"include": ["utils"],
-	"exclude": ["node_modules", "dist"]
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "dist", "types", "**/*.test.*"]
 }
