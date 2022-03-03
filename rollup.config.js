@@ -99,7 +99,7 @@ for (const k of Object.keys(pkg.exports)) {
 		watch: {
 			clearScreen: false,
 			include: "src/**/*",
-			exclude: ["node_modules", "dist", "**/*.test.*"],
+			exclude: ["node_modules", "dist", "types", "**/*.test.*"],
 		},
 	})
 

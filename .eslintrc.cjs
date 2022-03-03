@@ -15,7 +15,7 @@ module.exports = {
 		sourceType: "module",
 		allowImportExportEverywhere: true, // dynamic import
 	},
-	extends: ["standard", "eslint:recommended", "plugin:@typescript-eslint/recommended"],
+	extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
 	globals: {
 		Atomics: "readonly",
 		SharedArrayBuffer: "readonly",
@@ -121,8 +121,8 @@ module.exports = {
 		"no-var": "error",
 		"object-shorthand": ["error", "always"],
 		"prefer-const": 0,
-		"prettier/prettier": ["error", JSON.parse(fs.readFileSync(path.join(process.cwd(), ".prettierrc"), "utf8"))],
-		semi: "error",
+		"prettier/prettier": ["error", JSON.parse(fs.readFileSync(path.join(__dirname, ".prettierrc"), "utf8"))],
+		semi: ["error", "never"],
 		"space-before-function-paren": [
 			"error",
 			{
