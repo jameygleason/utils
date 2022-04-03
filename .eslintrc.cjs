@@ -25,8 +25,13 @@ module.exports = {
 	},
 	plugins: ["@typescript-eslint", "node", "import", "json", "prettier"],
 	settings: {
+		"import/parsers": {
+			"@typescript-eslint/parser": [".js", ".jsx", ".ts", ".tsx"],
+		},
 		"import/resolver": {
-			typescript: {}, // this loads <root_dir>/tsconfig.json to eslint
+			typescript: {
+				project: path.join(__dirname, "tsconfig.json"),
+			},
 		},
 	},
 	rules: {
@@ -81,7 +86,12 @@ module.exports = {
 		"import/no-unresolved": 2,
 		"import/no-unused-modules": "error",
 		"import/no-useless-path-segments": "error",
-		"import/order": "error",
+		"import/order": [
+			"error",
+			{
+				groups: ["builtin", "external", "internal", "index", "parent", "sibling", "object", "type"],
+			},
+		],
 		indent: "off", // Fix conflict with Prettier
 		"keyword-spacing": [
 			"error",
@@ -99,12 +109,16 @@ module.exports = {
 				ignoreGlobalItems: [],
 			},
 		],
+		"no-fallthrough": 1,
+		"no-inner-declarations": 1,
 		"no-labels": "error",
+		"no-mixed-operators": 1,
 		"no-multi-spaces": "error",
 		"no-multiple-empty-lines": ["error", { max: 1, maxBOF: 0, maxEOF: 0 }],
 		"no-restricted-syntax": ["error", "LabeledStatement"],
 		"no-self-assign": "error",
 		"no-sequences": 0,
+		"no-shadow": "error",
 		"no-tabs": 0,
 		"no-undef": "error",
 		"no-unused-labels": "error",
@@ -117,9 +131,68 @@ module.exports = {
 				varsIgnorePattern: "^_|req|res|next|args|ctx|__",
 			},
 		],
-		"no-use-before-define": "error",
+		"no-use-before-define": [
+			"error",
+			{
+				functions: false,
+				classes: false,
+				variables: true,
+			},
+		],
 		"no-var": "error",
 		"object-shorthand": ["error", "always"],
+		"padded-blocks": [
+			"error",
+			{
+				blocks: "never",
+				classes: "never",
+				switches: "never",
+			},
+			{ allowSingleLineBlocks: false },
+		],
+		"padding-line-between-statements": [
+			"error",
+			{
+				blankLine: "always",
+				prev: "*",
+				next: "function",
+			},
+			{
+				blankLine: "always",
+				prev: "function",
+				next: ["block", "block-like", "class", "const", "let", "var"],
+			},
+			{
+				blankLine: "always",
+				prev: "block",
+				next: "*",
+			},
+			{
+				blankLine: "always",
+				prev: "*",
+				next: "block",
+			},
+			{
+				blankLine: "always",
+				prev: "import",
+				next: [
+					"block",
+					"block-like",
+					"function",
+					"class",
+					"const",
+					"let",
+					"var",
+					"expression",
+					"empty",
+					"for",
+					"if",
+					"iife",
+					"switch",
+					"while",
+				],
+			},
+		],
 		"prefer-const": 0,
 		"prettier/prettier": ["error", JSON.parse(fs.readFileSync(path.join(__dirname, ".prettierrc"), "utf8"))],
 		semi: ["error", "never"],
@@ -136,7 +209,7 @@ module.exports = {
 			"always",
 			{
 				line: {
-					markers: ["!", "?", "*"],
+					markers: ["!", "?", "*", "/"],
 					exceptions: ["-", "*"],
 				},
 				block: {
