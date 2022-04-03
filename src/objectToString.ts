@@ -20,7 +20,7 @@ export function objectToString<T>(arg: T, pad = "", indention = "tabs"): string 
 		for (const k in arg) {
 			let key = k
 			for (const c of k) {
-				if (c === "-") {
+				if (c === "-" || c === "/") {
 					// @ts-ignore
 					key = `"${k}"`
 					break
