@@ -1,0 +1,206 @@
+{
+	"name": "@signalchain/utils",
+	"type": "module",
+	"version": "0.6.4",
+	"author": "",
+	"license": "",
+	"description": "",
+	"files": [
+		"dist",
+		"types",
+		"package.json",
+		"README.md"
+	],
+	"homepage": "https://github.com/jameygleason/utils#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jameygleason/utils.git"
+	},
+	"bugs": {
+		"url": "https://github.com/jameygleason/utils/issues"
+	},
+	"keywords": [
+		"JavaScript Utilities",
+		"Utils",
+		"Utility Library"
+	],
+	"scripts": {
+		"dev": "cross-env NODE_ENV=development rollup -c -w",
+		"build": "cross-env NODE_ENV=production && rollup -c",
+		"test": "cross-env NODE_ENV=development vitest --config=.config/vite.config.ts",
+		"minor": "npm run minor:pre && npm publish",
+		"minor:pre": "npm run build && npm version minor",
+		"patch": "npm run patch:pre && npm publish",
+		"patch:pre": "npm run build && npm version patch"
+	},
+	"main": "dist/index.cjs",
+	"module": "dist/index.js",
+	"types": "types/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs",
+			"types": "./types/index.d.ts"
+		},
+		"./decamel": {
+			"import": "./dist/decamel.js",
+			"require": "./dist/decamel.cjs",
+			"types": "./types/decamel.d.ts"
+		},
+		"./decrypt": {
+			"import": "./dist/decrypt.js",
+			"require": "./dist/decrypt.cjs",
+			"types": "./types/decrypt.d.ts"
+		},
+		"./deepIsNil": {
+			"import": "./dist/deepIsNil.js",
+			"require": "./dist/deepIsNil.cjs",
+			"types": "./types/deepIsNil.d.ts"
+		},
+		"./encrypt": {
+			"import": "./dist/encrypt.js",
+			"require": "./dist/encrypt.cjs",
+			"types": "./types/encrypt.d.ts"
+		},
+		"./formatCurrency": {
+			"import": "./dist/formatCurrency.js",
+			"require": "./dist/formatCurrency.cjs",
+			"types": "./types/formatCurrency.d.ts"
+		},
+		"./getFirstName": {
+			"import": "./dist/getFirstName.js",
+			"require": "./dist/getFirstName.cjs",
+			"types": "./types/getFirstName.d.ts"
+		},
+		"./isNil": {
+			"import": "./dist/isNil.js",
+			"require": "./dist/isNil.cjs",
+			"types": "./types/isNil.d.ts"
+		},
+		"./isObject": {
+			"import": "./dist/isObject.js",
+			"require": "./dist/isObject.cjs",
+			"types": "./types/isObject.d.ts"
+		},
+		"./instanceOfBuiltin": {
+			"import": "./dist/instanceOfBuiltin.js",
+			"require": "./dist/instanceOfBuiltin.cjs",
+			"types": "./types/instanceOfBuiltin.d.ts"
+		},
+		"./mapToObject": {
+			"import": "./dist/mapToObject.js",
+			"require": "./dist/mapToObject.cjs",
+			"types": "./types/mapToObject.d.ts"
+		},
+		"./mkdir": {
+			"import": "./dist/mkdir.js",
+			"require": "./dist/mkdir.cjs",
+			"types": "./types/mkdir.d.ts"
+		},
+		"./normalizeString": {
+			"import": "./dist/normalizeString.js",
+			"require": "./dist/normalizeString.cjs",
+			"types": "./types/normalizeString.d.ts"
+		},
+		"./objectToString": {
+			"import": "./dist/objectToString.js",
+			"require": "./dist/objectToString.cjs",
+			"types": "./types/objectToString.d.ts"
+		},
+		"./printElapsed": {
+			"import": "./dist/printElapsed.js",
+			"require": "./dist/printElapsed.cjs",
+			"types": "./types/printElapsed.d.ts"
+		},
+		"./randomBytes": {
+			"import": "./dist/randomBytes.js",
+			"require": "./dist/randomBytes.cjs",
+			"types": "./types/randomBytes.d.ts"
+		},
+		"./rimraf": {
+			"import": "./dist/rimraf.js",
+			"require": "./dist/rimraf.cjs",
+			"types": "./types/rimraf.d.ts"
+		},
+		"./safeJSONParse": {
+			"import": "./dist/safeJSONParse.js",
+			"require": "./dist/safeJSONParse.cjs",
+			"types": "./types/safeJSONParse.d.ts"
+		},
+		"./slugify": {
+			"import": "./dist/slugify.js",
+			"require": "./dist/slugify.cjs",
+			"types": "./types/slugify.d.ts"
+		},
+		"./splitRunes": {
+			"import": "./dist/splitRunes.js",
+			"require": "./dist/splitRunes.cjs",
+			"types": "./types/splitRunes.d.ts"
+		},
+		"./stripEmojis": {
+			"import": "./dist/stripEmojis.js",
+			"require": "./dist/stripEmojis.cjs",
+			"types": "./types/stripEmojis.d.ts"
+		},
+		"./struct": {
+			"import": "./dist/struct.js",
+			"require": "./dist/struct.cjs",
+			"types": "./types/struct.d.ts"
+		},
+		"./titleCase": {
+			"import": "./dist/titleCase.js",
+			"require": "./dist/titleCase.cjs",
+			"types": "./types/titleCase.d.ts"
+		},
+		"./toUpperCase": {
+			"import": "./dist/toUpperCase.js",
+			"require": "./dist/toUpperCase.cjs",
+			"types": "./types/toUpperCase.d.ts"
+		},
+		"./unsafeStripHTML": {
+			"import": "./dist/unsafeStripHTML.js",
+			"require": "./dist/unsafeStripHTML.cjs",
+			"types": "./types/unsafeStripHTML.d.ts"
+		},
+		"./wait": {
+			"import": "./dist/wait.js",
+			"require": "./dist/wait.cjs",
+			"types": "./types/wait.d.ts"
+		}
+	},
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^21.0.3",
+		"@rollup/plugin-node-resolve": "^13.1.3",
+		"@rollup/plugin-typescript": "^8.3.1",
+		"@types/chai": "^4.2.19",
+		"@types/node": "^17.0.23",
+		"@types/sinon": "^10.0.2",
+		"@types/sinon-chai": "^3.2.5",
+		"@typescript-eslint/eslint-plugin": "^5.17.0",
+		"@typescript-eslint/parser": "^5.17.0",
+		"chai": "^4.3.6",
+		"cross-env": "^7.0.3",
+		"emoji-regex": "^10.1.0",
+		"eslint": "^8.12.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-import-resolver-typescript": "^2.7.1",
+		"eslint-plugin-import": "^2.25.4",
+		"eslint-plugin-json": "^3.1.0",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"fast-glob": "^3.2.11",
+		"kleur": "^4.1.4",
+		"prettier": "^2.6.2",
+		"rollup": "^2.70.1",
+		"rollup-plugin-dts": "^4.2.0",
+		"sinon": "^11.1.1",
+		"sinon-chai": "^3.7.0",
+		"tslib": "^2.3.1",
+		"typescript": "^4.6.3",
+		"vitest": "^0.8.4"
+	},
+	"peerDependencies": {
+		"emoji-regex": ">=9.0.0",
+		"kleur": ">=4.0.0"
+	}
+}

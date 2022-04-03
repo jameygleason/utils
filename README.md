@@ -1,9 +1,3 @@
-# @signalchain/utils
+# Generate Env
 
-[WIP]
-
-A collection of utility functions.
-
-## Install
-
-`npm install @signalchain/utils`
+[https://www.npmjs.com/package/@signalchain/utils](https://www.npmjs.com/package/@signalchain/utils)

@@ -1,6 +1,7 @@
 import { describe, it, beforeEach, afterEach } from "vitest"
 import chai, { assert, expect } from "chai"
 import sinonChai from "sinon-chai"
+// eslint-disable-next-line import/named
 import { spy } from "sinon"
 import { isNil } from "../dist/isNil.js"
 

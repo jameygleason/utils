@@ -1,8 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 echo ""
 echo Installing Root Deps
 echo ""
 npm i
 
-npm run init:husky
+echo ""
+echo Installing Package Deps
+echo ""
+cd package
+npm i
+
+echo ""
+echo Building Package
+echo ""
+npm run build
+cd ..

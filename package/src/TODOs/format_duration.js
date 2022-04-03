@@ -33,6 +33,7 @@ export function format_duration(duration) {
 	}
 
 	// This is the parsed time in seconds
+	// eslint-disable-next-line no-mixed-operators
 	duration = hours * 60 * 60 + minutes * 60 + seconds
 
 	// This is the time in clock format
