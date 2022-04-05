@@ -1,7 +1,7 @@
 import { describe, it, assert } from "vitest"
-// import { printElapsed } from "../dist/printElapsed.js"
+// import { decrypt } from "../dist/node/decrypt.js"
 
-describe("printElapsed", () => {
+describe("decrypt", () => {
 	it.skip("TODO", () => {
 		assert.strictEqual("TODO", "true")
 	})

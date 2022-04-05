@@ -1,8 +1,8 @@
 import fs from "fs"
 import path from "path"
 import { describe, it, assert } from "vitest"
-import { rimraf } from "../dist/rimraf.js"
-import { mkdir } from "../dist/mkdir.js"
+import { rimraf } from "../../dist/node/rimraf.js"
+import { mkdir } from "../../dist/node/mkdir.js"
 
 describe("rimraf", () => {
 	it("Deletes single file", () => {

@@ -1,5 +1,5 @@
 import { describe, it, assert } from "vitest"
-// import { randomBytes } from "../dist/randomBytes.js"
+// import { randomBytes } from "../dist/node/randomBytes.js"
 
 // const nums = [10, 25, 50, 73, 512]
 

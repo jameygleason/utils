@@ -1,6 +1,6 @@
 import crypto from "crypto"
 import { promisify } from "util"
-import { isNil } from "./isNil" // .ts
+import { isNil } from "../isNil" // .ts
 
 type BytesReturn = [string, Error | null]
 

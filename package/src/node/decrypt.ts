@@ -1,22 +1,23 @@
 import crypto from "crypto"
-import { isNil } from "./isNil" // .ts
-import { randomBytes } from "./randomBytes" // .ts
+import { randomBytes } from "./randomBytes"
+import { isNil } from "../isNil"
+import { safeJSONParse } from "../safeJSONParse"
 
 interface Options {
 	algorithm: string
 	byteLength: number
 }
 
-type EncryptionReturn = [string, Error | null]
+type DecryptionReturn = [string, Error | null]
 
 /**
- * Encrypt value with key
+ * Decrypt value with key
  * example: https://www.youtube.com/watch?v=heldAl8Cfr4
  *
  * @param {string!} key - 32 character public key
- * @param {string!} value - string you wish to encrypt
+ * @param {string!} value - string you wish to decrypt
  */
-export async function encrypt(key: string, value: string, options: Options): Promise<EncryptionReturn> {
+export async function decrypt(key: string, value: string, options: Options): Promise<DecryptionReturn> {
 	try {
 		const algorithm = options?.algorithm || "aes-256-cbc"
 		const byteLength = options?.byteLength || 16
@@ -35,23 +36,25 @@ export async function encrypt(key: string, value: string, options: Options): Pro
 				},
 			]
 		}
-		const cipher = await crypto.createCipheriv(algorithm, key, initializationVector)
 
-		// CLEAR_PAD_START is a hack to get around a weird encoding thing with the start of the value string
-		let encryptedValue = await cipher.update(`CLEAR_PAD_START ${value}`, "utf8", "hex")
-		encryptedValue += await cipher.final("hex")
+		const decipher = await crypto.createDecipheriv(algorithm, key, initializationVector)
 
-		if (isNil(encryptedValue)) {
+		let decryptedValue = await decipher.update(value, "hex", "utf8")
+		decryptedValue += await decipher.final("utf8")
+
+		const match = /{[\s\S]+?}/.exec(decryptedValue)
+		if (match && isNil(match[0])) {
 			return [
 				"",
 				{
 					name: "#92928743",
-					message: "Encryption failed",
+					message: "Decryption failed",
 				},
 			]
 		}
 
-		return [encryptedValue, null]
+		// @ts-ignore
+		return [safeJSONParse(match[0]), null]
 	} catch (err) {
 		// @ts-ignore
 		return ["", err]

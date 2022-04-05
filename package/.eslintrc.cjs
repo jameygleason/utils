@@ -110,7 +110,7 @@ module.exports = {
 		"no-fallthrough": 1,
 		"no-inner-declarations": 1,
 		"no-labels": "error",
-		"no-mixed-operators": 1,
+		"no-mixed-operators": 0,
 		"no-multi-spaces": "error",
 		"no-multiple-empty-lines": ["error", { max: 1, maxBOF: 0, maxEOF: 0 }],
 		"no-restricted-syntax": ["error", "LabeledStatement"],
