@@ -40,27 +40,22 @@
 		".": {
 			"import": "./dist/index.js",
 			"require": "./dist/index.cjs",
-			"types": "./types/index.d.ts"
+			"types": "./dist/types/index.d.ts"
+		},
+		"./node": {
+			"import": "./dist/node/index.js",
+			"require": "./dist/node/index.cjs",
+			"types": "./dist/node/types/index.d.ts"
 		},
 		"./decamel": {
 			"import": "./dist/decamel.js",
 			"require": "./dist/decamel.cjs",
 			"types": "./types/decamel.d.ts"
 		},
-		"./decrypt": {
-			"import": "./dist/decrypt.js",
-			"require": "./dist/decrypt.cjs",
-			"types": "./types/decrypt.d.ts"
-		},
 		"./deepIsNil": {
 			"import": "./dist/deepIsNil.js",
 			"require": "./dist/deepIsNil.cjs",
 			"types": "./types/deepIsNil.d.ts"
-		},
-		"./encrypt": {
-			"import": "./dist/encrypt.js",
-			"require": "./dist/encrypt.cjs",
-			"types": "./types/encrypt.d.ts"
 		},
 		"./formatCurrency": {
 			"import": "./dist/formatCurrency.js",
@@ -92,11 +87,6 @@
 			"require": "./dist/mapToObject.cjs",
 			"types": "./types/mapToObject.d.ts"
 		},
-		"./mkdir": {
-			"import": "./dist/mkdir.js",
-			"require": "./dist/mkdir.cjs",
-			"types": "./types/mkdir.d.ts"
-		},
 		"./normalizeString": {
 			"import": "./dist/normalizeString.js",
 			"require": "./dist/normalizeString.cjs",
@@ -106,21 +96,6 @@
 			"import": "./dist/objectToString.js",
 			"require": "./dist/objectToString.cjs",
 			"types": "./types/objectToString.d.ts"
-		},
-		"./printElapsed": {
-			"import": "./dist/printElapsed.js",
-			"require": "./dist/printElapsed.cjs",
-			"types": "./types/printElapsed.d.ts"
-		},
-		"./randomBytes": {
-			"import": "./dist/randomBytes.js",
-			"require": "./dist/randomBytes.cjs",
-			"types": "./types/randomBytes.d.ts"
-		},
-		"./rimraf": {
-			"import": "./dist/rimraf.js",
-			"require": "./dist/rimraf.cjs",
-			"types": "./types/rimraf.d.ts"
 		},
 		"./safeJSONParse": {
 			"import": "./dist/safeJSONParse.js",
@@ -166,6 +141,36 @@
 			"import": "./dist/wait.js",
 			"require": "./dist/wait.cjs",
 			"types": "./types/wait.d.ts"
+		},
+		"./node/decrypt": {
+			"import": "./dist/node/decrypt.js",
+			"require": "./dist/node/decrypt.cjs",
+			"types": "./dist/node/types/decrypt.d.ts"
+		},
+		"./node/encrypt": {
+			"import": "./dist/node/encrypt.js",
+			"require": "./dist/node/encrypt.cjs",
+			"types": "./dist/node/types/encrypt.d.ts"
+		},
+		"./node/mkdir": {
+			"import": "./dist/node/mkdir.js",
+			"require": "./dist/node/mkdir.cjs",
+			"types": "./dist/node/types/mkdir.d.ts"
+		},
+		"./node/printElapsed": {
+			"import": "./dist/node/printElapsed.js",
+			"require": "./dist/node/printElapsed.cjs",
+			"types": "./dist/node/types/printElapsed.d.ts"
+		},
+		"./node/randomBytes": {
+			"import": "./dist/node/randomBytes.js",
+			"require": "./dist/node/randomBytes.cjs",
+			"types": "./dist/node/types/randomBytes.d.ts"
+		},
+		"./node/rimraf": {
+			"import": "./dist/node/rimraf.js",
+			"require": "./dist/node/rimraf.cjs",
+			"types": "./dist/node/types/rimraf.d.ts"
 		}
 	},
 	"devDependencies": {

@@ -88,9 +88,7 @@ module.exports = {
 		"import/no-useless-path-segments": "error",
 		"import/order": [
 			"error",
-			{
-				groups: ["builtin", "external", "internal", "index", "parent", "sibling", "object", "type"],
-			},
+			{ groups: ["builtin", "external", "internal", "index", "sibling", "parent", "object", "type"] },
 		],
 		indent: "off", // Fix conflict with Prettier
 		"keyword-spacing": [

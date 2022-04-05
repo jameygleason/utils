@@ -7,9 +7,9 @@ import typescript from "@rollup/plugin-typescript"
 import dts from "rollup-plugin-dts"
 import { writeBarrelFile } from "./buildUtils/writeBarrelFile.js"
 import { rewriteExports } from "./buildUtils/rewriteExports.js"
-import { cleanBuildArtifacts } from "./buildUtils/cleanBuildArtifacts.js"
+import { rimraf } from "./buildUtils/rimraf.js"
 
-cleanBuildArtifacts()
+rimraf(path.join(process.cwd(), "dist"))
 
 const pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8"))
 if (Object.keys(pkg).length === 0) {
@@ -42,7 +42,7 @@ const config = [
 ]
 
 for (const k of Object.keys(pkg.exports)) {
-	if (k === ".") {
+	if (k === "." || k === "./node") {
 		continue
 	}
 
@@ -85,10 +85,15 @@ for (const k of Object.keys(pkg.exports)) {
 		},
 	})
 
+	let typesPath = `dist/types/${filename}.d.ts`
+	if (filename.split("/")[0] === "node") {
+		typesPath = `dist/node/types/${filename.split("/").slice(1, 2)}.d.ts`
+	}
+
 	config.push({
 		input: `src/${filename}.ts`,
 		output: {
-			file: `types/${filename}.d.ts`,
+			file: typesPath,
 			format: "es",
 			sourcemap: true,
 			exports: "named",
