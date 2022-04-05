@@ -28,11 +28,11 @@
 		"dev": "cross-env NODE_ENV=development rollup -c -w",
 		"build": "cross-env NODE_ENV=production && rollup -c",
 		"test": "cross-env NODE_ENV=development vitest --config=.config/vite.config.ts",
-		"push": "cd .. && npm run push",
 		"minor": "npm run minor:pre && npm publish",
 		"minor:pre": "npm run build && npm version minor",
 		"patch": "npm run patch:pre && npm publish",
-		"patch:pre": "npm run build && npm version patch"
+		"patch:pre": "npm run build && npm version patch",
+		"push": "cd .. && npm run push"
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.js",
