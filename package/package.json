@@ -1,7 +1,7 @@
 {
 	"name": "@signalchain/utils",
 	"type": "module",
-	"version": "0.7.0",
+	"version": "0.8.0",
 	"author": "",
 	"license": "",
 	"description": "",
@@ -142,6 +142,11 @@
 			"import": "./dist/wait.js",
 			"require": "./dist/wait.cjs",
 			"types": "./types/wait.d.ts"
+		},
+		"./node/copyRecursiveSync": {
+			"import": "./dist/node/copyRecursiveSync.js",
+			"require": "./dist/node/copyRecursiveSync.cjs",
+			"types": "./dist/node/types/copyRecursiveSync.d.ts"
 		},
 		"./node/decrypt": {
 			"import": "./dist/node/decrypt.js",
