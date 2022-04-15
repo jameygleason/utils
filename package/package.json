@@ -36,147 +36,152 @@
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.js",
-	"types": "types/index.d.ts",
+	"types": "dist/index.d.ts",
 	"exports": {
 		".": {
 			"import": "./dist/index.js",
 			"require": "./dist/index.cjs",
-			"types": "./dist/types/index.d.ts"
+			"types": "./dist/index.d.ts"
 		},
 		"./node": {
 			"import": "./dist/node/index.js",
 			"require": "./dist/node/index.cjs",
-			"types": "./dist/node/types/index.d.ts"
+			"types": "./dist/node/index.d.ts"
 		},
 		"./decamel": {
 			"import": "./dist/decamel.js",
 			"require": "./dist/decamel.cjs",
-			"types": "./types/decamel.d.ts"
+			"types": "./dist/decamel.d.ts"
 		},
 		"./deepIsNil": {
 			"import": "./dist/deepIsNil.js",
 			"require": "./dist/deepIsNil.cjs",
-			"types": "./types/deepIsNil.d.ts"
+			"types": "./dist/deepIsNil.d.ts"
 		},
 		"./formatCurrency": {
 			"import": "./dist/formatCurrency.js",
 			"require": "./dist/formatCurrency.cjs",
-			"types": "./types/formatCurrency.d.ts"
+			"types": "./dist/formatCurrency.d.ts"
 		},
 		"./getFirstName": {
 			"import": "./dist/getFirstName.js",
 			"require": "./dist/getFirstName.cjs",
-			"types": "./types/getFirstName.d.ts"
+			"types": "./dist/getFirstName.d.ts"
 		},
 		"./isNil": {
 			"import": "./dist/isNil.js",
 			"require": "./dist/isNil.cjs",
-			"types": "./types/isNil.d.ts"
+			"types": "./dist/isNil.d.ts"
 		},
 		"./isObject": {
 			"import": "./dist/isObject.js",
 			"require": "./dist/isObject.cjs",
-			"types": "./types/isObject.d.ts"
+			"types": "./dist/isObject.d.ts"
 		},
 		"./instanceOfBuiltin": {
 			"import": "./dist/instanceOfBuiltin.js",
 			"require": "./dist/instanceOfBuiltin.cjs",
-			"types": "./types/instanceOfBuiltin.d.ts"
+			"types": "./dist/instanceOfBuiltin.d.ts"
 		},
 		"./mapToObject": {
 			"import": "./dist/mapToObject.js",
 			"require": "./dist/mapToObject.cjs",
-			"types": "./types/mapToObject.d.ts"
+			"types": "./dist/mapToObject.d.ts"
 		},
 		"./normalizeString": {
 			"import": "./dist/normalizeString.js",
 			"require": "./dist/normalizeString.cjs",
-			"types": "./types/normalizeString.d.ts"
+			"types": "./dist/normalizeString.d.ts"
 		},
 		"./objectToString": {
 			"import": "./dist/objectToString.js",
 			"require": "./dist/objectToString.cjs",
-			"types": "./types/objectToString.d.ts"
+			"types": "./dist/objectToString.d.ts"
 		},
 		"./safeJSONParse": {
 			"import": "./dist/safeJSONParse.js",
 			"require": "./dist/safeJSONParse.cjs",
-			"types": "./types/safeJSONParse.d.ts"
+			"types": "./dist/safeJSONParse.d.ts"
 		},
 		"./slugify": {
 			"import": "./dist/slugify.js",
 			"require": "./dist/slugify.cjs",
-			"types": "./types/slugify.d.ts"
+			"types": "./dist/slugify.d.ts"
 		},
 		"./splitRunes": {
 			"import": "./dist/splitRunes.js",
 			"require": "./dist/splitRunes.cjs",
-			"types": "./types/splitRunes.d.ts"
+			"types": "./dist/splitRunes.d.ts"
 		},
 		"./stripEmojis": {
 			"import": "./dist/stripEmojis.js",
 			"require": "./dist/stripEmojis.cjs",
-			"types": "./types/stripEmojis.d.ts"
+			"types": "./dist/stripEmojis.d.ts"
 		},
 		"./struct": {
 			"import": "./dist/struct.js",
 			"require": "./dist/struct.cjs",
-			"types": "./types/struct.d.ts"
+			"types": "./dist/struct.d.ts"
 		},
 		"./titleCase": {
 			"import": "./dist/titleCase.js",
 			"require": "./dist/titleCase.cjs",
-			"types": "./types/titleCase.d.ts"
+			"types": "./dist/titleCase.d.ts"
 		},
 		"./toUpperCase": {
 			"import": "./dist/toUpperCase.js",
 			"require": "./dist/toUpperCase.cjs",
-			"types": "./types/toUpperCase.d.ts"
+			"types": "./dist/toUpperCase.d.ts"
 		},
 		"./unsafeStripHTML": {
 			"import": "./dist/unsafeStripHTML.js",
 			"require": "./dist/unsafeStripHTML.cjs",
-			"types": "./types/unsafeStripHTML.d.ts"
+			"types": "./dist/unsafeStripHTML.d.ts"
 		},
 		"./wait": {
 			"import": "./dist/wait.js",
 			"require": "./dist/wait.cjs",
-			"types": "./types/wait.d.ts"
+			"types": "./dist/wait.d.ts"
+		},
+		"./node/cleanDir": {
+			"import": "./dist/node/cleanDir.js",
+			"require": "./dist/node/cleanDir.cjs",
+			"types": "./dist/node/cleanDir.d.ts"
 		},
 		"./node/copyRecursiveSync": {
 			"import": "./dist/node/copyRecursiveSync.js",
 			"require": "./dist/node/copyRecursiveSync.cjs",
-			"types": "./dist/node/types/copyRecursiveSync.d.ts"
+			"types": "./dist/node/copyRecursiveSync.d.ts"
 		},
 		"./node/decrypt": {
 			"import": "./dist/node/decrypt.js",
 			"require": "./dist/node/decrypt.cjs",
-			"types": "./dist/node/types/decrypt.d.ts"
+			"types": "./dist/node/decrypt.d.ts"
 		},
 		"./node/encrypt": {
 			"import": "./dist/node/encrypt.js",
 			"require": "./dist/node/encrypt.cjs",
-			"types": "./dist/node/types/encrypt.d.ts"
+			"types": "./dist/node/encrypt.d.ts"
 		},
 		"./node/mkdir": {
 			"import": "./dist/node/mkdir.js",
 			"require": "./dist/node/mkdir.cjs",
-			"types": "./dist/node/types/mkdir.d.ts"
+			"types": "./dist/node/mkdir.d.ts"
 		},
 		"./node/printElapsed": {
 			"import": "./dist/node/printElapsed.js",
 			"require": "./dist/node/printElapsed.cjs",
-			"types": "./dist/node/types/printElapsed.d.ts"
+			"types": "./dist/node/printElapsed.d.ts"
 		},
 		"./node/randomBytes": {
 			"import": "./dist/node/randomBytes.js",
 			"require": "./dist/node/randomBytes.cjs",
-			"types": "./dist/node/types/randomBytes.d.ts"
+			"types": "./dist/node/randomBytes.d.ts"
 		},
 		"./node/rimraf": {
 			"import": "./dist/node/rimraf.js",
 			"require": "./dist/node/rimraf.cjs",
-			"types": "./dist/node/types/rimraf.d.ts"
+			"types": "./dist/node/rimraf.d.ts"
 		}
 	},
 	"devDependencies": {

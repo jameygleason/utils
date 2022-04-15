@@ -6,9 +6,7 @@ export function rimraf(entryPath) {
 		return
 	}
 
-	const stats = fs.statSync(entryPath)
-
-	if (stats.isDirectory()) {
+	if (fs.statSync(entryPath).isDirectory()) {
 		fs.readdirSync(entryPath).forEach(entry => {
 			rimraf(path.join(entryPath, entry))
 		})

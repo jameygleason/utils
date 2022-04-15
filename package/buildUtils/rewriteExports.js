@@ -19,8 +19,8 @@ export function rewriteExports() {
 
 					const contents = fs.readFileSync(path.join(distDir, file), "utf8")
 					const filename = file.split(".")[0]
-					const re = new RegExp(`exports.${filename}`, "gi")
-					const newContents = contents.replace(re, "module.exports")
+					const re = new RegExp(`exports.${filename} = ${filename}`, "gi")
+					const newContents = contents.replace(re, `module.exports = { ${filename} }`)
 
 					fs.writeFileSync(path.join(distDir, file), newContents)
 				}

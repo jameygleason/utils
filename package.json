@@ -7,7 +7,9 @@
 		"url": "git+ssh://git@gitlab.com/jameygleason/utils.git"
 	},
 	"scripts": {
-		"dev": "cd package && npm run dev",
+		"dev": "run-p dev:package dev:rollup",
+		"dev:package": "cd package && npm run dev",
+		"dev:rollup": "sleep 15 && cd examples/rollup && npm run dev",
 		"build": "cd package && npm run build",
 		"install:all": "sh ./.config/scripts/install.sh",
 		"install:clean": "sh ./.config/scripts/clean-install.sh",
