@@ -10,7 +10,9 @@ export function copyRecursiveSync(src: string, dest: string): void {
 	}
 
 	if (isDirectory) {
-		mkdir(dest)
+		if (!fs.existsSync(dest)) {
+			mkdir(dest)
+		}
 		fs.readdirSync(src).forEach(childItemName => {
 			copyRecursiveSync(path.join(src, childItemName), path.join(dest, childItemName))
 		})

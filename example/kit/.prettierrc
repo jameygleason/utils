@@ -1,0 +1,25 @@
+{
+	"arrowParens": "avoid",
+	"bracketSpacing": true,
+	"endOfLine": "lf",
+	"printWidth": 120,
+	"semi": false,
+	"singleQuote": false,
+	"tabWidth": 2,
+	"trailingComma": "all",
+	"useTabs": true,
+	"overrides": [
+		{
+			"files": ".prettierrc",
+			"options": {
+				"parser": "json"
+			}
+		}
+	],
+
+	"svelteSortOrder": "scripts-markup-styles",
+	"svelteAllowShorthand": true,
+	"svelteBracketNewLine": true,
+	"svelteStrictMode": false,
+	"svelteIndentScriptAndStyle": true
+}
