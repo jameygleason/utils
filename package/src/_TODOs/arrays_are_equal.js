@@ -1,12 +1,12 @@
-import kleur from "kleur"
+import picocolors from "picocolors"
 import { unique_array_values } from "./unique_array_values.js"
 
 export function arrays_are_equal(a, b) {
 	if (!a) {
-		throw new Error(kleur.red("arrays_are_equal requires two arrays as arguments"))
+		throw new Error(picocolors.red("arrays_are_equal requires two arrays as arguments"))
 	}
 	if (!b) {
-		throw new Error(kleur.red("arrays_are_equal requires two arrays as arguments"))
+		throw new Error(picocolors.red("arrays_are_equal requires two arrays as arguments"))
 	}
 
 	let equal = true

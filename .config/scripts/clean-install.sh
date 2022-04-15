@@ -21,7 +21,7 @@ cd ..
 echo ""
 echo Installing Kit Deps
 echo ""
-cd example/kit
+cd examples/kit
 rm -rf node_modules package-lock.json
 npm i
 cd ../..
@@ -29,7 +29,7 @@ cd ../..
 echo ""
 echo Installing Rollup Deps
 echo ""
-cd example/rollup
+cd examples/rollup
 rm -rf node_modules package-lock.json
 npm i
 cd ../..

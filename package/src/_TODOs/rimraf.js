@@ -1,10 +1,10 @@
 import fs from "fs"
 import path from "path"
-import kleur from "kleur"
+import picocolors from "picocolors"
 
 export function rimraf(dir_path) {
 	if (!dir_path) {
-		throw new Error(kleur.red("rimraf requires a directory path"))
+		throw new Error(picocolors.red("rimraf requires a directory path"))
 	}
 
 	if (fs.existsSync(dir_path)) {

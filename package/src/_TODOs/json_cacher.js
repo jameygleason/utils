@@ -1,6 +1,6 @@
 import fs from "fs"
 import path from "path"
-import kleur from "kleur"
+import picocolors from "picocolors"
 import { rimraf } from "./rimraf.js"
 import { arrays_are_equal } from "./arrays_are_equal.js"
 
@@ -14,7 +14,9 @@ export async function json_cacher(dir, data, { collectionName }) {
 
 	if (!collectionName) {
 		throw new Error(
-			kleur.red("json_cacher requires a collectionName key as a part of the options Object in the second argument"),
+			picocolors.red(
+				"json_cacher requires a collectionName key as a part of the options Object in the second argument",
+			),
 		)
 	}
 

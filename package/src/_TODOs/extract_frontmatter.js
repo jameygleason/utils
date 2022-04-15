@@ -1,8 +1,8 @@
-import kleur from "kleur"
+import picocolors from "picocolors"
 
 export function extract_frontmatter(markdown) {
 	if (!markdown) {
-		throw new Error(kleur.red("extract_frontmatter requires the contents of a markdown file as an argument"))
+		throw new Error(picocolors.red("extract_frontmatter requires the contents of a markdown file as an argument"))
 	}
 
 	const match = /---\r?\n([\s\S]+?)\r?\n---/.exec(markdown)

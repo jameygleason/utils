@@ -1,10 +1,10 @@
 import fs from "fs"
 import path from "path"
-import kleur from "kleur"
+import picocolors from "picocolors"
 
 export function get_dir_contents(source, ext_type) {
 	if (!source) {
-		throw new Error(kleur.red("get_dir_contents requires a source argument"))
+		throw new Error(picocolors.red("get_dir_contents requires a source argument"))
 	}
 
 	if (ext_type) {

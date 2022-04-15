@@ -1,7 +1,8 @@
-// // @ts-check
-/* eslint-disable */
+// @ts-check
 import path from "path"
-import { rimraf } from "@signalchain/utils/node/rimraf"
+/* eslint-disable */
+// @ts-ignore
+import { rimraf } from "@signalchain/utils/node"
 
 rimraf(path.join(process.cwd(), "dist"))
 

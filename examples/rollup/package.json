@@ -3,7 +3,7 @@
 	"type": "module",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"dev": "rollup -c"
 	},
 	"devDependencies": {
 		"@signalchain/utils": "file:../../package",
@@ -21,6 +21,7 @@
 		"eslint-plugin-svelte3": "3.4.1",
 		"prettier": "2.6.2",
 		"prettier-plugin-svelte": "2.6.0",
+		"rollup": "^2.70.2",
 		"tslib": "^2.3.1",
 		"typescript": "~4.6.2"
 	}

@@ -1,9 +1,9 @@
 import fs from "fs"
 import util from "util"
-import kleur from "kleur"
+import picocolors from "picocolors"
 
 export async function check_fs_stat(src) {
-	if (!src) throw new Error(kleur.red("check_fs_stat requires a source path"))
+	if (!src) throw new Error(picocolors.red("check_fs_stat requires a source path"))
 
 	let isFile
 	let isDirectory

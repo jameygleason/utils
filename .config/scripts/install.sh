@@ -19,13 +19,13 @@ cd ..
 echo ""
 echo Installing Kit Deps
 echo ""
-cd example/kit
+cd examples/kit
 npm i
 cd ../..
 
 echo ""
 echo Installing Rollup Deps
 echo ""
-cd example/rollup
+cd examples/rollup
 npm i
 cd ../..

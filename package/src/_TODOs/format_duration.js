@@ -1,8 +1,8 @@
-import kleur from "kleur"
+import picocolors from "picocolors"
 
 export function format_duration(duration) {
 	if (!duration) {
-		throw new Error(kleur.red("format_duration requires an ISO 8601 time string as an argument"))
+		throw new Error(picocolors.red("format_duration requires an ISO 8601 time string as an argument"))
 	}
 
 	let hours = 0

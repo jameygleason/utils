@@ -1,9 +1,9 @@
-import kleur from "kleur"
+import picocolors from "picocolors"
 import { capitalize } from "./capitalize.js"
 
 export function slug_to_pascal_case(str) {
 	if (!str) {
-		throw new Error(kleur.red("slug_to_pascal_case requires a String as an argument"))
+		throw new Error(picocolors.red("slug_to_pascal_case requires a String as an argument"))
 	}
 	const strToArr = str.split(".")
 	if (strToArr.length > 1) strToArr.pop()

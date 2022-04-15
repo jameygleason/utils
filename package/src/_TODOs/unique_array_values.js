@@ -1,11 +1,11 @@
-import kleur from "kleur"
+import picocolors from "picocolors"
 
 export function unique_array_values(first, second) {
 	if (!first) {
-		throw new Error(kleur.red("unique_array_values requires two arrays as arguments"))
+		throw new Error(picocolors.red("unique_array_values requires two arrays as arguments"))
 	}
 	if (!second) {
-		throw new Error(kleur.red("unique_array_values requires two arrays as arguments"))
+		throw new Error(picocolors.red("unique_array_values requires two arrays as arguments"))
 	}
 
 	let arr1 = first

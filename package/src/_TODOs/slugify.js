@@ -1,8 +1,8 @@
-import kleur from "kleur"
+import picocolors from "picocolors"
 
 export function slugify(str, removeLeadingNumeral) {
 	if (!str) {
-		throw new Error(kleur.red("slugify requires a String as an argument"))
+		throw new Error(picocolors.red("slugify requires a String as an argument"))
 	}
 
 	const normalizeStr = str.toString().toLowerCase().trim()
