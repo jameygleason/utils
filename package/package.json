@@ -53,20 +53,10 @@
 			"require": "./dist/decamel.cjs",
 			"types": "./dist/decamel.d.ts"
 		},
-		"./deepIsNil": {
-			"import": "./dist/deepIsNil.js",
-			"require": "./dist/deepIsNil.cjs",
-			"types": "./dist/deepIsNil.d.ts"
-		},
 		"./formatCurrency": {
 			"import": "./dist/formatCurrency.js",
 			"require": "./dist/formatCurrency.cjs",
 			"types": "./dist/formatCurrency.d.ts"
-		},
-		"./getFirstName": {
-			"import": "./dist/getFirstName.js",
-			"require": "./dist/getFirstName.cjs",
-			"types": "./dist/getFirstName.d.ts"
 		},
 		"./isNil": {
 			"import": "./dist/isNil.js",
@@ -123,11 +113,6 @@
 			"require": "./dist/struct.cjs",
 			"types": "./dist/struct.d.ts"
 		},
-		"./titleCase": {
-			"import": "./dist/titleCase.js",
-			"require": "./dist/titleCase.cjs",
-			"types": "./dist/titleCase.d.ts"
-		},
 		"./toUpperCase": {
 			"import": "./dist/toUpperCase.js",
 			"require": "./dist/toUpperCase.cjs",
@@ -152,16 +137,6 @@
 			"import": "./dist/node/copyRecursiveSync.js",
 			"require": "./dist/node/copyRecursiveSync.cjs",
 			"types": "./dist/node/copyRecursiveSync.d.ts"
-		},
-		"./node/decrypt": {
-			"import": "./dist/node/decrypt.js",
-			"require": "./dist/node/decrypt.cjs",
-			"types": "./dist/node/decrypt.d.ts"
-		},
-		"./node/encrypt": {
-			"import": "./dist/node/encrypt.js",
-			"require": "./dist/node/encrypt.cjs",
-			"types": "./dist/node/encrypt.d.ts"
 		},
 		"./node/mkdir": {
 			"import": "./dist/node/mkdir.js",
