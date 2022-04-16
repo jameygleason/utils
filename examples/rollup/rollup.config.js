@@ -5,6 +5,8 @@ import module from "module"
 import commonjs from "@rollup/plugin-commonjs"
 import resolve from "@rollup/plugin-node-resolve"
 
+//! doesn't work with ts-check
+
 // Requires "paths" field to be set (see tsconfig) in tsconfig
 // Otherwise you will see a false error
 // The "include" array must also include any files that you want the "path" hack to work on

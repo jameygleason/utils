@@ -1,7 +1,9 @@
 // @ts-check
 import path from "path"
 
-// Requires "paths" field to ignore false error
+//! doesn't work with ts-check
+
+// Check rollup config for notes
 import { isNil } from "@signalchain/utils"
 import { decamel } from "@signalchain/utils/decamel"
 import { rimraf, mkdir } from "@signalchain/utils/node"
