@@ -1,5 +1,5 @@
 import { performance } from "perf_hooks"
-import picocolors from "picocolors"
+import clr from "picocolors"
 
 /**
  * Usage:
@@ -15,7 +15,5 @@ export function printElapsed(start: number, msg: string): void {
 		elapsed = elapsed * 0.001
 		unit = "s"
 	}
-	console.log(
-		`${picocolors.blue(msg)} ${picocolors.green("in")} ${picocolors.blue(elapsed.toFixed(1))}${picocolors.blue(unit)}`,
-	)
+	console.log(`${clr.blue(msg)} ${clr.green("in")} ${clr.blue(elapsed.toFixed(1))}${clr.blue(unit)}`)
 }
