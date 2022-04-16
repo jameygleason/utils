@@ -11,8 +11,11 @@ import resolve from "@rollup/plugin-node-resolve"
 // Otherwise you will see a false error
 // The "include" array must also include any files that you want the "path" hack to work on
 import { isNil } from "@signalchain/utils"
+// @ts-ignore
 import { decamel } from "@signalchain/utils/decamel"
+// @ts-ignore
 import { rimraf, mkdir } from "@signalchain/utils/node"
+// @ts-ignore
 import { cleanDir } from "@signalchain/utils/node/cleanDir"
 
 console.log("isNil:", isNil("nope"))
