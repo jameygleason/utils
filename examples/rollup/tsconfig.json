@@ -4,6 +4,7 @@
 		"allowJs": true,
 		"allowSyntheticDefaultImports": true,
 		"allowUnreachableCode": true,
+		"baseUrl": "./",
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"importHelpers": true,
@@ -16,7 +17,12 @@
 		"strict": true,
 		"stripInternal": true,
 		"target": "es2019",
-		"types": ["node"]
+		"types": ["node"],
+		"paths": {
+			"@signalchain/utils/node": ["node_modules/@signalchain/utils/dist/node"],
+			"@signalchain/utils/node/cleanDir": ["node_modules/@signalchain/utils/dist/node/cleanDir"],
+			"@signalchain/utils/decamel": ["node_modules/@signalchain/utils/dist/decamel"]
+		}
 	},
 	"exclude": ["node_modules", "dist"]
 }

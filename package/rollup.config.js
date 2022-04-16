@@ -24,7 +24,6 @@ const config = [
 			{
 				file: "dist/noop.js",
 				format: "es",
-				sourcemap: true,
 				exports: "named",
 			},
 		],
@@ -97,7 +96,6 @@ for (const k of Object.keys(pkg.exports)) {
 		output: {
 			file: typesPath,
 			format: "es",
-			sourcemap: true,
 			exports: "named",
 		},
 		plugins: typesPlugins,
@@ -110,7 +108,6 @@ config.push({
 		{
 			file: "dist/index.d.ts",
 			format: "es",
-			sourcemap: true,
 			exports: "named",
 		},
 	],
@@ -123,7 +120,6 @@ config.push({
 		{
 			file: "dist/node/index.d.ts",
 			format: "es",
-			sourcemap: true,
 			exports: "named",
 		},
 	],
@@ -136,7 +132,6 @@ config.push({
 		{
 			file: "dist/noop.js",
 			format: "es",
-			sourcemap: true,
 			exports: "named",
 		},
 	],
@@ -149,7 +144,6 @@ config.push({
 		{
 			file: "dist/noop.js",
 			format: "es",
-			sourcemap: true,
 			exports: "named",
 		},
 	],

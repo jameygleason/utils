@@ -11,14 +11,20 @@ export function writeBarrelFilesProd() {
 	return {
 		name: "rollup-plugin-write-barrel-file",
 		buildStart() {
-			let esm = ""
-			let mjs = ""
-			let cjs = ""
-			let esmNode = ""
-			let mjsNode = ""
-			let cjsNode = ""
+			let distDir = path.join(process.cwd(), "dist")
+			let distDirNode = path.join(process.cwd(), "dist", "node")
 
-			let i = 0
+			mkdir(distDir)
+			mkdir(distDirNode)
+
+			const jsStream = fs.createWriteStream(path.join(distDir, "index.js"))
+			const mjsStream = fs.createWriteStream(path.join(distDir, "index.mjs"))
+			const cjsArr = []
+
+			const jsNodeStream = fs.createWriteStream(path.join(distDirNode, "index.js"))
+			const mjsNodeStream = fs.createWriteStream(path.join(distDirNode, "index.mjs"))
+			const cjsNodeArr = []
+
 			for (let file of Object.keys(pkg.exports)) {
 				if (file === "." || file === "./node") {
 					continue
@@ -26,41 +32,39 @@ export function writeBarrelFilesProd() {
 
 				if (file.split("/")[1] === "node") {
 					file = "./" + file.split("/").slice(2, 3)
-					esmNode = esmNode + `${i > 0 ? "\n" : ""}` + `export * from "${file}.js"`
-					mjsNode = mjsNode + `${i > 0 ? "\n" : ""}` + `export * from "${file}.mjs"`
 
-					// ++++++++++++
-					cjsNode =
-						cjsNode + `${i > 0 ? "\n" : ""}` + `module.exports.${file.slice(2, file.length)} = require("${file}.cjs")`
-					// ++++++++++++
-
-					i++
+					jsNodeStream.write(`export * from "${file}.js"\n`)
+					mjsNodeStream.write(`export * from "${file}.mjs"\n`)
+					cjsNodeArr.push(file.slice(2, file.length))
 					continue
 				}
 
-				esm = esm + `${i > 0 ? "\n" : ""}` + `export * from "${file}.js"`
-				mjs = mjs + `${i > 0 ? "\n" : ""}` + `export * from "${file}.mjs"`
-
-				// ++++++++++++
-				cjs = cjs + `${i > 0 ? "\n" : ""}` + `module.exports.${file.slice(2, file.length)} = require("${file}.cjs")`
-				// ++++++++++++
-
-				i++
+				jsStream.write(`export * from "${file}.js"\n`)
+				mjsStream.write(`export * from "${file}.js"\n`)
+				cjsArr.push(file.slice(2, file.length))
 			}
 
-			let distDir = path.join(process.cwd(), "dist")
-			mkdir(distDir)
+			const cjsDist = path.join(distDir, "index.cjs")
+			let cjsImport = ""
+			let cjsExport = "\n"
 
-			fs.writeFileSync(path.join(distDir, "index.js"), esm)
-			fs.writeFileSync(path.join(distDir, "index.mjs"), mjs)
-			fs.writeFileSync(path.join(distDir, "index.cjs"), cjs)
+			for (const file of cjsArr) {
+				cjsImport += `\tconst { ${file} } = require("./${file}.cjs")\n`
+				cjsExport += `\t${file},\n`
+			}
 
-			let distDirNode = path.join(process.cwd(), "dist", "node")
-			mkdir(distDirNode)
+			fs.writeFileSync(cjsDist, `${cjsImport}\nmodule.exports = {${cjsExport}}`)
 
-			fs.writeFileSync(path.join(distDirNode, "index.js"), esmNode)
-			fs.writeFileSync(path.join(distDirNode, "index.mjs"), mjsNode)
-			fs.writeFileSync(path.join(distDirNode, "index.cjs"), cjsNode)
+			const cjsNodeDist = path.join(distDirNode, "index.cjs")
+			let cjsNodeImport = ""
+			let cjsNodeExport = "\n"
+
+			for (const file of cjsNodeArr) {
+				cjsNodeImport += `\tconst { ${file} } = require("./${file}.cjs")\n`
+				cjsNodeExport += `\t${file},\n`
+			}
+
+			fs.writeFileSync(cjsNodeDist, `${cjsNodeImport}\nmodule.exports = {${cjsNodeExport}}`)
 		},
 	}
 }

@@ -26,7 +26,7 @@ module.exports = {
 	plugins: ["@typescript-eslint", "node", "import", "json", "prettier"],
 	settings: {
 		"import/parsers": {
-			"@typescript-eslint/parser": [".js", ".jsx", ".ts", ".tsx"],
+			"@typescript-eslint/parser": [".js", ".cjs", ".mjs", ".ts"],
 		},
 		"import/resolver": {
 			typescript: {
