@@ -83,7 +83,7 @@ module.exports = {
 	settings: {
 		"svelte3/typescript": () => require("typescript"),
 		"import/parsers": {
-			"@typescript-eslint/parser": [".js", ".jsx", ".ts", ".tsx"],
+			"@typescript-eslint/parser": [".js", ".cjs", ".mjs", ".ts"],
 		},
 		"import/resolver": {
 			typescript: {

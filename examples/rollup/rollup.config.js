@@ -1,10 +1,13 @@
+// @ts-check
 import fs from "fs"
 import path from "path"
 import module from "module"
 import commonjs from "@rollup/plugin-commonjs"
 import resolve from "@rollup/plugin-node-resolve"
 
-// Requires "paths" field in tsconfig to ignore false error
+// Requires "paths" field to be set (see tsconfig) in tsconfig
+// Otherwise you will see a false error
+// The "include" array must also include any files that you want the "path" hack to work on
 import { isNil } from "@signalchain/utils"
 import { decamel } from "@signalchain/utils/decamel"
 import { rimraf, mkdir } from "@signalchain/utils/node"
@@ -43,7 +46,7 @@ export default {
 	onwarn: (warning, onwarn) => onwarn(warning),
 	watch: {
 		clearScreen: false,
-		include: "src/**/*",
+		include: "./**/*",
 		exclude: ["node_modules", "dist", "types", "**/*.test.*"],
 	},
 }

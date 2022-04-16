@@ -1,7 +1,37 @@
 {
-	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"allowSyntheticDefaultImports": true,
+		"allowUnreachableCode": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"importsNotUsedAsValues": "error",
+		"importHelpers": true,
+		"isolatedModules": true,
+		"lib": ["es2020", "dom", "dom.iterable"],
+		"module": "es2020",
+		"moduleResolution": "node",
 		"noEmit": true,
-		"lib": ["es2020", "dom", "dom.iterable"]
-	}
+		"noImplicitThis": true,
+		"preserveValueImports": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"sourceMap": true,
+		"stripInternal": true,
+		"target": "es2020",
+		"types": ["node"],
+		"rootDirs": ["./", "./.svelte-kit/types"],
+
+		"baseUrl": "./",
+		"paths": {
+			"$lib": ["src/components"],
+			"$lib/*": ["src/components/*"],
+			"@signalchain/utils/node": ["node_modules/@signalchain/utils/dist/node"],
+			"@signalchain/utils/node/cleanDir": ["node_modules/@signalchain/utils/dist/node/cleanDir"],
+			"@signalchain/utils/decamel": ["node_modules/@signalchain/utils/dist/decamel"]
+		}
+	},
+	"exclude": ["node_modules/**", "svelte-kit"]
 }
